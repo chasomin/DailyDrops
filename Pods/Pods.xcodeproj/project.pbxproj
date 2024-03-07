@@ -37,8 +37,8 @@
 		643CB5E933E940EB4BB06A2D0E6D7B86 /* WaveAnimationView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "WaveAnimationView-umbrella.h"; sourceTree = "<group>"; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		7748640C6FD794ECAD2D06FEA2D05683 /* WaveAnimationView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = WaveAnimationView.modulemap; sourceTree = "<group>"; };
-		80B587C19E0049FA00705C4D20395B86 /* WaveAnimationView */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = WaveAnimationView; path = WaveAnimationView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		80B587C19E0049FA00705C4D20395B86 /* WaveAnimationView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WaveAnimationView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		BD01A294C1B4E1339585C162B0EC56D1 /* Pods-DailyDrops-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-DailyDrops-acknowledgements.markdown"; sourceTree = "<group>"; };
 		C26068754D530412FB9E7FB250EDD5C1 /* WaveAnimationView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "WaveAnimationView-dummy.m"; sourceTree = "<group>"; };
 		D900BC76005006DF318A1E14A8BCADE1 /* Pods-DailyDrops-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-DailyDrops-frameworks.sh"; sourceTree = "<group>"; };
@@ -107,7 +107,6 @@
 				E106B7A980A089CDB423F51C14C86DF0 /* WaveAnimationView.swift */,
 				0EFE6395DDEED3C4B832D2261EA8BC57 /* Support Files */,
 			);
-			name = WaveAnimationView;
 			path = WaveAnimationView;
 			sourceTree = "<group>";
 		};
@@ -115,7 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				F9258DD7F9B1FA4D558486373D3855F4 /* Pods-DailyDrops */,
-				80B587C19E0049FA00705C4D20395B86 /* WaveAnimationView */,
+				80B587C19E0049FA00705C4D20395B86 /* WaveAnimationView.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -220,7 +219,7 @@
 			);
 			name = WaveAnimationView;
 			productName = WaveAnimationView;
-			productReference = 80B587C19E0049FA00705C4D20395B86 /* WaveAnimationView */;
+			productReference = 80B587C19E0049FA00705C4D20395B86 /* WaveAnimationView.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -388,7 +387,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/WaveAnimationView/WaveAnimationView-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/WaveAnimationView/WaveAnimationView-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -551,7 +550,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/WaveAnimationView/WaveAnimationView-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/WaveAnimationView/WaveAnimationView-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -72,7 +72,6 @@
 				14EE9E7815A24FF1031D0B57 /* Pods-DailyDrops.debug.xcconfig */,
 				DDE49E975EDBF1B226768C46 /* Pods-DailyDrops.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -98,6 +97,7 @@
 		790E8FB72B99838C004DC160 /* DailyDrops */ = {
 			isa = PBXGroup;
 			children = (
+				795B21602B99AA7400DA7D7F /* Extension */,
 				790E8FB82B99838C004DC160 /* AppDelegate.swift */,
 				790E8FBA2B99838C004DC160 /* SceneDelegate.swift */,
 				790E8FBC2B99838C004DC160 /* ViewController.swift */,
@@ -107,6 +107,13 @@
 				790E90062B99A5C0004DC160 /* GoogleService-Info.plist */,
 			);
 			path = DailyDrops;
+			sourceTree = "<group>";
+		};
+		795B21602B99AA7400DA7D7F /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		DFC1D78B0549EE90AEC49898 /* Frameworks */ = {
@@ -336,7 +343,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -399,7 +406,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
