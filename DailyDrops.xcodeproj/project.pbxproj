@@ -26,6 +26,7 @@
 		790E900A2B99A62A004DC160 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 790E90092B99A62A004DC160 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		790E900C2B99A62A004DC160 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 790E900B2B99A62A004DC160 /* FirebaseCrashlytics */; };
 		790E900E2B99A62A004DC160 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 790E900D2B99A62A004DC160 /* FirebaseMessaging */; };
+		795B21622B99AB7700DA7D7F /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795B21612B99AB7700DA7D7F /* UIColor+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		790E8FC62B99838E004DC160 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		790E8FCC2B998602004DC160 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		790E90062B99A5C0004DC160 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		795B21612B99AB7700DA7D7F /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		8E96AB1C0CD9779E05D99E0C /* Pods_DailyDrops.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyDrops.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDE49E975EDBF1B226768C46 /* Pods-DailyDrops.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyDrops.release.xcconfig"; path = "Target Support Files/Pods-DailyDrops/Pods-DailyDrops.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -112,6 +114,7 @@
 		795B21602B99AA7400DA7D7F /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				795B21612B99AB7700DA7D7F /* UIColor+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				790E8FBD2B99838C004DC160 /* ViewController.swift in Sources */,
 				790E8FB92B99838C004DC160 /* AppDelegate.swift in Sources */,
 				790E8FBB2B99838C004DC160 /* SceneDelegate.swift in Sources */,
+				795B21622B99AB7700DA7D7F /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
