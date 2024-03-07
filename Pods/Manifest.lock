@@ -1,0 +1,16 @@
+PODS:
+  - WaveAnimationView (1.0.2)
+
+DEPENDENCIES:
+  - WaveAnimationView
+
+SPEC REPOS:
+  trunk:
+    - WaveAnimationView
+
+SPEC CHECKSUMS:
+  WaveAnimationView: 1ffdf3184884eb3270f4b19cc2e69893fec16b9d
+
+PODFILE CHECKSUM: 6bcd0642f9bf3cdc081864d8803fa7b2f05f6c12
+
+COCOAPODS: 1.15.2
