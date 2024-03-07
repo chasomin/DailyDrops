@@ -16,6 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Use Firebase library to configure APIs
         FirebaseApp.configure()
+        
+        // TODO: 권한 요청 앱 진입 시 물어볼지, 걸음수 탭에 들어가면 물어볼지 정하기
+        HealthManager.shared.requestAuthoriaztion()
         return true
     }
 
