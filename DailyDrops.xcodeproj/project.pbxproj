@@ -13,6 +13,18 @@
 		790E8FC22B99838E004DC160 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 790E8FC12B99838E004DC160 /* Assets.xcassets */; };
 		790E8FC52B99838E004DC160 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 790E8FC32B99838E004DC160 /* LaunchScreen.storyboard */; };
 		790E8FCD2B998602004DC160 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 790E8FCC2B998602004DC160 /* .gitignore */; };
+		790E8FF12B99A560004DC160 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 790E8FF02B99A560004DC160 /* Realm */; };
+		790E8FF32B99A560004DC160 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 790E8FF22B99A560004DC160 /* RealmSwift */; };
+		790E8FF62B99A56C004DC160 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 790E8FF52B99A56C004DC160 /* FSCalendar */; };
+		790E8FF92B99A577004DC160 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 790E8FF82B99A577004DC160 /* Alamofire */; };
+		790E8FFC2B99A580004DC160 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 790E8FFB2B99A580004DC160 /* Toast */; };
+		790E8FFF2B99A589004DC160 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 790E8FFE2B99A589004DC160 /* Kingfisher */; };
+		790E90022B99A593004DC160 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = 790E90012B99A593004DC160 /* DGCharts */; };
+		790E90052B99A5A0004DC160 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 790E90042B99A5A0004DC160 /* SnapKit */; };
+		790E90072B99A5C0004DC160 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 790E90062B99A5C0004DC160 /* GoogleService-Info.plist */; };
+		790E900A2B99A62A004DC160 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 790E90092B99A62A004DC160 /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		790E900C2B99A62A004DC160 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 790E900B2B99A62A004DC160 /* FirebaseCrashlytics */; };
+		790E900E2B99A62A004DC160 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 790E900D2B99A62A004DC160 /* FirebaseMessaging */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +36,7 @@
 		790E8FC42B99838E004DC160 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		790E8FC62B99838E004DC160 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		790E8FCC2B998602004DC160 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		790E90062B99A5C0004DC160 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +44,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				790E8FFF2B99A589004DC160 /* Kingfisher in Frameworks */,
+				790E90052B99A5A0004DC160 /* SnapKit in Frameworks */,
+				790E8FF32B99A560004DC160 /* RealmSwift in Frameworks */,
+				790E8FF92B99A577004DC160 /* Alamofire in Frameworks */,
+				790E8FF62B99A56C004DC160 /* FSCalendar in Frameworks */,
+				790E8FFC2B99A580004DC160 /* Toast in Frameworks */,
+				790E90022B99A593004DC160 /* DGCharts in Frameworks */,
+				790E900C2B99A62A004DC160 /* FirebaseCrashlytics in Frameworks */,
+				790E900A2B99A62A004DC160 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
+				790E900E2B99A62A004DC160 /* FirebaseMessaging in Frameworks */,
+				790E8FF12B99A560004DC160 /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +87,7 @@
 				790E8FC12B99838E004DC160 /* Assets.xcassets */,
 				790E8FC32B99838E004DC160 /* LaunchScreen.storyboard */,
 				790E8FC62B99838E004DC160 /* Info.plist */,
+				790E90062B99A5C0004DC160 /* GoogleService-Info.plist */,
 			);
 			path = DailyDrops;
 			sourceTree = "<group>";
@@ -77,12 +102,26 @@
 				790E8FB12B99838C004DC160 /* Sources */,
 				790E8FB22B99838C004DC160 /* Frameworks */,
 				790E8FB32B99838C004DC160 /* Resources */,
+				790E900F2B99A6A3004DC160 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = DailyDrops;
+			packageProductDependencies = (
+				790E8FF02B99A560004DC160 /* Realm */,
+				790E8FF22B99A560004DC160 /* RealmSwift */,
+				790E8FF52B99A56C004DC160 /* FSCalendar */,
+				790E8FF82B99A577004DC160 /* Alamofire */,
+				790E8FFB2B99A580004DC160 /* Toast */,
+				790E8FFE2B99A589004DC160 /* Kingfisher */,
+				790E90012B99A593004DC160 /* DGCharts */,
+				790E90042B99A5A0004DC160 /* SnapKit */,
+				790E90092B99A62A004DC160 /* FirebaseAnalyticsWithoutAdIdSupport */,
+				790E900B2B99A62A004DC160 /* FirebaseCrashlytics */,
+				790E900D2B99A62A004DC160 /* FirebaseMessaging */,
+			);
 			productName = DailyDrops;
 			productReference = 790E8FB52B99838C004DC160 /* DailyDrops.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +150,16 @@
 				Base,
 			);
 			mainGroup = 790E8FAC2B99838C004DC160;
+			packageReferences = (
+				790E8FEF2B99A55F004DC160 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				790E8FF42B99A56C004DC160 /* XCRemoteSwiftPackageReference "FSCalendar" */,
+				790E8FF72B99A577004DC160 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				790E8FFA2B99A580004DC160 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				790E8FFD2B99A589004DC160 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				790E90002B99A593004DC160 /* XCRemoteSwiftPackageReference "Charts" */,
+				790E90032B99A5A0004DC160 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				790E90082B99A62A004DC160 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 790E8FB62B99838C004DC160 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -126,12 +175,38 @@
 			buildActionMask = 2147483647;
 			files = (
 				790E8FCD2B998602004DC160 /* .gitignore in Resources */,
+				790E90072B99A5C0004DC160 /* GoogleService-Info.plist in Resources */,
 				790E8FC52B99838E004DC160 /* LaunchScreen.storyboard in Resources */,
 				790E8FC22B99838E004DC160 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		790E900F2B99A6A3004DC160 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist",
+				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist",
+				"$(TARGET_BUILD_DIR)/$(EXECUTABLE_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		790E8FB12B99838C004DC160 /* Sources */ = {
@@ -284,6 +359,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = FQNUU3X32C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DailyDrops/Info.plist;
@@ -296,6 +372,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chasomin.DailyDrops;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -327,6 +404,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chasomin.DailyDrops;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -361,6 +439,131 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		790E8FEF2B99A55F004DC160 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = exactVersion;
+				version = 10.47.0;
+			};
+		};
+		790E8FF42B99A56C004DC160 /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WenchaoD/FSCalendar";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.8.4;
+			};
+		};
+		790E8FF72B99A577004DC160 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.0;
+			};
+		};
+		790E8FFA2B99A580004DC160 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.0;
+			};
+		};
+		790E8FFD2B99A589004DC160 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.11.0;
+			};
+		};
+		790E90002B99A593004DC160 /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.0;
+			};
+		};
+		790E90032B99A5A0004DC160 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		790E90082B99A62A004DC160 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.22.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		790E8FF02B99A560004DC160 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 790E8FEF2B99A55F004DC160 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		790E8FF22B99A560004DC160 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 790E8FEF2B99A55F004DC160 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+		790E8FF52B99A56C004DC160 /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 790E8FF42B99A56C004DC160 /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
+		};
+		790E8FF82B99A577004DC160 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 790E8FF72B99A577004DC160 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		790E8FFB2B99A580004DC160 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 790E8FFA2B99A580004DC160 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
+		};
+		790E8FFE2B99A589004DC160 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 790E8FFD2B99A589004DC160 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		790E90012B99A593004DC160 /* DGCharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 790E90002B99A593004DC160 /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = DGCharts;
+		};
+		790E90042B99A5A0004DC160 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 790E90032B99A5A0004DC160 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		790E90092B99A62A004DC160 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 790E90082B99A62A004DC160 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		790E900B2B99A62A004DC160 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 790E90082B99A62A004DC160 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		790E900D2B99A62A004DC160 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 790E90082B99A62A004DC160 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 790E8FAD2B99838C004DC160 /* Project object */;
 }
