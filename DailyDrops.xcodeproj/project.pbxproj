@@ -107,10 +107,10 @@
 			isa = PBXGroup;
 			children = (
 				795B216A2B99BB3B00DA7D7F /* DailyDrops.entitlements */,
+				795B216C2B99BC1D00DA7D7F /* App */,
 				795B21632B99AE1600DA7D7F /* Resource */,
 				795B21602B99AA7400DA7D7F /* Extension */,
-				790E8FB82B99838C004DC160 /* AppDelegate.swift */,
-				790E8FBA2B99838C004DC160 /* SceneDelegate.swift */,
+				795B216B2B99BC1300DA7D7F /* Manager */,
 				790E8FBC2B99838C004DC160 /* ViewController.swift */,
 				790E8FC12B99838E004DC160 /* Assets.xcassets */,
 				790E8FC32B99838E004DC160 /* LaunchScreen.storyboard */,
@@ -136,6 +136,22 @@
 				795B21642B99AF1800DA7D7F /* Pretendard-Regular.otf */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		795B216B2B99BC1300DA7D7F /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		795B216C2B99BC1D00DA7D7F /* App */ = {
+			isa = PBXGroup;
+			children = (
+				790E8FB82B99838C004DC160 /* AppDelegate.swift */,
+				790E8FBA2B99838C004DC160 /* SceneDelegate.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 		DFC1D78B0549EE90AEC49898 /* Frameworks */ = {
