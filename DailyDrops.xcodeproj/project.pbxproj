@@ -27,6 +27,8 @@
 		790E900C2B99A62A004DC160 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 790E900B2B99A62A004DC160 /* FirebaseCrashlytics */; };
 		790E900E2B99A62A004DC160 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 790E900D2B99A62A004DC160 /* FirebaseMessaging */; };
 		795B21622B99AB7700DA7D7F /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795B21612B99AB7700DA7D7F /* UIColor+Extension.swift */; };
+		795B21662B99AF1900DA7D7F /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 795B21642B99AF1800DA7D7F /* Pretendard-Regular.otf */; };
+		795B21672B99AF1900DA7D7F /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 795B21652B99AF1900DA7D7F /* Pretendard-Bold.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +43,8 @@
 		790E8FCC2B998602004DC160 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		790E90062B99A5C0004DC160 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		795B21612B99AB7700DA7D7F /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		795B21642B99AF1800DA7D7F /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
+		795B21652B99AF1900DA7D7F /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		8E96AB1C0CD9779E05D99E0C /* Pods_DailyDrops.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyDrops.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDE49E975EDBF1B226768C46 /* Pods-DailyDrops.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyDrops.release.xcconfig"; path = "Target Support Files/Pods-DailyDrops/Pods-DailyDrops.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -99,6 +103,7 @@
 		790E8FB72B99838C004DC160 /* DailyDrops */ = {
 			isa = PBXGroup;
 			children = (
+				795B21632B99AE1600DA7D7F /* Resource */,
 				795B21602B99AA7400DA7D7F /* Extension */,
 				790E8FB82B99838C004DC160 /* AppDelegate.swift */,
 				790E8FBA2B99838C004DC160 /* SceneDelegate.swift */,
@@ -117,6 +122,15 @@
 				795B21612B99AB7700DA7D7F /* UIColor+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		795B21632B99AE1600DA7D7F /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				795B21652B99AF1900DA7D7F /* Pretendard-Bold.otf */,
+				795B21642B99AF1800DA7D7F /* Pretendard-Regular.otf */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 		DFC1D78B0549EE90AEC49898 /* Frameworks */ = {
@@ -138,8 +152,8 @@
 				790E8FB12B99838C004DC160 /* Sources */,
 				790E8FB22B99838C004DC160 /* Frameworks */,
 				790E8FB32B99838C004DC160 /* Resources */,
-				790E900F2B99A6A3004DC160 /* ShellScript */,
 				50C3DFB4ECB2EDD8277A2665 /* [CP] Embed Pods Frameworks */,
+				790E900F2B99A6A3004DC160 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -212,7 +226,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				790E8FCD2B998602004DC160 /* .gitignore in Resources */,
+				795B21672B99AF1900DA7D7F /* Pretendard-Bold.otf in Resources */,
 				790E90072B99A5C0004DC160 /* GoogleService-Info.plist in Resources */,
+				795B21662B99AF1900DA7D7F /* Pretendard-Regular.otf in Resources */,
 				790E8FC52B99838E004DC160 /* LaunchScreen.storyboard in Resources */,
 				790E8FC22B99838E004DC160 /* Assets.xcassets in Resources */,
 			);
