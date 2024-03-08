@@ -37,6 +37,8 @@
 		795B21772B99C97100DA7D7F /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795B21762B99C97100DA7D7F /* BaseView.swift */; };
 		795B217A2B99D05C00DA7D7F /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795B21792B99D05C00DA7D7F /* APIKey.swift */; };
 		795B217C2B99D1A600DA7D7F /* SupplementAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795B217B2B99D1A600DA7D7F /* SupplementAPI.swift */; };
+		795B21802B9ADF2F00DA7D7F /* SupplementDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795B217F2B9ADF2F00DA7D7F /* SupplementDTO.swift */; };
+		795B21822B9AEA7700DA7D7F /* Supplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795B21812B9AEA7700DA7D7F /* Supplement.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +64,8 @@
 		795B21762B99C97100DA7D7F /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		795B21792B99D05C00DA7D7F /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		795B217B2B99D1A600DA7D7F /* SupplementAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementAPI.swift; sourceTree = "<group>"; };
+		795B217F2B9ADF2F00DA7D7F /* SupplementDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementDTO.swift; sourceTree = "<group>"; };
+		795B21812B9AEA7700DA7D7F /* Supplement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Supplement.swift; sourceTree = "<group>"; };
 		8E96AB1C0CD9779E05D99E0C /* Pods_DailyDrops.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyDrops.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDE49E975EDBF1B226768C46 /* Pods-DailyDrops.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyDrops.release.xcconfig"; path = "Target Support Files/Pods-DailyDrops/Pods-DailyDrops.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -126,6 +130,7 @@
 				795B21602B99AA7400DA7D7F /* Extension */,
 				795B216B2B99BC1300DA7D7F /* Manager */,
 				795B216F2B99C88D00DA7D7F /* Base */,
+				795B21832B9AEB3B00DA7D7F /* Model */,
 				795B21782B99CAA900DA7D7F /* Network */,
 				790E8FBC2B99838C004DC160 /* ViewController.swift */,
 				790E8FC12B99838E004DC160 /* Assets.xcassets */,
@@ -187,8 +192,17 @@
 			children = (
 				795B21792B99D05C00DA7D7F /* APIKey.swift */,
 				795B217B2B99D1A600DA7D7F /* SupplementAPI.swift */,
+				795B217F2B9ADF2F00DA7D7F /* SupplementDTO.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		795B21832B9AEB3B00DA7D7F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				795B21812B9AEA7700DA7D7F /* Supplement.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		DFC1D78B0549EE90AEC49898 /* Frameworks */ = {
@@ -365,6 +379,8 @@
 			files = (
 				795B21732B99C8F300DA7D7F /* BaseTableViewCell.swift in Sources */,
 				790E8FBD2B99838C004DC160 /* ViewController.swift in Sources */,
+				795B21822B9AEA7700DA7D7F /* Supplement.swift in Sources */,
+				795B21802B9ADF2F00DA7D7F /* SupplementDTO.swift in Sources */,
 				795B21752B99C95800DA7D7F /* BaseCollectionViewCell.swift in Sources */,
 				795B216E2B99BCA400DA7D7F /* HealthManager.swift in Sources */,
 				790E8FB92B99838C004DC160 /* AppDelegate.swift in Sources */,
