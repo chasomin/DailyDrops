@@ -10,7 +10,6 @@
 		26D65632239E7DB912A830D2 /* Pods_DailyDrops.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E96AB1C0CD9779E05D99E0C /* Pods_DailyDrops.framework */; };
 		790E8FB92B99838C004DC160 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790E8FB82B99838C004DC160 /* AppDelegate.swift */; };
 		790E8FBB2B99838C004DC160 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790E8FBA2B99838C004DC160 /* SceneDelegate.swift */; };
-		790E8FBD2B99838C004DC160 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790E8FBC2B99838C004DC160 /* ViewController.swift */; };
 		790E8FC22B99838E004DC160 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 790E8FC12B99838E004DC160 /* Assets.xcassets */; };
 		790E8FC52B99838E004DC160 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 790E8FC32B99838E004DC160 /* LaunchScreen.storyboard */; };
 		790E8FCD2B998602004DC160 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 790E8FCC2B998602004DC160 /* .gitignore */; };
@@ -40,6 +39,7 @@
 		795B21802B9ADF2F00DA7D7F /* SupplementDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795B217F2B9ADF2F00DA7D7F /* SupplementDTO.swift */; };
 		795B21822B9AEA7700DA7D7F /* Supplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795B21812B9AEA7700DA7D7F /* Supplement.swift */; };
 		795B21852B9AECB100DA7D7F /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795B21842B9AECB100DA7D7F /* APIManager.swift */; };
+		795B21882B9B0CB000DA7D7F /* WaterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795B21872B9B0CAF00DA7D7F /* WaterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,7 +47,6 @@
 		790E8FB52B99838C004DC160 /* DailyDrops.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyDrops.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		790E8FB82B99838C004DC160 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		790E8FBA2B99838C004DC160 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		790E8FBC2B99838C004DC160 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		790E8FC12B99838E004DC160 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		790E8FC42B99838E004DC160 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		790E8FC62B99838E004DC160 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -68,6 +67,7 @@
 		795B217F2B9ADF2F00DA7D7F /* SupplementDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementDTO.swift; sourceTree = "<group>"; };
 		795B21812B9AEA7700DA7D7F /* Supplement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Supplement.swift; sourceTree = "<group>"; };
 		795B21842B9AECB100DA7D7F /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		795B21872B9B0CAF00DA7D7F /* WaterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterViewController.swift; sourceTree = "<group>"; };
 		8E96AB1C0CD9779E05D99E0C /* Pods_DailyDrops.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyDrops.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDE49E975EDBF1B226768C46 /* Pods-DailyDrops.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyDrops.release.xcconfig"; path = "Target Support Files/Pods-DailyDrops/Pods-DailyDrops.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -134,7 +134,7 @@
 				795B216F2B99C88D00DA7D7F /* Base */,
 				795B21832B9AEB3B00DA7D7F /* Model */,
 				795B21782B99CAA900DA7D7F /* Network */,
-				790E8FBC2B99838C004DC160 /* ViewController.swift */,
+				795B21862B9B0C6800DA7D7F /* Water */,
 				790E8FC12B99838E004DC160 /* Assets.xcassets */,
 				790E8FC32B99838E004DC160 /* LaunchScreen.storyboard */,
 				790E8FC62B99838E004DC160 /* Info.plist */,
@@ -206,6 +206,14 @@
 				795B21812B9AEA7700DA7D7F /* Supplement.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		795B21862B9B0C6800DA7D7F /* Water */ = {
+			isa = PBXGroup;
+			children = (
+				795B21872B9B0CAF00DA7D7F /* WaterViewController.swift */,
+			);
+			path = Water;
 			sourceTree = "<group>";
 		};
 		DFC1D78B0549EE90AEC49898 /* Frameworks */ = {
@@ -381,11 +389,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				795B21732B99C8F300DA7D7F /* BaseTableViewCell.swift in Sources */,
-				790E8FBD2B99838C004DC160 /* ViewController.swift in Sources */,
 				795B21822B9AEA7700DA7D7F /* Supplement.swift in Sources */,
 				795B21802B9ADF2F00DA7D7F /* SupplementDTO.swift in Sources */,
 				795B21752B99C95800DA7D7F /* BaseCollectionViewCell.swift in Sources */,
 				795B216E2B99BCA400DA7D7F /* HealthManager.swift in Sources */,
+				795B21882B9B0CB000DA7D7F /* WaterViewController.swift in Sources */,
 				790E8FB92B99838C004DC160 /* AppDelegate.swift in Sources */,
 				790E8FBB2B99838C004DC160 /* SceneDelegate.swift in Sources */,
 				795B217A2B99D05C00DA7D7F /* APIKey.swift in Sources */,
