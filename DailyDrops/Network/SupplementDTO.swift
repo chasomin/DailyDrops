@@ -19,7 +19,7 @@ struct InfoDTO: Decodable {
     }
     
     func toEntity() -> Info {
-        return Info(totalCount: totalCount, dataList: dataList ?? [], result: result)
+        return Info(totalCount: totalCount, dataList: dataList?.map{$0.toEntity()} ?? [], result: result.toEntity())
     }
 }
 
@@ -35,6 +35,7 @@ struct SupplementDTO: Decodable {
         case corporateName = "BSSH_NM"
         case intakeMethod = "NTK_MTHD"
     }
+    
     func toEntity() -> Supplement {
         return Supplement(supplementName: supplementName, shape: shape, corporateName: corporateName, intakeMethod: intakeMethod)
     }
