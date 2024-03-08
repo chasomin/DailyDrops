@@ -1,6 +1,0 @@
-framework module Pods_DailyDrops {
-  umbrella header "Pods-DailyDrops-umbrella.h"
-
-  export *
-  module * { export * }
-}
