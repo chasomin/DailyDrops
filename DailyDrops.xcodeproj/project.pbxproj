@@ -39,6 +39,7 @@
 		795B217C2B99D1A600DA7D7F /* SupplementAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795B217B2B99D1A600DA7D7F /* SupplementAPI.swift */; };
 		795B21802B9ADF2F00DA7D7F /* SupplementDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795B217F2B9ADF2F00DA7D7F /* SupplementDTO.swift */; };
 		795B21822B9AEA7700DA7D7F /* Supplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795B21812B9AEA7700DA7D7F /* Supplement.swift */; };
+		795B21852B9AECB100DA7D7F /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795B21842B9AECB100DA7D7F /* APIManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		795B217B2B99D1A600DA7D7F /* SupplementAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementAPI.swift; sourceTree = "<group>"; };
 		795B217F2B9ADF2F00DA7D7F /* SupplementDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementDTO.swift; sourceTree = "<group>"; };
 		795B21812B9AEA7700DA7D7F /* Supplement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Supplement.swift; sourceTree = "<group>"; };
+		795B21842B9AECB100DA7D7F /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		8E96AB1C0CD9779E05D99E0C /* Pods_DailyDrops.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyDrops.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDE49E975EDBF1B226768C46 /* Pods-DailyDrops.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyDrops.release.xcconfig"; path = "Target Support Files/Pods-DailyDrops/Pods-DailyDrops.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -193,6 +195,7 @@
 				795B21792B99D05C00DA7D7F /* APIKey.swift */,
 				795B217B2B99D1A600DA7D7F /* SupplementAPI.swift */,
 				795B217F2B9ADF2F00DA7D7F /* SupplementDTO.swift */,
+				795B21842B9AECB100DA7D7F /* APIManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 				795B21692B99B19300DA7D7F /* UIFont+Extension.swift in Sources */,
 				795B21772B99C97100DA7D7F /* BaseView.swift in Sources */,
 				795B217C2B99D1A600DA7D7F /* SupplementAPI.swift in Sources */,
+				795B21852B9AECB100DA7D7F /* APIManager.swift in Sources */,
 				795B21712B99C8A000DA7D7F /* BaseViewController.swift in Sources */,
 				795B21622B99AB7700DA7D7F /* UIColor+Extension.swift in Sources */,
 			);

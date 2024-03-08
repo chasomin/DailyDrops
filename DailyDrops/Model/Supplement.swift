@@ -9,8 +9,8 @@ import Foundation
 
 struct Info {
     let totalCount: String
-    let dataList: [SupplementDTO]      // data 없으면 오류처리
-    let result: ResultDTO
+    let dataList: [Supplement]      // data 없으면 오류처리
+    let result: Result
     
     enum CodingKeys: String, CodingKey {
         case totalCount = "total_count"
