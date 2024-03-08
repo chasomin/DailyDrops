@@ -25,6 +25,7 @@
 		790E900A2B99A62A004DC160 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 790E90092B99A62A004DC160 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		790E900C2B99A62A004DC160 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 790E900B2B99A62A004DC160 /* FirebaseCrashlytics */; };
 		790E900E2B99A62A004DC160 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 790E900D2B99A62A004DC160 /* FirebaseMessaging */; };
+		793F59702B9B814600B7FBE9 /* SupplementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793F596F2B9B814600B7FBE9 /* SupplementViewController.swift */; };
 		795B21622B99AB7700DA7D7F /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795B21612B99AB7700DA7D7F /* UIColor+Extension.swift */; };
 		795B21662B99AF1900DA7D7F /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 795B21642B99AF1800DA7D7F /* Pretendard-Regular.otf */; };
 		795B21672B99AF1900DA7D7F /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 795B21652B99AF1900DA7D7F /* Pretendard-Bold.otf */; };
@@ -52,6 +53,7 @@
 		790E8FC62B99838E004DC160 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		790E8FCC2B998602004DC160 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		790E90062B99A5C0004DC160 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		793F596F2B9B814600B7FBE9 /* SupplementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementViewController.swift; sourceTree = "<group>"; };
 		795B21612B99AB7700DA7D7F /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		795B21642B99AF1800DA7D7F /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		795B21652B99AF1900DA7D7F /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
@@ -134,13 +136,38 @@
 				795B216F2B99C88D00DA7D7F /* Base */,
 				795B21832B9AEB3B00DA7D7F /* Model */,
 				795B21782B99CAA900DA7D7F /* Network */,
+				793F596C2B9B7E2600B7FBE9 /* Calendar */,
 				795B21862B9B0C6800DA7D7F /* Water */,
+				793F596E2B9B7E4800B7FBE9 /* Supplement */,
+				793F596D2B9B7E3300B7FBE9 /* Step */,
 				790E8FC12B99838E004DC160 /* Assets.xcassets */,
 				790E8FC32B99838E004DC160 /* LaunchScreen.storyboard */,
 				790E8FC62B99838E004DC160 /* Info.plist */,
 				790E90062B99A5C0004DC160 /* GoogleService-Info.plist */,
 			);
 			path = DailyDrops;
+			sourceTree = "<group>";
+		};
+		793F596C2B9B7E2600B7FBE9 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		793F596D2B9B7E3300B7FBE9 /* Step */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Step;
+			sourceTree = "<group>";
+		};
+		793F596E2B9B7E4800B7FBE9 /* Supplement */ = {
+			isa = PBXGroup;
+			children = (
+				793F596F2B9B814600B7FBE9 /* SupplementViewController.swift */,
+			);
+			path = Supplement;
 			sourceTree = "<group>";
 		};
 		795B21602B99AA7400DA7D7F /* Extension */ = {
@@ -393,6 +420,7 @@
 				795B21802B9ADF2F00DA7D7F /* SupplementDTO.swift in Sources */,
 				795B21752B99C95800DA7D7F /* BaseCollectionViewCell.swift in Sources */,
 				795B216E2B99BCA400DA7D7F /* HealthManager.swift in Sources */,
+				793F59702B9B814600B7FBE9 /* SupplementViewController.swift in Sources */,
 				795B21882B9B0CB000DA7D7F /* WaterViewController.swift in Sources */,
 				790E8FB92B99838C004DC160 /* AppDelegate.swift in Sources */,
 				790E8FBB2B99838C004DC160 /* SceneDelegate.swift in Sources */,
