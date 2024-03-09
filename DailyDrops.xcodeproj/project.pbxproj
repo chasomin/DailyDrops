@@ -41,6 +41,7 @@
 		795B21822B9AEA7700DA7D7F /* Supplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795B21812B9AEA7700DA7D7F /* Supplement.swift */; };
 		795B21852B9AECB100DA7D7F /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795B21842B9AECB100DA7D7F /* APIManager.swift */; };
 		795B21882B9B0CB000DA7D7F /* WaterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795B21872B9B0CAF00DA7D7F /* WaterViewController.swift */; };
+		79863D5B2B9C2BCE00EFA3B3 /* SettingNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79863D5A2B9C2BCE00EFA3B3 /* SettingNotificationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		795B21812B9AEA7700DA7D7F /* Supplement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Supplement.swift; sourceTree = "<group>"; };
 		795B21842B9AECB100DA7D7F /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		795B21872B9B0CAF00DA7D7F /* WaterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterViewController.swift; sourceTree = "<group>"; };
+		79863D5A2B9C2BCE00EFA3B3 /* SettingNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNotificationViewController.swift; sourceTree = "<group>"; };
 		8E96AB1C0CD9779E05D99E0C /* Pods_DailyDrops.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyDrops.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDE49E975EDBF1B226768C46 /* Pods-DailyDrops.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyDrops.release.xcconfig"; path = "Target Support Files/Pods-DailyDrops/Pods-DailyDrops.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -166,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				793F596F2B9B814600B7FBE9 /* SupplementViewController.swift */,
+				79863D5A2B9C2BCE00EFA3B3 /* SettingNotificationViewController.swift */,
 			);
 			path = Supplement;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				795B21882B9B0CB000DA7D7F /* WaterViewController.swift in Sources */,
 				790E8FB92B99838C004DC160 /* AppDelegate.swift in Sources */,
 				790E8FBB2B99838C004DC160 /* SceneDelegate.swift in Sources */,
+				79863D5B2B9C2BCE00EFA3B3 /* SettingNotificationViewController.swift in Sources */,
 				795B217A2B99D05C00DA7D7F /* APIKey.swift in Sources */,
 				795B21692B99B19300DA7D7F /* UIFont+Extension.swift in Sources */,
 				795B21772B99C97100DA7D7F /* BaseView.swift in Sources */,
