@@ -39,6 +39,7 @@ class SearchViewController: BaseViewController {
     
     override func configureView() {
         searchBar.placeholder = "영양제 이름을 검색해보세요!"
+        searchBar.searchTextField.font = .body
         searchBar.searchBarStyle = .minimal
     }
 }
@@ -55,5 +56,6 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         "*출처: 식품의약품안전처"
+            //TODO: font
     }
 }
