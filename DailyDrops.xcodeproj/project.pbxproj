@@ -42,6 +42,9 @@
 		795B21852B9AECB100DA7D7F /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795B21842B9AECB100DA7D7F /* APIManager.swift */; };
 		795B21882B9B0CB000DA7D7F /* WaterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795B21872B9B0CAF00DA7D7F /* WaterViewController.swift */; };
 		79863D5B2B9C2BCE00EFA3B3 /* SettingNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79863D5A2B9C2BCE00EFA3B3 /* SettingNotificationViewController.swift */; };
+		79A1723E2B9CBCFA003AB10F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A1723D2B9CBCFA003AB10F /* SearchViewController.swift */; };
+		79A172402B9CBE2F003AB10F /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A1723F2B9CBE2F003AB10F /* SearchTableViewCell.swift */; };
+		79A172422B9CBE53003AB10F /* Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A172412B9CBE53003AB10F /* Identifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +75,9 @@
 		795B21842B9AECB100DA7D7F /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		795B21872B9B0CAF00DA7D7F /* WaterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterViewController.swift; sourceTree = "<group>"; };
 		79863D5A2B9C2BCE00EFA3B3 /* SettingNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNotificationViewController.swift; sourceTree = "<group>"; };
+		79A1723D2B9CBCFA003AB10F /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		79A1723F2B9CBE2F003AB10F /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		79A172412B9CBE53003AB10F /* Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifier.swift; sourceTree = "<group>"; };
 		8E96AB1C0CD9779E05D99E0C /* Pods_DailyDrops.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyDrops.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDE49E975EDBF1B226768C46 /* Pods-DailyDrops.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyDrops.release.xcconfig"; path = "Target Support Files/Pods-DailyDrops/Pods-DailyDrops.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -169,6 +175,8 @@
 			children = (
 				793F596F2B9B814600B7FBE9 /* SupplementViewController.swift */,
 				79863D5A2B9C2BCE00EFA3B3 /* SettingNotificationViewController.swift */,
+				79A1723D2B9CBCFA003AB10F /* SearchViewController.swift */,
+				79A1723F2B9CBE2F003AB10F /* SearchTableViewCell.swift */,
 			);
 			path = Supplement;
 			sourceTree = "<group>";
@@ -178,6 +186,7 @@
 			children = (
 				795B21612B99AB7700DA7D7F /* UIColor+Extension.swift */,
 				795B21682B99B19300DA7D7F /* UIFont+Extension.swift */,
+				79A172412B9CBE53003AB10F /* Identifier.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -424,12 +433,15 @@
 				795B21752B99C95800DA7D7F /* BaseCollectionViewCell.swift in Sources */,
 				795B216E2B99BCA400DA7D7F /* HealthManager.swift in Sources */,
 				793F59702B9B814600B7FBE9 /* SupplementViewController.swift in Sources */,
+				79A172422B9CBE53003AB10F /* Identifier.swift in Sources */,
 				795B21882B9B0CB000DA7D7F /* WaterViewController.swift in Sources */,
 				790E8FB92B99838C004DC160 /* AppDelegate.swift in Sources */,
 				790E8FBB2B99838C004DC160 /* SceneDelegate.swift in Sources */,
 				79863D5B2B9C2BCE00EFA3B3 /* SettingNotificationViewController.swift in Sources */,
+				79A172402B9CBE2F003AB10F /* SearchTableViewCell.swift in Sources */,
 				795B217A2B99D05C00DA7D7F /* APIKey.swift in Sources */,
 				795B21692B99B19300DA7D7F /* UIFont+Extension.swift in Sources */,
+				79A1723E2B9CBCFA003AB10F /* SearchViewController.swift in Sources */,
 				795B21772B99C97100DA7D7F /* BaseView.swift in Sources */,
 				795B217C2B99D1A600DA7D7F /* SupplementAPI.swift in Sources */,
 				795B21852B9AECB100DA7D7F /* APIManager.swift in Sources */,
