@@ -7,6 +7,14 @@
 
 import Foundation
 
+struct ServiceDTO: Decodable {
+    let I0030: InfoDTO
+    
+    func toEntity() -> Service {
+        Service(serviceID: I0030.toEntity())
+    }
+}
+
 struct InfoDTO: Decodable {
     let totalCount: String
     let dataList: [SupplementDTO]?
