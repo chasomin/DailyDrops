@@ -21,9 +21,9 @@ enum SupplementAPI {
         
         switch self {
         case .all:
-            return "http://openapi.foodsafetykorea.go.kr/api/35fb7bd585e24efa9699/I0030/json/\(SupplementAPI.start)/\(SupplementAPI.end)"
+            return "https://openapi.foodsafetykorea.go.kr/api/35fb7bd585e24efa9699/I0030/json/\(SupplementAPI.start)/\(SupplementAPI.end)"
         case .search(let searchText):
-            return "http://openapi.foodsafetykorea.go.kr/api/35fb7bd585e24efa9699/I0030/json/\(SupplementAPI.start)/\(SupplementAPI.end)/PRDLST_NM=\(searchText)"
+            return "https://openapi.foodsafetykorea.go.kr/api/35fb7bd585e24efa9699/I0030/json/\(SupplementAPI.start)/\(SupplementAPI.end)/PRDLST_NM=\(searchText)"
         }
     }
 }
