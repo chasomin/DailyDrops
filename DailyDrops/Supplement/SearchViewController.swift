@@ -43,6 +43,7 @@ class SearchViewController: BaseViewController {
 
 extension SearchViewController {
     private func bindData() {
+        viewModel.inputViewDidLoad.value = ()
         viewModel.outputSetNavigation.bind { [weak self] _ in
             guard let self else { return }
             navigationItem.title = "영양제 검색"//TODO: enum
@@ -54,10 +55,14 @@ extension SearchViewController {
             tableView.register(SearchTableViewCell.self, forCellReuseIdentifier: SearchTableViewCell.id)
             tableView.rowHeight = 80
         }
-        viewModel.inputViewDidLoad.value = ()
+        viewModel.outputSetNavigation.bind { [weak self] _ in
+            guard let self else { return }
+            searchBar.delegate = self
+        }
         viewModel.outputData.bind { [weak self] data in
             guard let self else { return }
             tableView.reloadData()
+            view.endEditing(true)
         }
     }
 }
@@ -89,6 +94,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
+        guard let text = searchBar.text else { return }
+        viewModel.inputSearchButtonTapped.value = text
     }
 }
