@@ -32,6 +32,7 @@ class SearchTableViewCell: BaseTableViewCell {
         }
         shapeLabel.snp.makeConstraints { make in
             make.top.equalTo(supplementNameLabel)
+            make.leading.equalTo(supplementNameLabel.snp.trailing).offset(10)
             make.trailing.equalTo(contentView.safeAreaLayoutGuide).inset(15)
             make.bottom.equalTo(contentView.safeAreaLayoutGuide).inset(10)
         }
@@ -40,14 +41,17 @@ class SearchTableViewCell: BaseTableViewCell {
     
     override func configureView() {
         corporateNameLabel.font = .callout
+        corporateNameLabel.textColor = .subTitleColor
         supplementNameLabel.font = .body
         shapeLabel.font = .body
         shapeLabel.textAlignment = .right
-        
-        //test
-        corporateNameLabel.text = "제조사"
-        supplementNameLabel.text = "약 이름"
-        shapeLabel.text = "캡슐"
+        shapeLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
+    }
+    
+    func configureCell(data: Supplement) {
+        corporateNameLabel.text = data.corporateName
+        supplementNameLabel.text = data.supplementName
+        shapeLabel.text = data.shape
     }
 
 }

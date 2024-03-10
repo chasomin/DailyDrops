@@ -11,6 +11,7 @@ import SnapKit
 class SearchViewController: BaseViewController {
     let searchBar = UISearchBar()
     let tableView = UITableView()
+    let viewModel = SupplementViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +20,13 @@ class SearchViewController: BaseViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(SearchTableViewCell.self, forCellReuseIdentifier: SearchTableViewCell.id)
-        tableView.rowHeight = 60
+        tableView.rowHeight = 80
+        
+        viewModel.inputViewDidLoad.value = ()
+        viewModel.outputData.bind { [weak self] data in
+            guard let self else { return }
+            tableView.reloadData()
+        }
     }
     
     override func configureHierarchy() {
@@ -46,16 +53,27 @@ class SearchViewController: BaseViewController {
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 15
+        return viewModel.outputData.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.id, for: indexPath) as! SearchTableViewCell
+        cell.configureCell(data: viewModel.outputData.value[indexPath.row])
         return cell
     }
     
-    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        "*출처: 식품의약품안전처"
-            //TODO: font
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let label: UILabel = {
+            let label = UILabel()
+            label.text = "*출처: 식품의약품안전처"
+            label.font = .caption
+            label.textColor = .subTitleColor
+            label.backgroundColor = .backgroundColor
+            label.textAlignment = .right
+            return label
+        }()
+        return label
     }
 }
+
+
