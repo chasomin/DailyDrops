@@ -36,7 +36,6 @@ class SearchTableViewCell: BaseTableViewCell {
             make.trailing.equalTo(contentView.safeAreaLayoutGuide).inset(15)
             make.bottom.equalTo(contentView.safeAreaLayoutGuide).inset(10)
         }
-        
     }
     
     override func configureView() {
@@ -46,6 +45,7 @@ class SearchTableViewCell: BaseTableViewCell {
         shapeLabel.font = .body
         shapeLabel.textAlignment = .right
         shapeLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
+        selectionStyle = .none
     }
     
     func configureCell(data: Supplement) {
