@@ -7,6 +7,10 @@
 
 import Foundation
 
+struct Service {
+    let serviceID: Info
+}
+
 struct Info {
     let totalCount: String
     let dataList: [Supplement]      // data 없으면 오류처리
