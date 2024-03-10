@@ -15,18 +15,8 @@ class SearchViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "영양제 검색"
         
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(SearchTableViewCell.self, forCellReuseIdentifier: SearchTableViewCell.id)
-        tableView.rowHeight = 80
-        
-        viewModel.inputViewDidLoad.value = ()
-        viewModel.outputData.bind { [weak self] data in
-            guard let self else { return }
-            tableView.reloadData()
-        }
+        bindData()
     }
     
     override func configureHierarchy() {
@@ -48,6 +38,27 @@ class SearchViewController: BaseViewController {
         searchBar.placeholder = "영양제 이름을 검색해보세요!"
         searchBar.searchTextField.font = .body
         searchBar.searchBarStyle = .minimal
+    }
+}
+
+extension SearchViewController {
+    private func bindData() {
+        viewModel.outputSetNavigation.bind { [weak self] _ in
+            guard let self else { return }
+            navigationItem.title = "영양제 검색"//TODO: enum
+        }
+        viewModel.outputSetTableView.bind { [weak self] _ in
+            guard let self else { return }
+            tableView.delegate = self
+            tableView.dataSource = self
+            tableView.register(SearchTableViewCell.self, forCellReuseIdentifier: SearchTableViewCell.id)
+            tableView.rowHeight = 80
+        }
+        viewModel.inputViewDidLoad.value = ()
+        viewModel.outputData.bind { [weak self] data in
+            guard let self else { return }
+            tableView.reloadData()
+        }
     }
 }
 
@@ -76,4 +87,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-
+extension SearchViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+    }
+}

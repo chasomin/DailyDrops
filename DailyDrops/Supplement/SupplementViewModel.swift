@@ -11,11 +11,17 @@ final class SupplementViewModel {
     
     let inputViewDidLoad: Observable<Void?> = Observable(nil)
     let outputData: Observable<[Supplement]> = Observable([])
+    let outputSetTableView: Observable<Void?> = Observable(nil)
+    let outputSetNavigation: Observable<Void?> = Observable(nil)
     
-    init () {
+    init () { transform() }
+    
+    private func transform() {
         inputViewDidLoad.bind { [weak self] value in
             guard let value, let self else { return }
             fetch()
+            outputSetTableView.value = ()
+            outputSetNavigation.value = ()
         }
     }
     
@@ -26,7 +32,7 @@ final class SupplementViewModel {
                 outputData.value = result
                 return
             }
-            print(error)
+            print(error)//TODO: Error
         }
     }
 }
