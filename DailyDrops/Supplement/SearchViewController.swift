@@ -79,16 +79,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let label: UILabel = {
-            let label = UILabel()
-            label.text = "*출처: 식품의약품안전처"
-            label.font = .caption
-            label.textColor = .subTitleColor
-            label.backgroundColor = .backgroundColor
-            label.textAlignment = .right
-            return label
-        }()
-        return label
+        TableViewFooterTextView(frame: .zero, text: "*출처: 식품의약품안전처")
     }
 }
 
