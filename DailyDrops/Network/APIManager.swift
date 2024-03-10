@@ -18,7 +18,6 @@ final class APIManager {
             switch response.result {
             case .success(let success):
                 completionHandler(success.toEntity().serviceID.dataList, nil)
-                print(success)
             case .failure(let failure):
                 completionHandler(nil, failure)
             }
