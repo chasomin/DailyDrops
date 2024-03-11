@@ -14,6 +14,7 @@ final class RealmRepository<T: Object> {
     // MARK: Create
     func createItem(_ item: T) {
         do {
+            print(realm.configuration.fileURL)
             try realm.write {
                 realm.add(item)
             }
@@ -28,13 +29,23 @@ final class RealmRepository<T: Object> {
         return result.map{ $0.toEntity() }
     }
     
-    func readWaterByDate(date: Date) -> [Water] {
-        let result = realm.objects(RealmWater.self)
-        return result.map{ $0.toEntity() }.filter{ $0.date == date} //TODO: date 년월일만 format해서 비교
+    func readWaterByDate(date: Date) -> Float {
+        let result = realm.objects(RealmWater.self).map{ $0.toEntity() }.filter{ $0.date.dateFormat() == date.dateFormat()}
+        var total: Float = 0
+        result.forEach{
+            total += $0.drinkWater
+        }
+        return total
     }
     
-    func readGoalCups(id: ObjectId) -> Int {
-        return realm.objects(RealmGoal.self).filter{ $0.id == id }.first?.waterCup ?? 0
+    func readGoal() -> Results<RealmGoal> {
+        let result = realm.objects(RealmGoal.self)
+        return result
+    }
+    
+    func readGoalCups() -> Float {
+        
+        return realm.objects(RealmGoal.self).sorted(byKeyPath: "regDate").last?.waterCup ?? 0
     }
 
 }
