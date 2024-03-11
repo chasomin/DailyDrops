@@ -10,22 +10,25 @@ import RealmSwift
 
 final class RealmGoal: Object {
     @Persisted(primaryKey: true) var id: ObjectId
-    @Persisted var waterCup: Int
+    @Persisted var waterCup: Float
     @Persisted var steps: Int
+    @Persisted var regDate: Date
     
-    convenience init(waterCup: Int, steps: Int) {
+    convenience init(waterCup: Float, steps: Int) {
         self.init()
         self.waterCup = waterCup
         self.steps = steps
+        self.regDate = Date()
     }
     
     func toEntity() -> Goal {
-        return Goal(id: id.stringValue, waterCup: waterCup, steps: steps)
+        return Goal(id: id.stringValue, waterCup: waterCup, steps: steps, regDate: regDate)
     }
 }
 
 struct Goal {
     let id: String
-    let waterCup: Int
+    let waterCup: Float
     let steps: Int
+    let regDate: Date
 }
