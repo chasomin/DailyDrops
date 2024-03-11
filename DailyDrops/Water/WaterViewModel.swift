@@ -12,10 +12,14 @@ final class WaterViewModel {
     let inputViewDidLoad: Observable<Void?> = Observable(nil)
     let inputPlusButtonTapped: Observable<Void?> = Observable(nil)
     let inputMinusButtonTapped: Observable<Void?> = Observable(nil)
-
+    let inputViewDidDisappear: Observable<Void?> = Observable(nil)
+    let inputViewWillAppear: Observable<Void?> = Observable(nil)
+    
     let outputViewDidLoad: Observable<(Float, Float)> = Observable((0, 0))
     let outputData: Observable<(Float?, Float?)> = Observable((nil, nil))
-
+    let outputViewDidDisappear: Observable<Void?> = Observable(nil)
+    let outputViewWillAppear: Observable<Void?> = Observable(nil)
+    
     init() { transform() }
     
     private func transform() {
@@ -38,7 +42,15 @@ final class WaterViewModel {
             repository.createItem(RealmWater(drinkWater: -1.0, goal: goal))
             outputData.value = (repository.readWaterByDate(date: Date()), repository.readGoalCups())
         }
+        
+        inputViewDidDisappear.bind { [weak self] value in
+            guard let self, let value else { return }
+            outputViewDidDisappear.value = ()
+        }
+        
+        inputViewWillAppear.bind { [weak self] value in
+            guard let self else { return }
+            outputViewWillAppear.value = ()
+        }
     }
-    
-    
 }
