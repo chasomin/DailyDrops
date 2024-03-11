@@ -100,6 +100,7 @@ final class SettingNotificationViewController: BaseViewController {
         nameTextField.font = .body
         nameSearchButton.setTitle("", for: .normal)
         nameSearchButton.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
+        nameSearchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
         
         weekTitleLabel.text = "무슨 요일에 드시나요?"
         weekTitleLabel.font = .title
@@ -175,6 +176,11 @@ final class SettingNotificationViewController: BaseViewController {
         
         thirdHStack.axis = .horizontal
         thirdHStack.distribution = .fill
+    }
+    
+    @objc func searchButtonTapped() {
+        let vc = SearchViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

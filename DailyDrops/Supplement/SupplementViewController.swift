@@ -17,7 +17,7 @@ final class SupplementViewController: BaseViewController {
         super.viewDidLoad()
 
         navigationItem.title = "내 영양제 관리"
-        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(plusButtonTapped))
         makeCellRegistration()
         updateSnapshot()
     }
@@ -68,6 +68,7 @@ final class SupplementViewController: BaseViewController {
         snapshot.appendItems(["종합 비타민"], toSection: "오후 1시")
         dataSource.apply(snapshot)
     }
+    
     private func configureHeader(_ headerView: UICollectionViewListCell, at indexPath: IndexPath) {
         guard
             let model = dataSource.itemIdentifier(for: indexPath),
@@ -76,6 +77,11 @@ final class SupplementViewController: BaseViewController {
         var content = headerView.defaultContentConfiguration()
         content.text = section
         headerView.contentConfiguration = content
+    }
+    
+    @objc func plusButtonTapped() {
+        let vc = SettingNotificationViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
