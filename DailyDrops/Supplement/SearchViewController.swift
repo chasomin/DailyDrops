@@ -12,6 +12,7 @@ class SearchViewController: BaseViewController {
     let searchBar = UISearchBar()
     let tableView = UITableView()
     let viewModel = SupplementViewModel()
+    var delegate: TransitionValue?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,6 +82,15 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         TableViewFooterTextView(frame: .zero, text: "*출처: 식품의약품안전처")
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let data = viewModel.outputData.value[indexPath.row]
+        showAlert(title: data.supplementName, message: data.intakeMethod + "\n\n이 영양제 섭취 알림을 설정할까요?") { [weak self] _ in
+            guard let self else { return }
+            delegate?.transition(value: data.supplementName)
+            navigationController?.popViewController(animated: true)
+        }
     }
 }
 
