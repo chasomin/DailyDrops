@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CapsulePointBarButton: UIButton {
+final class CapsulePointButton: UIButton {
     var text: String
 
     init(frame: CGRect, text: String) {
