@@ -19,7 +19,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         
         window = UIWindow(windowScene: scene)
-        window?.rootViewController = ViewController()
+        
+        let tabBar = UITabBarController()
+        
+        //TODO: 네비타이틀 폰트
+        let waterVC = UINavigationController(rootViewController: WaterViewController())
+        waterVC.tabBarItem = UITabBarItem(title: "모아보기", image: UIImage(systemName: "eyes"), selectedImage: UIImage(systemName: "eyes"))
+        
+        let supplementVC = UINavigationController(rootViewController: SupplementViewController())
+        supplementVC.tabBarItem = UITabBarItem(title: "내 영양제", image: UIImage(systemName: "pills"), selectedImage: UIImage(systemName: "pills.fill"))
+        
+        tabBar.viewControllers = [waterVC, supplementVC]
+        window?.rootViewController = tabBar
         window?.makeKeyAndVisible()
     }
 
