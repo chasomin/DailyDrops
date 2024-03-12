@@ -10,7 +10,7 @@ import SnapKit
 
 final class SettingNotificationViewController: BaseViewController {
     
-    private let week = ["월","화","수","목","금","토","일"]
+    private let viewModel = SettingNotificationViewModel()
 
     private let nameTitleLabel = UILabel()
     private let nameSubTitleLabel = UILabel()
@@ -20,13 +20,13 @@ final class SettingNotificationViewController: BaseViewController {
     private let nameVStack = UIStackView()
     
     private let weekTitleLabel = UILabel()
-    private let monButton = CapsulePointBarButton(frame: .zero, text: "월")
-    private let tueButton = CapsulePointBarButton(frame: .zero, text: "화")
-    private let wedButton = CapsulePointBarButton(frame: .zero, text: "수")
-    private let thuButton = CapsulePointBarButton(frame: .zero, text: "목")
-    private let friButton = CapsulePointBarButton(frame: .zero, text: "금")
-    private let satButton = CapsulePointBarButton(frame: .zero, text: "토")
-    private let sunButton = CapsulePointBarButton(frame: .zero, text: "일")
+    private let monButton = UIButton()
+    private let tueButton = UIButton()
+    private let wedButton = UIButton()
+    private let thuButton = UIButton()
+    private let friButton = UIButton()
+    private let satButton = UIButton()
+    private let sunButton = UIButton()
     private lazy var weekButtons: [UIButton] = [monButton, tueButton, wedButton, thuButton, friButton, satButton, sunButton]
     private let weekHStack = UIStackView()
     private let weekVStack = UIStackView()
@@ -51,7 +51,7 @@ final class SettingNotificationViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        bindData()
         navigationItem.title = "알림 설정"
     }
     
@@ -104,6 +104,10 @@ final class SettingNotificationViewController: BaseViewController {
         nameSearchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
         weekTitleLabel.text = "무슨 요일에 드시나요?"
         weekTitleLabel.font = .title
+        for i in 0..<weekButtons.count {
+            weekButtons[i].tag = i
+            weekButtons[i].addTarget(self, action: #selector(weekButtonTapped), for: .touchUpInside)
+        }
         repeatTitleLabel.text = "하루에 몇 번 복용하시나요?"
         repeatTitleLabel.font = .title
         repeatSubTitleLabel.text = "최대 3번까지 선택 가능합니다."
@@ -165,11 +169,27 @@ final class SettingNotificationViewController: BaseViewController {
         thirdHStack.axis = .horizontal
         thirdHStack.distribution = .fill
     }
-    
+
+    private func bindData() {
+        viewModel.outputWeekButtonTapped.bind { [weak self] value in
+            guard let self else { return }
+            weekButtons.forEach {
+                var isActive = value.contains($0.tag)
+                $0.configuration = $0.isTapped(value: isActive, text: Constants.WeekButtonTitle.allCases[$0.tag].rawValue)
+            }
+        }
+    }
+}
+
+extension SettingNotificationViewController {
     @objc func searchButtonTapped() {
         let vc = SearchViewController()
         vc.delegate = self
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func weekButtonTapped(_ sender: UIButton) {
+        viewModel.inputWeekButtonTapped.value = sender.tag
     }
 }
 
