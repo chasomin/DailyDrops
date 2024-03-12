@@ -12,13 +12,11 @@ enum SupplementAPI {
     case all
     case search(searchText: String)
     
-    static let start: String = "1"
-    static let end: String = "15"
+    static var start: Int = 1
+    static var end: Int = 15
 
     
     var endPoint: String {
-        let searchParam: String = ""
-        
         switch self {
         case .all:
             return "https://openapi.foodsafetykorea.go.kr/api/35fb7bd585e24efa9699/I0030/json/\(SupplementAPI.start)/\(SupplementAPI.end)"
