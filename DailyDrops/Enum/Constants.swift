@@ -8,9 +8,6 @@
 import Foundation
 
 enum Constants {
-    enum NavigationTitle {
-        
-    }
     
     enum WeekButtonTitle: String, CaseIterable {
         case mon = "월"
@@ -20,5 +17,11 @@ enum Constants {
         case fri = "금"
         case sat = "토"
         case sun = "일"
+    }
+    
+    enum AlarmRepeatCount: Int {
+        case first
+        case second
+        case third
     }
 }
