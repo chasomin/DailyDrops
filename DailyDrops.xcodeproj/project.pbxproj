@@ -45,7 +45,7 @@
 		79A1723E2B9CBCFA003AB10F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A1723D2B9CBCFA003AB10F /* SearchViewController.swift */; };
 		79A172402B9CBE2F003AB10F /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A1723F2B9CBE2F003AB10F /* SearchTableViewCell.swift */; };
 		79A172422B9CBE53003AB10F /* Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A172412B9CBE53003AB10F /* Identifier.swift */; };
-		79E9BB2B2B9DF0B7003CAF0B /* SupplementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E9BB2A2B9DF0B7003CAF0B /* SupplementViewModel.swift */; };
+		79E9BB2B2B9DF0B7003CAF0B /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E9BB2A2B9DF0B7003CAF0B /* SearchViewModel.swift */; };
 		79E9BB2E2B9DF15C003CAF0B /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E9BB2D2B9DF15C003CAF0B /* Observable.swift */; };
 		79E9BB312B9E078F003CAF0B /* TableViewFooterTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E9BB302B9E078F003CAF0B /* TableViewFooterTextView.swift */; };
 		79E9BB332B9E12C6003CAF0B /* CapsulePointBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E9BB322B9E12C6003CAF0B /* CapsulePointBarButton.swift */; };
@@ -56,6 +56,9 @@
 		79E9BB422B9F100C003CAF0B /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E9BB412B9F100C003CAF0B /* Date+Extension.swift */; };
 		79E9BB532BA04892003CAF0B /* Alert+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E9BB522BA04892003CAF0B /* Alert+Extension.swift */; };
 		79E9BB562BA05922003CAF0B /* TransitionValueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E9BB552BA05922003CAF0B /* TransitionValueProtocol.swift */; };
+		79E9BB5A2BA0694E003CAF0B /* SettingNotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E9BB592BA0694E003CAF0B /* SettingNotificationViewModel.swift */; };
+		79E9BB5C2BA074C5003CAF0B /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E9BB5B2BA074C5003CAF0B /* UIButton+Extension.swift */; };
+		79E9BB622BA07562003CAF0B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E9BB612BA07562003CAF0B /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,7 +92,7 @@
 		79A1723D2B9CBCFA003AB10F /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		79A1723F2B9CBE2F003AB10F /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		79A172412B9CBE53003AB10F /* Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifier.swift; sourceTree = "<group>"; };
-		79E9BB2A2B9DF0B7003CAF0B /* SupplementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementViewModel.swift; sourceTree = "<group>"; };
+		79E9BB2A2B9DF0B7003CAF0B /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		79E9BB2D2B9DF15C003CAF0B /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		79E9BB302B9E078F003CAF0B /* TableViewFooterTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewFooterTextView.swift; sourceTree = "<group>"; };
 		79E9BB322B9E12C6003CAF0B /* CapsulePointBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsulePointBarButton.swift; sourceTree = "<group>"; };
@@ -100,6 +103,9 @@
 		79E9BB412B9F100C003CAF0B /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		79E9BB522BA04892003CAF0B /* Alert+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert+Extension.swift"; sourceTree = "<group>"; };
 		79E9BB552BA05922003CAF0B /* TransitionValueProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionValueProtocol.swift; sourceTree = "<group>"; };
+		79E9BB592BA0694E003CAF0B /* SettingNotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNotificationViewModel.swift; sourceTree = "<group>"; };
+		79E9BB5B2BA074C5003CAF0B /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		79E9BB612BA07562003CAF0B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8E96AB1C0CD9779E05D99E0C /* Pods_DailyDrops.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyDrops.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDE49E975EDBF1B226768C46 /* Pods-DailyDrops.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyDrops.release.xcconfig"; path = "Target Support Files/Pods-DailyDrops/Pods-DailyDrops.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -163,6 +169,7 @@
 				795B21632B99AE1600DA7D7F /* Resource */,
 				79E9BB542BA0590E003CAF0B /* Protocol */,
 				795B21602B99AA7400DA7D7F /* Extension */,
+				79E9BB602BA07546003CAF0B /* Enum */,
 				795B216B2B99BC1300DA7D7F /* Manager */,
 				795B216F2B99C88D00DA7D7F /* Base */,
 				79E9BB2F2B9E0771003CAF0B /* Custom */,
@@ -199,11 +206,9 @@
 		793F596E2B9B7E4800B7FBE9 /* Supplement */ = {
 			isa = PBXGroup;
 			children = (
-				793F596F2B9B814600B7FBE9 /* SupplementViewController.swift */,
-				79863D5A2B9C2BCE00EFA3B3 /* SettingNotificationViewController.swift */,
-				79A1723D2B9CBCFA003AB10F /* SearchViewController.swift */,
-				79A1723F2B9CBE2F003AB10F /* SearchTableViewCell.swift */,
-				79E9BB2A2B9DF0B7003CAF0B /* SupplementViewModel.swift */,
+				79E9BB5D2BA074F0003CAF0B /* MySupplement */,
+				79E9BB5E2BA07500003CAF0B /* SetSupplementNotification */,
+				79E9BB5F2BA07525003CAF0B /* SupplementSearch */,
 			);
 			path = Supplement;
 			sourceTree = "<group>";
@@ -216,6 +221,7 @@
 				79A172412B9CBE53003AB10F /* Identifier.swift */,
 				79E9BB412B9F100C003CAF0B /* Date+Extension.swift */,
 				79E9BB522BA04892003CAF0B /* Alert+Extension.swift */,
+				79E9BB5B2BA074C5003CAF0B /* UIButton+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -318,6 +324,41 @@
 				79E9BB552BA05922003CAF0B /* TransitionValueProtocol.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		79E9BB5D2BA074F0003CAF0B /* MySupplement */ = {
+			isa = PBXGroup;
+			children = (
+				793F596F2B9B814600B7FBE9 /* SupplementViewController.swift */,
+			);
+			path = MySupplement;
+			sourceTree = "<group>";
+		};
+		79E9BB5E2BA07500003CAF0B /* SetSupplementNotification */ = {
+			isa = PBXGroup;
+			children = (
+				79863D5A2B9C2BCE00EFA3B3 /* SettingNotificationViewController.swift */,
+				79E9BB592BA0694E003CAF0B /* SettingNotificationViewModel.swift */,
+			);
+			path = SetSupplementNotification;
+			sourceTree = "<group>";
+		};
+		79E9BB5F2BA07525003CAF0B /* SupplementSearch */ = {
+			isa = PBXGroup;
+			children = (
+				79A1723D2B9CBCFA003AB10F /* SearchViewController.swift */,
+				79A1723F2B9CBE2F003AB10F /* SearchTableViewCell.swift */,
+				79E9BB2A2B9DF0B7003CAF0B /* SearchViewModel.swift */,
+			);
+			path = SupplementSearch;
+			sourceTree = "<group>";
+		};
+		79E9BB602BA07546003CAF0B /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				79E9BB612BA07562003CAF0B /* Constants.swift */,
+			);
+			path = Enum;
 			sourceTree = "<group>";
 		};
 		DFC1D78B0549EE90AEC49898 /* Frameworks */ = {
@@ -493,14 +534,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				79E9BB2E2B9DF15C003CAF0B /* Observable.swift in Sources */,
+				79E9BB622BA07562003CAF0B /* Constants.swift in Sources */,
 				79E9BB562BA05922003CAF0B /* TransitionValueProtocol.swift in Sources */,
 				795B21732B99C8F300DA7D7F /* BaseTableViewCell.swift in Sources */,
+				79E9BB5C2BA074C5003CAF0B /* UIButton+Extension.swift in Sources */,
 				795B21822B9AEA7700DA7D7F /* Supplement.swift in Sources */,
 				795B21802B9ADF2F00DA7D7F /* SupplementDTO.swift in Sources */,
 				795B21752B99C95800DA7D7F /* BaseCollectionViewCell.swift in Sources */,
 				795B216E2B99BCA400DA7D7F /* HealthManager.swift in Sources */,
 				79E9BB402B9F053B003CAF0B /* WaterViewModel.swift in Sources */,
-				79E9BB2B2B9DF0B7003CAF0B /* SupplementViewModel.swift in Sources */,
+				79E9BB2B2B9DF0B7003CAF0B /* SearchViewModel.swift in Sources */,
 				793F59702B9B814600B7FBE9 /* SupplementViewController.swift in Sources */,
 				79E9BB3E2B9ED126003CAF0B /* RealmRepository.swift in Sources */,
 				79E9BB3C2B9ECE95003CAF0B /* RealmGoal.swift in Sources */,
@@ -519,6 +562,7 @@
 				79E9BB3A2B9ECE0F003CAF0B /* RealmWater.swift in Sources */,
 				79A1723E2B9CBCFA003AB10F /* SearchViewController.swift in Sources */,
 				795B21772B99C97100DA7D7F /* BaseView.swift in Sources */,
+				79E9BB5A2BA0694E003CAF0B /* SettingNotificationViewModel.swift in Sources */,
 				795B217C2B99D1A600DA7D7F /* SupplementAPI.swift in Sources */,
 				795B21852B9AECB100DA7D7F /* APIManager.swift in Sources */,
 				795B21712B99C8A000DA7D7F /* BaseViewController.swift in Sources */,
