@@ -9,8 +9,12 @@ import Foundation
 
 final class SettingNotificationViewModel {
     let inputWeekButtonTapped: Observable<Int?> = Observable(nil)
+    let inputSegmentTapped: Observable<Int> = Observable(0)
+    let inputViewDidLoad: Observable<Void?> = Observable(nil)
     
     let outputWeekButtonTapped:  Observable<[Int]> = Observable([])
+    let outputSegmentTapped: Observable<Int?> = Observable(nil)
+    let outputSetNavigation: Observable<Void?> = Observable(nil)
     
     init () { transform() }
     
@@ -23,6 +27,16 @@ final class SettingNotificationViewModel {
             } else {
                 outputWeekButtonTapped.value.append(value)
             }
+        }
+        
+        inputSegmentTapped.bind { [weak self] value in
+            guard let self else { return }
+            outputSegmentTapped.value = value
+        }
+        
+        inputViewDidLoad.bind { [weak self] _ in
+            guard let self else { return }
+            outputSetNavigation.value = ()
         }
     }
 }

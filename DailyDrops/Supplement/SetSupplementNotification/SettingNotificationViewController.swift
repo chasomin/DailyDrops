@@ -52,7 +52,6 @@ final class SettingNotificationViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bindData()
-        navigationItem.title = "알림 설정"
     }
     
     override func configureHierarchy() {
@@ -118,6 +117,7 @@ final class SettingNotificationViewController: BaseViewController {
         repeatSegment.insertSegment(withTitle: "2", at: 1, animated: true)
         repeatSegment.insertSegment(withTitle: "3", at: 2, animated: true)
         repeatSegment.selectedSegmentIndex = 0
+        repeatSegment.addTarget(self, action: #selector(segmentChaged), for: .valueChanged)
         firstDatepicker.datePickerMode = .time
         firstDatepicker.preferredDatePickerStyle = .compact
         secondDatePicker.datePickerMode = .time
@@ -171,12 +171,36 @@ final class SettingNotificationViewController: BaseViewController {
     }
 
     private func bindData() {
+        viewModel.inputViewDidLoad.value = ()
+        
         viewModel.outputWeekButtonTapped.bind { [weak self] value in
             guard let self else { return }
             weekButtons.forEach {
                 var isActive = value.contains($0.tag)
                 $0.configuration = $0.isTapped(value: isActive, text: Constants.WeekButtonTitle.allCases[$0.tag].rawValue)
             }
+        }
+        
+        viewModel.outputSegmentTapped.bind { [weak self] value in
+            guard let self, let value else { return }
+            if value == Constants.AlarmRepeatCount.first.rawValue {
+                firstHStack.isHidden = false
+                secondHStack.isHidden = true
+                thirdHStack.isHidden = true
+            } else if value == Constants.AlarmRepeatCount.second.rawValue {
+                firstHStack.isHidden = false
+                secondHStack.isHidden = false
+                thirdHStack.isHidden = true
+            } else {
+                firstHStack.isHidden = false
+                secondHStack.isHidden = false
+                thirdHStack.isHidden = false
+            }
+        }
+        
+        viewModel.outputSetNavigation.bind { [weak self] _ in
+            guard let self else { return }
+            navigationItem.title = "알림 설정"
         }
     }
 }
@@ -190,6 +214,10 @@ extension SettingNotificationViewController {
     
     @objc func weekButtonTapped(_ sender: UIButton) {
         viewModel.inputWeekButtonTapped.value = sender.tag
+    }
+    
+    @objc func segmentChaged(_ sender: UISegmentedControl) {
+        viewModel.inputSegmentTapped.value = sender.selectedSegmentIndex
     }
 }
 
