@@ -52,6 +52,7 @@ extension SearchViewController {
             guard let self else { return }
             tableView.delegate = self
             tableView.dataSource = self
+            tableView.prefetchDataSource = self
             tableView.register(SearchTableViewCell.self, forCellReuseIdentifier: SearchTableViewCell.id)
             tableView.rowHeight = 80
         }
@@ -80,6 +81,14 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         TableViewFooterTextView(frame: .zero, text: "*출처: 식품의약품안전처")
+    }
+}
+
+extension SearchViewController: UITableViewDataSourcePrefetching {
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        for indexPath in indexPaths {
+            viewModel.inputPagenation.value = indexPath
+        }
     }
 }
 
