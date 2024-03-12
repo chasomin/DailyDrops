@@ -16,9 +16,10 @@ final class WaterViewModel {
     let inputViewWillAppear: Observable<Void?> = Observable(nil)
     
     let outputViewDidLoad: Observable<(Float, Float)> = Observable((0, 0))
-    let outputData: Observable<(Float?, Float?)> = Observable((nil, nil))
+    let outputData: Observable<(data: Float?, goal: Float?)> = Observable((nil, nil))
     let outputViewDidDisappear: Observable<Void?> = Observable(nil)
     let outputViewWillAppear: Observable<Void?> = Observable(nil)
+    let outputLabelHidden: Observable<Bool?> = Observable(nil)
     
     init() { transform() }
     
@@ -26,21 +27,40 @@ final class WaterViewModel {
         inputViewDidLoad.bind { [weak self] _ in
             guard let self else { return }
             outputViewDidLoad.value = (repository.readWaterByDate(date: Date()), repository.readGoalCups())
-            repository.createItem(RealmGoal(waterCup: 10.0, steps: 1000))//test
+            if checkCompletion() {
+                outputLabelHidden.value = true
+            } else {
+                outputLabelHidden.value = false
+            }
+            repository.createItem(RealmGoal(waterCup: 10.0, steps: 1000), completion: nil)//test
         }
         
         inputPlusButtonTapped.bind { [weak self] value in
             guard let self, let value else { return }
-            guard let goal = repository.readGoal().last?.id else { return }
-            repository.createItem(RealmWater(drinkWater: 1.0, goal: goal))
-            outputData.value = (repository.readWaterByDate(date: Date()), repository.readGoalCups())
+            if checkCompletion() {
+                outputLabelHidden.value = true
+            } else {
+                repository.createItem(RealmWater(drinkWater: 1.0)) { [weak self] in
+                    guard let self else { return }
+                    if checkCompletion() {
+                        outputLabelHidden.value = true
+                        outputData.value = (repository.readWaterByDate(date: Date()), repository.readGoalCups())
+                    } else {
+                        outputLabelHidden.value = false
+                        outputData.value = (repository.readWaterByDate(date: Date()), repository.readGoalCups())
+                    }
+                }
+
+            }
         }
         
         inputMinusButtonTapped.bind { [weak self] value in
             guard let self, let value else { return }
-            guard let goal = repository.readGoal().last?.id else { return }
-            repository.createItem(RealmWater(drinkWater: -1.0, goal: goal))
-            outputData.value = (repository.readWaterByDate(date: Date()), repository.readGoalCups())
+            outputLabelHidden.value = false
+            if repository.readWaterByDate(date: Date()) > 0 {
+                repository.createItem(RealmWater(drinkWater: -1.0), completion: nil)
+                outputData.value = (repository.readWaterByDate(date: Date()), repository.readGoalCups())
+            }
         }
         
         inputViewDidDisappear.bind { [weak self] value in
@@ -51,6 +71,14 @@ final class WaterViewModel {
         inputViewWillAppear.bind { [weak self] value in
             guard let self else { return }
             outputViewWillAppear.value = ()
+        }
+    }
+    
+    func checkCompletion() -> Bool {
+        if repository.readWaterByDate(date: Date()) == repository.readGoalCups() {
+            return true
+        } else {
+            return false
         }
     }
 }

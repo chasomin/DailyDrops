@@ -14,7 +14,6 @@ final class WaterViewController: BaseViewController {
     private let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
     private lazy var window = windowScene?.windows.first
     private lazy var safeTop = window?.safeAreaInsets.top ?? 0 + (self.navigationController?.navigationBar.frame.height ?? 0)   // safeArea + Navigation
-    private lazy var safeBottom = window?.safeAreaInsets.bottom ?? 0
     private lazy var waveView = WaveAnimationView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - safeTop ), frontColor: .white, backColor: .systemTeal)
     private let countLabel = UILabel()
     private let plusButton = CapsulePointBarButton(frame: .zero, text: "+ 한 잔")
@@ -47,12 +46,13 @@ final class WaterViewController: BaseViewController {
             make.bottom.equalTo(view)
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
         }
-        
-        countLabel.snp.makeConstraints { make in
-           let data = viewModel.outputViewDidLoad.value.0
-            let goal = viewModel.outputViewDidLoad.value.1
-            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(20)
-            make.bottom.equalToSuperview().multipliedBy(1 - (data / goal))
+        if viewModel.outputLabelHidden.value == false {
+            countLabel.snp.makeConstraints { make in
+                let data = viewModel.outputViewDidLoad.value.0
+                let goal = viewModel.outputViewDidLoad.value.1
+                make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(20)
+                make.bottom.equalToSuperview().multipliedBy(1 - (data / goal))
+            }
         }
     }
     
@@ -92,18 +92,23 @@ extension WaterViewController {
         }
         viewModel.outputData.bind { [weak self] (value, goal) in
             guard let self, let value, let goal else { return }
-            setAnimation()
             changingView(data: value, goal: goal)
+            if viewModel.outputLabelHidden.value == false {
+                setAnimation()
+                changingLayout()
+            }
         }
         viewModel.outputViewDidDisappear.bind { [weak self] value in
             guard let self, let value else { return }
             waveView.stopAnimation()
-            print("disappear")
         }
         viewModel.outputViewWillAppear.bind { [weak self] value in
             guard let self, let value else { return }
             waveView.startAnimation()
-            print("appear")
+        }
+        viewModel.outputLabelHidden.bind { [weak self] value in
+            guard let self, let value else { return }
+            countLabel.isHidden = value
         }
     }
     
@@ -111,8 +116,8 @@ extension WaterViewController {
         UIView.animate(withDuration: 1) { [weak self] in
             guard let self else { return }
             countLabel.snp.makeConstraints { make in
-                guard let data = self.viewModel.outputData.value.0 else { return }
-                guard let goal = self.viewModel.outputData.value.1 else { return }
+                guard let data = self.viewModel.outputData.value.data else { return }
+                guard let goal = self.viewModel.outputData.value.goal else { return }
                 make.horizontalEdges.equalTo(self.view.safeAreaLayoutGuide).inset(20)
                 make.bottom.equalToSuperview().multipliedBy(1 - (data / goal))
             }
@@ -121,15 +126,19 @@ extension WaterViewController {
     }
     
     private func changingView(data: Float, goal: Float) {
+        waveView.progress = Float(data / goal)
+    }
+    
+    private func changingLayout() {
+        guard let data = viewModel.outputData.value.0 else { return }
+        guard let goal = viewModel.outputData.value.1 else { return }
         countLabel.snp.makeConstraints { [weak self] make in
             guard let self else { return }
-            guard let data = viewModel.outputData.value.0 else { return }
-            guard let goal = viewModel.outputData.value.1 else { return }
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(20)
             make.bottom.equalToSuperview().multipliedBy(1 - (data / goal))
         }
-        waveView.progress = Float(data / goal)
         countLabel.text = "\(Int(goal - data))잔 남았어요!"
+    
     }
 }
 
