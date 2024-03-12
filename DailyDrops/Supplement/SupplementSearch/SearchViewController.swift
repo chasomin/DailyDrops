@@ -47,7 +47,7 @@ extension SearchViewController {
         viewModel.inputViewDidLoad.value = ()
         viewModel.outputSetNavigation.bind { [weak self] _ in
             guard let self else { return }
-            navigationItem.title = "영양제 검색"//TODO: enum
+            navigationItem.title = Constants.NavigationTitle.SearchSupplement.title
         }
         viewModel.outputSetTableView.bind { [weak self] _ in
             guard let self else { return }

@@ -86,7 +86,7 @@ extension WaterViewController {
         viewModel.inputViewDidLoad.value = ()
         viewModel.outputViewDidLoad.bind { [weak self] (data, goal) in
             guard let self else { return }
-            navigationItem.title = "목표! \(Int(goal))잔 마시기"
+            navigationItem.title = Constants.NavigationTitle.Water(goal: Int(goal)).title
             navigationController?.navigationBar.prefersLargeTitles = true
             navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: plusButton), UIBarButtonItem(customView: minusButton)]
         }

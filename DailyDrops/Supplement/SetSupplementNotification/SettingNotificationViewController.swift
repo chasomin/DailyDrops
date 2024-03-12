@@ -200,7 +200,7 @@ final class SettingNotificationViewController: BaseViewController {
         
         viewModel.outputSetNavigation.bind { [weak self] _ in
             guard let self else { return }
-            navigationItem.title = "알림 설정"
+            navigationItem.title = Constants.NavigationTitle.SetNotification.title
         }
     }
 }
