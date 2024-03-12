@@ -14,7 +14,7 @@ final class RealmWater: Object {
     @Persisted var date: Date
     @Persisted var drinkWater: Float
     
-    convenience init(drinkWater: Float, goal: ObjectId) {
+    convenience init(drinkWater: Float) {
         self.init()
         self.date = Date()
         self.drinkWater = drinkWater
