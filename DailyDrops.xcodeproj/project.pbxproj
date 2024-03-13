@@ -45,6 +45,7 @@
 		79A1723E2B9CBCFA003AB10F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A1723D2B9CBCFA003AB10F /* SearchViewController.swift */; };
 		79A172402B9CBE2F003AB10F /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A1723F2B9CBE2F003AB10F /* SearchTableViewCell.swift */; };
 		79A172422B9CBE53003AB10F /* Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A172412B9CBE53003AB10F /* Identifier.swift */; };
+		79BF77842BA1AD5C00C145E2 /* HeaderSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF77832BA1AD5C00C145E2 /* HeaderSupplementaryView.swift */; };
 		79E9BB2B2B9DF0B7003CAF0B /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E9BB2A2B9DF0B7003CAF0B /* SearchViewModel.swift */; };
 		79E9BB2E2B9DF15C003CAF0B /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E9BB2D2B9DF15C003CAF0B /* Observable.swift */; };
 		79E9BB312B9E078F003CAF0B /* TableViewFooterTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E9BB302B9E078F003CAF0B /* TableViewFooterTextView.swift */; };
@@ -61,6 +62,7 @@
 		79E9BB622BA07562003CAF0B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E9BB612BA07562003CAF0B /* Constants.swift */; };
 		79E9BB662BA17BA3003CAF0B /* RealmSupplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E9BB652BA17BA3003CAF0B /* RealmSupplement.swift */; };
 		79E9BB682BA17BB3003CAF0B /* RealmSupplementLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E9BB672BA17BB3003CAF0B /* RealmSupplementLog.swift */; };
+		79E9BB6A2BA1971B003CAF0B /* SupplementCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E9BB692BA1971B003CAF0B /* SupplementCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +96,7 @@
 		79A1723D2B9CBCFA003AB10F /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		79A1723F2B9CBE2F003AB10F /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		79A172412B9CBE53003AB10F /* Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifier.swift; sourceTree = "<group>"; };
+		79BF77832BA1AD5C00C145E2 /* HeaderSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSupplementaryView.swift; sourceTree = "<group>"; };
 		79E9BB2A2B9DF0B7003CAF0B /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		79E9BB2D2B9DF15C003CAF0B /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		79E9BB302B9E078F003CAF0B /* TableViewFooterTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewFooterTextView.swift; sourceTree = "<group>"; };
@@ -110,6 +113,7 @@
 		79E9BB612BA07562003CAF0B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		79E9BB652BA17BA3003CAF0B /* RealmSupplement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmSupplement.swift; sourceTree = "<group>"; };
 		79E9BB672BA17BB3003CAF0B /* RealmSupplementLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmSupplementLog.swift; sourceTree = "<group>"; };
+		79E9BB692BA1971B003CAF0B /* SupplementCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementCollectionViewCell.swift; sourceTree = "<group>"; };
 		8E96AB1C0CD9779E05D99E0C /* Pods_DailyDrops.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyDrops.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDE49E975EDBF1B226768C46 /* Pods-DailyDrops.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyDrops.release.xcconfig"; path = "Target Support Files/Pods-DailyDrops/Pods-DailyDrops.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -336,6 +340,8 @@
 			isa = PBXGroup;
 			children = (
 				793F596F2B9B814600B7FBE9 /* SupplementViewController.swift */,
+				79E9BB692BA1971B003CAF0B /* SupplementCollectionViewCell.swift */,
+				79BF77832BA1AD5C00C145E2 /* HeaderSupplementaryView.swift */,
 			);
 			path = MySupplement;
 			sourceTree = "<group>";
@@ -560,8 +566,10 @@
 				790E8FB92B99838C004DC160 /* AppDelegate.swift in Sources */,
 				790E8FBB2B99838C004DC160 /* SceneDelegate.swift in Sources */,
 				79E9BB532BA04892003CAF0B /* Alert+Extension.swift in Sources */,
+				79BF77842BA1AD5C00C145E2 /* HeaderSupplementaryView.swift in Sources */,
 				79E9BB422B9F100C003CAF0B /* Date+Extension.swift in Sources */,
 				79863D5B2B9C2BCE00EFA3B3 /* SettingNotificationViewController.swift in Sources */,
+				79E9BB6A2BA1971B003CAF0B /* SupplementCollectionViewCell.swift in Sources */,
 				79E9BB682BA17BB3003CAF0B /* RealmSupplementLog.swift in Sources */,
 				79E9BB332B9E12C6003CAF0B /* CapsulePointBarButton.swift in Sources */,
 				79A172402B9CBE2F003AB10F /* SearchTableViewCell.swift in Sources */,
