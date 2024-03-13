@@ -59,6 +59,8 @@
 		79E9BB5A2BA0694E003CAF0B /* SettingNotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E9BB592BA0694E003CAF0B /* SettingNotificationViewModel.swift */; };
 		79E9BB5C2BA074C5003CAF0B /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E9BB5B2BA074C5003CAF0B /* UIButton+Extension.swift */; };
 		79E9BB622BA07562003CAF0B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E9BB612BA07562003CAF0B /* Constants.swift */; };
+		79E9BB662BA17BA3003CAF0B /* RealmSupplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E9BB652BA17BA3003CAF0B /* RealmSupplement.swift */; };
+		79E9BB682BA17BB3003CAF0B /* RealmSupplementLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E9BB672BA17BB3003CAF0B /* RealmSupplementLog.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +108,8 @@
 		79E9BB592BA0694E003CAF0B /* SettingNotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNotificationViewModel.swift; sourceTree = "<group>"; };
 		79E9BB5B2BA074C5003CAF0B /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		79E9BB612BA07562003CAF0B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		79E9BB652BA17BA3003CAF0B /* RealmSupplement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmSupplement.swift; sourceTree = "<group>"; };
+		79E9BB672BA17BB3003CAF0B /* RealmSupplementLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmSupplementLog.swift; sourceTree = "<group>"; };
 		8E96AB1C0CD9779E05D99E0C /* Pods_DailyDrops.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyDrops.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDE49E975EDBF1B226768C46 /* Pods-DailyDrops.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyDrops.release.xcconfig"; path = "Target Support Files/Pods-DailyDrops/Pods-DailyDrops.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -313,6 +317,8 @@
 			children = (
 				79E9BB3B2B9ECE95003CAF0B /* RealmGoal.swift */,
 				79E9BB392B9ECE0F003CAF0B /* RealmWater.swift */,
+				79E9BB652BA17BA3003CAF0B /* RealmSupplement.swift */,
+				79E9BB672BA17BB3003CAF0B /* RealmSupplementLog.swift */,
 				79E9BB3D2B9ED126003CAF0B /* RealmRepository.swift */,
 			);
 			path = DB;
@@ -546,6 +552,7 @@
 				79E9BB2B2B9DF0B7003CAF0B /* SearchViewModel.swift in Sources */,
 				793F59702B9B814600B7FBE9 /* SupplementViewController.swift in Sources */,
 				79E9BB3E2B9ED126003CAF0B /* RealmRepository.swift in Sources */,
+				79E9BB662BA17BA3003CAF0B /* RealmSupplement.swift in Sources */,
 				79E9BB3C2B9ECE95003CAF0B /* RealmGoal.swift in Sources */,
 				79A172422B9CBE53003AB10F /* Identifier.swift in Sources */,
 				795B21882B9B0CB000DA7D7F /* WaterViewController.swift in Sources */,
@@ -555,6 +562,7 @@
 				79E9BB532BA04892003CAF0B /* Alert+Extension.swift in Sources */,
 				79E9BB422B9F100C003CAF0B /* Date+Extension.swift in Sources */,
 				79863D5B2B9C2BCE00EFA3B3 /* SettingNotificationViewController.swift in Sources */,
+				79E9BB682BA17BB3003CAF0B /* RealmSupplementLog.swift in Sources */,
 				79E9BB332B9E12C6003CAF0B /* CapsulePointBarButton.swift in Sources */,
 				79A172402B9CBE2F003AB10F /* SearchTableViewCell.swift in Sources */,
 				795B217A2B99D05C00DA7D7F /* APIKey.swift in Sources */,
