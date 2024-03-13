@@ -13,4 +13,16 @@ extension Date {
         format.dateFormat = "yyyy년 MM월 dd일"
         return format.string(from: self)
     }
+    
+//    func dateFilterDay() -> String {
+//        let format = DateFormatter()
+//        format.dateFormat = "E"
+//        return format.string(from: self)
+//    }
+    
+    func dateFilterTime() -> String {
+        let format = DateFormatter()
+        format.dateFormat = "H:m"
+        return format.string(from: self)
+    }
 }
