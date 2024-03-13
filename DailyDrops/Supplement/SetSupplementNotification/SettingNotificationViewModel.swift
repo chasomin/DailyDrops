@@ -11,10 +11,12 @@ final class SettingNotificationViewModel {
     let inputWeekButtonTapped: Observable<Int?> = Observable(nil)
     let inputSegmentTapped: Observable<Int> = Observable(0)
     let inputViewDidLoad: Observable<Void?> = Observable(nil)
+    let inputSearchButtonTapped: Observable<Void?> = Observable(nil)
     
     let outputWeekButtonTapped:  Observable<[Int]> = Observable([])
     let outputSegmentTapped: Observable<Int?> = Observable(nil)
     let outputSetNavigation: Observable<Void?> = Observable(nil)
+    let outputSearchButtonTapped: Observable<Void?> = Observable(nil)
     
     init () { transform() }
     
@@ -37,6 +39,11 @@ final class SettingNotificationViewModel {
         inputViewDidLoad.bind { [weak self] _ in
             guard let self else { return }
             outputSetNavigation.value = ()
+        }
+        
+        inputSearchButtonTapped.bind { [weak self] value in
+            guard let self, let value else { return }
+            outputSearchButtonTapped.value = value
         }
     }
 }

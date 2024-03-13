@@ -202,14 +202,21 @@ final class SettingNotificationViewController: BaseViewController {
             guard let self else { return }
             navigationItem.title = Constants.NavigationTitle.SetNotification.title
         }
+        
+        viewModel.outputSearchButtonTapped.bind { [weak self] value in
+            guard let self, let value else { return }
+            view.endEditing(true)
+            let vc = SearchViewController()
+            vc.delegate = self
+            vc.searchText = nameTextField.text
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
 
 extension SettingNotificationViewController {
     @objc func searchButtonTapped() {
-        let vc = SearchViewController()
-        vc.delegate = self
-        navigationController?.pushViewController(vc, animated: true)
+        viewModel.inputSearchButtonTapped.value = ()
     }
     
     @objc func weekButtonTapped(_ sender: UIButton) {

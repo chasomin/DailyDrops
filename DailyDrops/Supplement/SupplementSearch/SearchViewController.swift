@@ -13,6 +13,7 @@ class SearchViewController: BaseViewController {
     let tableView = UITableView()
     let viewModel = SearchViewModel()
     var delegate: TransitionValue?
+    var searchText: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,12 +40,13 @@ class SearchViewController: BaseViewController {
         searchBar.placeholder = "영양제 이름을 검색해보세요!"
         searchBar.searchTextField.font = .body
         searchBar.searchBarStyle = .minimal
+        searchBar.text = searchText
     }
 }
 
 extension SearchViewController {
     private func bindData() {
-        viewModel.inputViewDidLoad.value = ()
+        viewModel.inputViewDidLoad.value = searchText
         viewModel.outputSetNavigation.bind { [weak self] _ in
             guard let self else { return }
             navigationItem.title = Constants.NavigationTitle.SearchSupplement.title

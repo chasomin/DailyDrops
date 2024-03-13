@@ -9,7 +9,7 @@ import Foundation
 
 final class SearchViewModel {
     
-    let inputViewDidLoad: Observable<Void?> = Observable(nil)
+    let inputViewDidLoad: Observable<String?> = Observable(nil)
     let inputSearchButtonTapped: Observable<String?> = Observable(nil)
     let inputPagenation: Observable<IndexPath?> = Observable(nil)
     let inputWeekButtonTapped: Observable<Int?> = Observable(nil)
@@ -25,7 +25,11 @@ final class SearchViewModel {
     private func transform() {
         inputViewDidLoad.bind { [weak self] value in
             guard let value, let self else { return }
-            allFetch()
+            if value.isEmpty {
+                allFetch()
+            } else {
+                searchFetch(value)
+            }
             outputSetTableView.value = ()
             outputSetNavigation.value = ()
             outputSetSearchBar.value = ()
