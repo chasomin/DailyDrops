@@ -37,27 +37,45 @@ final class SupplementViewController: BaseViewController {
     }
     
     private func createLayout() -> UICollectionViewLayout{
-        var configuration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
-        configuration.backgroundColor = .backgroundColor
-        configuration.showsSeparators = true
-        return UICollectionViewCompositionalLayout.list(using: configuration)
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(44))
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = 100
+//        section.interGroupSpacing = 5
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
+
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                                heightDimension: .estimated(44))
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: "1", alignment: .top)//test
+        section.boundarySupplementaryItems = [sectionHeader]
+        
+        return UICollectionViewCompositionalLayout(section: section)
+
     }
     
     private func makeCellRegistration() {
-        let cellRegistration = UICollectionView.CellRegistration<UICollectionViewCell, String> { cell, indexPath, itemIdentifier in // cell 과 cell 데이터 수정
-            var content = UIListContentConfiguration.valueCell()
-            content.text = itemIdentifier
-            cell.contentConfiguration = content
-            
-            var background = UIBackgroundConfiguration.listPlainCell()
-            background.backgroundColor = .backgroundColor
-            cell.backgroundConfiguration = background
+        let headerRegistration = UICollectionView.SupplementaryRegistration<TitleSupplementaryView>(elementKind: "1", handler: { [weak self] supplementaryView, elementKind, indexPath in //test
+            guard let self else { return }
+            guard let model = dataSource.itemIdentifier(for: indexPath), let section = dataSource.snapshot().sectionIdentifier(containingItem: model) else { return }
+            supplementaryView.label.text = section
+        })
+        
+        let cellRegistration = UICollectionView.CellRegistration<SupplementCollectionViewCell, String> { cell, indexPath, itemIdentifier in
+            cell.nameLabel.text = itemIdentifier
         }
         
         dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
             let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
             return cell
         })
+        
+        dataSource.supplementaryViewProvider = { view, kind, index in
+            return self.collectionView.dequeueConfiguredReusableSupplementary(using: headerRegistration, for: index)
+        }
     }
     
     private func updateSnapshot() {
@@ -69,20 +87,8 @@ final class SupplementViewController: BaseViewController {
         dataSource.apply(snapshot)
     }
     
-    private func configureHeader(_ headerView: UICollectionViewListCell, at indexPath: IndexPath) {
-        guard
-            let model = dataSource.itemIdentifier(for: indexPath),
-            let section = dataSource.snapshot().sectionIdentifier(containingItem: model) else { return }
-        let count = dataSource.snapshot().itemIdentifiers(inSection: section).count
-        var content = headerView.defaultContentConfiguration()
-        content.text = section
-        headerView.contentConfiguration = content
-    }
-    
     @objc func plusButtonTapped() {
         let vc = SettingNotificationViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
 }
-
-// TODO: Header
