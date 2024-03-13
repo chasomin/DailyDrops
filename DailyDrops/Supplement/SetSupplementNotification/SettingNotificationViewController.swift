@@ -201,6 +201,7 @@ final class SettingNotificationViewController: BaseViewController {
         viewModel.outputSetNavigation.bind { [weak self] _ in
             guard let self else { return }
             navigationItem.title = Constants.NavigationTitle.SetNotification.title
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(saveButtonTapped))
         }
         
         viewModel.outputSearchButtonTapped.bind { [weak self] value in
@@ -210,6 +211,11 @@ final class SettingNotificationViewController: BaseViewController {
             vc.delegate = self
             vc.searchText = nameTextField.text
             navigationController?.pushViewController(vc, animated: true)
+        }
+        
+        viewModel.outputSaveButtonTapped.bind { [weak self] value in
+            guard let self, let value else { return }
+            navigationController?.popViewController(animated: true)
         }
     }
 }
@@ -226,6 +232,13 @@ extension SettingNotificationViewController {
     @objc func segmentChaged(_ sender: UISegmentedControl) {
         viewModel.inputSegmentTapped.value = sender.selectedSegmentIndex
     }
+    
+    @objc func saveButtonTapped() {
+        guard let name = nameTextField.text else { return }
+        let days: [Int] = viewModel.outputWeekButtonTapped.value
+        let times: [Date] = [firstDatepicker.date, secondDatePicker.date, thirdDatePicker.date]
+        viewModel.inputSaveButtonTapped.value = MySupplement(name: name, days: days, times: times)
+    }
 }
 
 extension SettingNotificationViewController: TransitionValue {
@@ -233,3 +246,5 @@ extension SettingNotificationViewController: TransitionValue {
         nameTextField.text = value
     }
 }
+
+

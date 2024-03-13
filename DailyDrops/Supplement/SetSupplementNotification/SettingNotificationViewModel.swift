@@ -8,15 +8,19 @@
 import Foundation
 
 final class SettingNotificationViewModel {
+    let repository = RealmRepository()
+    
     let inputWeekButtonTapped: Observable<Int?> = Observable(nil)
     let inputSegmentTapped: Observable<Int> = Observable(0)
     let inputViewDidLoad: Observable<Void?> = Observable(nil)
     let inputSearchButtonTapped: Observable<Void?> = Observable(nil)
+    let inputSaveButtonTapped: Observable<MySupplement?> = Observable(nil)
     
     let outputWeekButtonTapped:  Observable<[Int]> = Observable([])
     let outputSegmentTapped: Observable<Int?> = Observable(nil)
     let outputSetNavigation: Observable<Void?> = Observable(nil)
     let outputSearchButtonTapped: Observable<Void?> = Observable(nil)
+    let outputSaveButtonTapped: Observable<Void?> = Observable(nil)
     
     init () { transform() }
     
@@ -44,6 +48,20 @@ final class SettingNotificationViewModel {
         inputSearchButtonTapped.bind { [weak self] value in
             guard let self, let value else { return }
             outputSearchButtonTapped.value = value
+        }
+        
+        inputSaveButtonTapped.bind { [weak self] value in
+            guard let self, let value else { return }
+            var time: [Date] = []
+            if outputSegmentTapped.value == 0 {
+                time = [value.times[0]]
+            } else if outputSegmentTapped.value == 1 {
+                time = [value.times[0], value.times[1]]
+            } else {
+                time = value.times
+            }
+            repository.createItem(MySupplement(name: value.name, days: value.days, times: time).toDTO(), completion: nil)
+            outputSaveButtonTapped.value = ()
         }
     }
 }
