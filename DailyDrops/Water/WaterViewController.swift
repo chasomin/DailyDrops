@@ -51,7 +51,7 @@ final class WaterViewController: BaseViewController {
                 let data = viewModel.outputViewDidLoad.value.0
                 let goal = viewModel.outputViewDidLoad.value.1
                 make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(20)
-                make.bottom.equalToSuperview().multipliedBy(1 - (data / goal))
+                make.bottom.equalToSuperview().multipliedBy((1 - (data / goal)) - 0.001)//FIXME: 바닥에 닿으면 다시 안올라오는 이슈 해결......
             }
         }
     }
@@ -119,7 +119,7 @@ extension WaterViewController {
                 guard let data = self.viewModel.outputData.value.data else { return }
                 guard let goal = self.viewModel.outputData.value.goal else { return }
                 make.horizontalEdges.equalTo(self.view.safeAreaLayoutGuide).inset(20)
-                make.bottom.equalToSuperview().multipliedBy(1 - (data / goal))
+                make.bottom.equalToSuperview().multipliedBy((1 - (data / goal)) - 0.001)//FIXME: 바닥에 닿으면 다시 안올라오는 이슈 해결......
             }
             view.layoutIfNeeded()
         }
@@ -135,7 +135,7 @@ extension WaterViewController {
         countLabel.snp.makeConstraints { [weak self] make in
             guard let self else { return }
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(20)
-            make.bottom.equalToSuperview().multipliedBy(1 - (data / goal))
+            make.bottom.equalToSuperview().multipliedBy((1 - (data / goal)) - 0.001)//FIXME: 바닥에 닿으면 다시 안올라오는 이슈 해결......
         }
         countLabel.text = "\(Int(goal - data))잔 남았어요!"
     
