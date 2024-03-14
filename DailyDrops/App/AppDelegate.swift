@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import Toast
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Use Firebase library to configure APIs
         FirebaseApp.configure()
+        
+        setGlobalToastStyle()
         
         // TODO: 권한 요청 앱 진입 시 물어볼지, 걸음수 탭에 들어가면 물어볼지 정하기
         HealthManager.shared.requestAuthoriaztion()
@@ -34,6 +37,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the user discards a scene session.
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+    }
+    
+    private func setGlobalToastStyle() {
+        var style = ToastStyle()
+        style.messageColor = .pointColor
+        style.backgroundColor = .titleColor
+        style.messageFont = .boldBody
+        style.verticalPadding = 10
+        style.horizontalPadding = 15
+        style.cornerRadius = 15
+        ToastManager.shared.style = style
+        ToastManager.shared.position = .top
     }
 
 
