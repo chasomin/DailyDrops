@@ -217,6 +217,11 @@ final class SettingNotificationViewController: BaseViewController {
             guard let self, let value else { return }
             navigationController?.popViewController(animated: true)
         }
+        
+        viewModel.outputFailSave.bind { [weak self] value in
+            guard let self, let value else { return }
+            showToast(value)
+        }
     }
 }
 

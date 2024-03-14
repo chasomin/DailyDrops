@@ -21,6 +21,7 @@ final class SettingNotificationViewModel {
     let outputSetNavigation: Observable<Void?> = Observable(nil)
     let outputSearchButtonTapped: Observable<Void?> = Observable(nil)
     let outputSaveButtonTapped: Observable<Void?> = Observable(nil)
+    let outputFailSave: Observable<String?> = Observable(nil)
     
     init () { transform() }
     
@@ -52,6 +53,16 @@ final class SettingNotificationViewModel {
         
         inputSaveButtonTapped.bind { [weak self] value in
             guard let self, let value else { return }
+            checkSaveData(value)
+        }
+    }
+    
+    func checkSaveData(_ value:  MySupplement) {
+        if value.name.isEmpty || value.days.isEmpty {
+            outputFailSave.value = "모든 항목을 입력해주세요!"
+        } else {
+            print("=else=")
+
             var time: [Date] = []
             if outputSegmentTapped.value == 0 {
                 time = [value.times[0]]
