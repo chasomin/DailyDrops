@@ -27,7 +27,7 @@ final class SettingNotificationViewController: BaseViewController {
     private let friButton = UIButton()
     private let satButton = UIButton()
     private let sunButton = UIButton()
-    private lazy var weekButtons: [UIButton] = [monButton, tueButton, wedButton, thuButton, friButton, satButton, sunButton]
+    private lazy var weekButtons: [UIButton] = [sunButton, monButton, tueButton, wedButton, thuButton, friButton, satButton]
     private let weekHStack = UIStackView()
     private let weekVStack = UIStackView()
     
@@ -104,7 +104,7 @@ final class SettingNotificationViewController: BaseViewController {
         weekTitleLabel.text = "무슨 요일에 드시나요?"
         weekTitleLabel.font = .title
         for i in 0..<weekButtons.count {
-            weekButtons[i].tag = i
+            weekButtons[i].tag = i+1
             weekButtons[i].addTarget(self, action: #selector(weekButtonTapped), for: .touchUpInside)
         }
         repeatTitleLabel.text = "하루에 몇 번 복용하시나요?"
@@ -177,7 +177,7 @@ final class SettingNotificationViewController: BaseViewController {
             guard let self else { return }
             weekButtons.forEach {
                 var isActive = value.contains($0.tag)
-                $0.configuration = $0.isTapped(value: isActive, text: Constants.WeekButtonTitle.allCases[$0.tag].rawValue)
+                $0.configuration = $0.isTapped(value: isActive, text: Constants.WeekButtonTitle.allCases[$0.tag-1].rawValue)
             }
         }
         
