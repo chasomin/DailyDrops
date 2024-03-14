@@ -36,35 +36,9 @@ final class SupplementViewController: BaseViewController {
         
     }
     
-    private func createLayout() -> UICollectionViewLayout{
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(44))
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
-
-        let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 30, trailing: 10)
-
-        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                heightDimension: .estimated(44))
-        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: "1", alignment: .top)//test
-        section.boundarySupplementaryItems = [sectionHeader]
-        
-        return UICollectionViewCompositionalLayout(section: section)
-
-    }
-    
     private func makeCellRegistration() {
-        let headerRegistration = UICollectionView.SupplementaryRegistration<TitleSupplementaryView>(elementKind: "1", handler: { [weak self] supplementaryView, elementKind, indexPath in //test
-            guard let self else { return }
-            guard let model = dataSource.itemIdentifier(for: indexPath), let section = dataSource.snapshot().sectionIdentifier(containingItem: model) else { return }
-            supplementaryView.label.text = section
-        })
-        
-        let cellRegistration = UICollectionView.CellRegistration<SupplementCollectionViewCell, String> { cell, indexPath, itemIdentifier in
-            cell.nameLabel.text = itemIdentifier
-        }
+        let cellRegistration = cellRegistration()
+        let headerRegistration = headerRegistration()
         
         dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
             let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
@@ -84,9 +58,47 @@ final class SupplementViewController: BaseViewController {
         snapshot.appendItems(["종합 비타민"], toSection: "오후 1시")
         dataSource.apply(snapshot)
     }
-    
+}
+
+
+extension SupplementViewController {
     @objc func plusButtonTapped() {
         let vc = SettingNotificationViewController()
         navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+// MARK: Layout
+extension SupplementViewController {
+    private func createLayout() -> UICollectionViewLayout{
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(44))
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 30, trailing: 10)
+
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                                heightDimension: .estimated(44))
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: "1", alignment: .top)//test
+        section.boundarySupplementaryItems = [sectionHeader]
+        
+        return UICollectionViewCompositionalLayout(section: section)
+    }
+    
+    private func cellRegistration() -> UICollectionView.CellRegistration<SupplementCollectionViewCell, String> {
+        return UICollectionView.CellRegistration { cell, indexPath, itemIdentifier in
+            cell.nameLabel.text = itemIdentifier
+        }
+    }
+    
+    private func headerRegistration() -> UICollectionView.SupplementaryRegistration<TitleSupplementaryView> {
+        return UICollectionView.SupplementaryRegistration(elementKind: "1", handler: { [weak self] supplementaryView, elementKind, indexPath in //test
+            guard let self else { return }
+            guard let model = dataSource.itemIdentifier(for: indexPath), let section = dataSource.snapshot().sectionIdentifier(containingItem: model) else { return }
+            supplementaryView.label.text = section
+        })
     }
 }
