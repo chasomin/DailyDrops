@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol TransitionValue {
+protocol TransitionValue: AnyObject {
     func transition(value: String)
 }

@@ -12,7 +12,7 @@ class SearchViewController: BaseViewController {
     let searchBar = UISearchBar()
     let tableView = UITableView()
     let viewModel = SearchViewModel()
-    var delegate: TransitionValue?
+    weak var delegate: TransitionValue?
     var searchText: String?
 
     override func viewDidLoad() {
