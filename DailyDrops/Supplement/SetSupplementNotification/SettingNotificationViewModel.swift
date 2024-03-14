@@ -61,15 +61,13 @@ final class SettingNotificationViewModel {
         if value.name.isEmpty || value.days.isEmpty {
             outputFailSave.value = "모든 항목을 입력해주세요!"
         } else {
-            print("=else=")
-
             var time: [Date] = []
             if outputSegmentTapped.value == 0 {
                 time = [value.times[0]]
             } else if outputSegmentTapped.value == 1 {
-                time = [value.times[0], value.times[1]]
+                time = [value.times[0], value.times[1]].sorted()
             } else {
-                time = value.times
+                time = value.times.sorted()
             }
             repository.createItem(MySupplement(name: value.name, days: value.days, times: time).toDTO(), completion: nil)
             outputSaveButtonTapped.value = ()
