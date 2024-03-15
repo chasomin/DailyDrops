@@ -24,9 +24,3 @@ final class RealmWater: Object {
         return Water(id: id.stringValue, date: date, drinkWater: drinkWater)
     }
 }
-
-struct Water {
-    let id: String
-    let date: Date
-    let drinkWater: Float
-}

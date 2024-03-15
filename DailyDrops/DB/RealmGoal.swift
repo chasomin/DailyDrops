@@ -25,10 +25,3 @@ final class RealmGoal: Object {
         return Goal(id: id.stringValue, waterCup: waterCup, steps: steps, regDate: regDate)
     }
 }
-
-struct Goal {
-    let id: String
-    let waterCup: Float
-    let steps: Int
-    let regDate: Date
-}
