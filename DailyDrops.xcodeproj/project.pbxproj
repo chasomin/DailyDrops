@@ -48,6 +48,10 @@
 		79BF77842BA1AD5C00C145E2 /* HeaderSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF77832BA1AD5C00C145E2 /* HeaderSupplementaryView.swift */; };
 		79BF77882BA2D2ED00C145E2 /* Toast+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF77872BA2D2ED00C145E2 /* Toast+Extension.swift */; };
 		79BF778A2BA2E38700C145E2 /* MySupplementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF77892BA2E38700C145E2 /* MySupplementViewModel.swift */; };
+		79BF778D2BA4B23E00C145E2 /* SupplementName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF778C2BA4B23E00C145E2 /* SupplementName.swift */; };
+		79BF778F2BA4B25800C145E2 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF778E2BA4B25800C145E2 /* Goal.swift */; };
+		79BF77912BA4B26B00C145E2 /* Water.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF77902BA4B26B00C145E2 /* Water.swift */; };
+		79BF77932BA4B27B00C145E2 /* MySupplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF77922BA4B27B00C145E2 /* MySupplement.swift */; };
 		79E9BB2B2B9DF0B7003CAF0B /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E9BB2A2B9DF0B7003CAF0B /* SearchViewModel.swift */; };
 		79E9BB2E2B9DF15C003CAF0B /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E9BB2D2B9DF15C003CAF0B /* Observable.swift */; };
 		79E9BB312B9E078F003CAF0B /* TableViewFooterTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E9BB302B9E078F003CAF0B /* TableViewFooterTextView.swift */; };
@@ -101,6 +105,10 @@
 		79BF77832BA1AD5C00C145E2 /* HeaderSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSupplementaryView.swift; sourceTree = "<group>"; };
 		79BF77872BA2D2ED00C145E2 /* Toast+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Toast+Extension.swift"; sourceTree = "<group>"; };
 		79BF77892BA2E38700C145E2 /* MySupplementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySupplementViewModel.swift; sourceTree = "<group>"; };
+		79BF778C2BA4B23E00C145E2 /* SupplementName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementName.swift; sourceTree = "<group>"; };
+		79BF778E2BA4B25800C145E2 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
+		79BF77902BA4B26B00C145E2 /* Water.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Water.swift; sourceTree = "<group>"; };
+		79BF77922BA4B27B00C145E2 /* MySupplement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySupplement.swift; sourceTree = "<group>"; };
 		79E9BB2A2B9DF0B7003CAF0B /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		79E9BB2D2B9DF15C003CAF0B /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		79E9BB302B9E078F003CAF0B /* TableViewFooterTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewFooterTextView.swift; sourceTree = "<group>"; };
@@ -185,10 +193,11 @@
 				795B216B2B99BC1300DA7D7F /* Manager */,
 				795B216F2B99C88D00DA7D7F /* Base */,
 				79E9BB2F2B9E0771003CAF0B /* Custom */,
-				795B21832B9AEB3B00DA7D7F /* Model */,
 				795B21782B99CAA900DA7D7F /* Network */,
+				795B21832B9AEB3B00DA7D7F /* Model */,
 				79E9BB2C2B9DF144003CAF0B /* Observable */,
 				79E9BB382B9ECD6E003CAF0B /* DB */,
+				79BF778B2BA4B22E00C145E2 /* DBEntityModel */,
 				793F596C2B9B7E2600B7FBE9 /* Calendar */,
 				795B21862B9B0C6800DA7D7F /* Water */,
 				793F596E2B9B7E4800B7FBE9 /* Supplement */,
@@ -302,6 +311,18 @@
 				79E9BB3F2B9F053B003CAF0B /* WaterViewModel.swift */,
 			);
 			path = Water;
+			sourceTree = "<group>";
+		};
+		79BF778B2BA4B22E00C145E2 /* DBEntityModel */ = {
+			isa = PBXGroup;
+			children = (
+				79BF778C2BA4B23E00C145E2 /* SupplementName.swift */,
+				79BF778E2BA4B25800C145E2 /* Goal.swift */,
+				79BF77902BA4B26B00C145E2 /* Water.swift */,
+				79BF77922BA4B27B00C145E2 /* MySupplement.swift */,
+			);
+			name = DBEntityModel;
+			path = DB/DBEntityModel;
 			sourceTree = "<group>";
 		};
 		79E9BB2C2B9DF144003CAF0B /* Observable */ = {
@@ -555,6 +576,8 @@
 				79E9BB622BA07562003CAF0B /* Constants.swift in Sources */,
 				79E9BB562BA05922003CAF0B /* TransitionValueProtocol.swift in Sources */,
 				795B21732B99C8F300DA7D7F /* BaseTableViewCell.swift in Sources */,
+				79BF778D2BA4B23E00C145E2 /* SupplementName.swift in Sources */,
+				79BF77912BA4B26B00C145E2 /* Water.swift in Sources */,
 				79E9BB5C2BA074C5003CAF0B /* UIButton+Extension.swift in Sources */,
 				795B21822B9AEA7700DA7D7F /* Supplement.swift in Sources */,
 				795B21802B9ADF2F00DA7D7F /* SupplementDTO.swift in Sources */,
@@ -569,6 +592,7 @@
 				79A172422B9CBE53003AB10F /* Identifier.swift in Sources */,
 				795B21882B9B0CB000DA7D7F /* WaterViewController.swift in Sources */,
 				79BF77882BA2D2ED00C145E2 /* Toast+Extension.swift in Sources */,
+				79BF77932BA4B27B00C145E2 /* MySupplement.swift in Sources */,
 				79E9BB312B9E078F003CAF0B /* TableViewFooterTextView.swift in Sources */,
 				790E8FB92B99838C004DC160 /* AppDelegate.swift in Sources */,
 				790E8FBB2B99838C004DC160 /* SceneDelegate.swift in Sources */,
@@ -584,6 +608,7 @@
 				795B217A2B99D05C00DA7D7F /* APIKey.swift in Sources */,
 				795B21692B99B19300DA7D7F /* UIFont+Extension.swift in Sources */,
 				79E9BB3A2B9ECE0F003CAF0B /* RealmWater.swift in Sources */,
+				79BF778F2BA4B25800C145E2 /* Goal.swift in Sources */,
 				79A1723E2B9CBCFA003AB10F /* SearchViewController.swift in Sources */,
 				795B21772B99C97100DA7D7F /* BaseView.swift in Sources */,
 				79E9BB5A2BA0694E003CAF0B /* SettingNotificationViewModel.swift in Sources */,
@@ -737,7 +762,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = FQNUU3X32C;
+				DEVELOPMENT_TEAM = 696W38VQ47;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DailyDrops/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -771,7 +796,7 @@
 				CODE_SIGN_ENTITLEMENTS = DailyDrops/DailyDrops.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = FQNUU3X32C;
+				DEVELOPMENT_TEAM = 696W38VQ47;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DailyDrops/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
