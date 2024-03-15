@@ -49,6 +49,14 @@ final class RealmRepository<T: Object> {
         let filterContainToday = supplements.where{$0.days.contains(today.dateFilterDay())}
         return filterContainToday.map{ $0.toEntity() }
     }
+    
+    /// 해당 시간 대에 복용할 약 배열을 리턴하는 메서드
+    func readSupplementForTime(_ time: String) -> [MySupplement] {
+        let today = Date()
+        let supplements = realm.objects(RealmSupplement.self)
+        let filterContainToday = supplements.where{$0.days.contains(today.dateFilterDay())}.map{ $0.toEntity() }
+        return filterContainToday.filter{ $0.times.map{ $0.dateFilterTime() }.contains(time) }
+    }
 
     /// 오늘 복용할 약의 시간대를 리턴하는 메서드
     func readTodaySupplementTime() -> [String] {
@@ -61,6 +69,5 @@ final class RealmRepository<T: Object> {
             }
         }
         return Set(times).sorted()
-        
     }
 }
