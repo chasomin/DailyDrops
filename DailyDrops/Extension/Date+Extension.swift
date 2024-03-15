@@ -23,7 +23,7 @@ extension Date {
     
     func dateFilterTime() -> String {
         let format = DateFormatter()
-        format.dateFormat = "HH:mm"
+        format.dateFormat = "HH시 mm분"
         return format.string(from: self)
     }
 }
