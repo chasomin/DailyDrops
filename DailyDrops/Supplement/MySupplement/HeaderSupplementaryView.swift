@@ -8,7 +8,8 @@
 import UIKit
 import SnapKit
 
-final class TitleSupplementaryView: UICollectionReusableView {
+final class HeaderSupplementaryView: UICollectionReusableView {
+    static let id = HeaderSupplementaryView.description()
     let label = UILabel()
     
     override init(frame: CGRect) {
