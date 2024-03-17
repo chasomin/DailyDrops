@@ -29,7 +29,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let supplementVC = UINavigationController(rootViewController: SupplementViewController())
         supplementVC.tabBarItem = UITabBarItem(title: "내 영양제", image: UIImage(systemName: "pills"), selectedImage: UIImage(systemName: "pills.fill"))
         
-        tabBar.viewControllers = [waterVC, supplementVC]
+        let stepVC = UINavigationController(rootViewController: StepViewController())
+        stepVC.tabBarItem = UITabBarItem(title: "걸음 수", image: UIImage(systemName: "figure.walk"), selectedImage: UIImage(systemName: "figure.walk"))
+
+        tabBar.viewControllers = [waterVC, supplementVC, stepVC]
         window?.rootViewController = tabBar
         window?.makeKeyAndVisible()
     }

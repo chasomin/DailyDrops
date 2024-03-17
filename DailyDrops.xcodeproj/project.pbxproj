@@ -52,6 +52,12 @@
 		79BF778F2BA4B25800C145E2 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF778E2BA4B25800C145E2 /* Goal.swift */; };
 		79BF77912BA4B26B00C145E2 /* Water.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF77902BA4B26B00C145E2 /* Water.swift */; };
 		79BF77932BA4B27B00C145E2 /* MySupplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF77922BA4B27B00C145E2 /* MySupplement.swift */; };
+		79BF77952BA6A02900C145E2 /* CheckButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF77942BA6A02900C145E2 /* CheckButton.swift */; };
+		79BF77972BA70FD900C145E2 /* StepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF77962BA70FD900C145E2 /* StepViewController.swift */; };
+		79BF77992BA7158200C145E2 /* StepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF77982BA7158200C145E2 /* StepViewModel.swift */; };
+		79BF779D2BA717B100C145E2 /* TodayStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF779C2BA717B100C145E2 /* TodayStepView.swift */; };
+		79BF779F2BA7180600C145E2 /* WeekStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF779E2BA7180600C145E2 /* WeekStepView.swift */; };
+		79BF77A12BA7182C00C145E2 /* MonthStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF77A02BA7182C00C145E2 /* MonthStepView.swift */; };
 		79E9BB2B2B9DF0B7003CAF0B /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E9BB2A2B9DF0B7003CAF0B /* SearchViewModel.swift */; };
 		79E9BB2E2B9DF15C003CAF0B /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E9BB2D2B9DF15C003CAF0B /* Observable.swift */; };
 		79E9BB312B9E078F003CAF0B /* TableViewFooterTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E9BB302B9E078F003CAF0B /* TableViewFooterTextView.swift */; };
@@ -109,6 +115,12 @@
 		79BF778E2BA4B25800C145E2 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		79BF77902BA4B26B00C145E2 /* Water.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Water.swift; sourceTree = "<group>"; };
 		79BF77922BA4B27B00C145E2 /* MySupplement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySupplement.swift; sourceTree = "<group>"; };
+		79BF77942BA6A02900C145E2 /* CheckButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckButton.swift; sourceTree = "<group>"; };
+		79BF77962BA70FD900C145E2 /* StepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepViewController.swift; sourceTree = "<group>"; };
+		79BF77982BA7158200C145E2 /* StepViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepViewModel.swift; sourceTree = "<group>"; };
+		79BF779C2BA717B100C145E2 /* TodayStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayStepView.swift; sourceTree = "<group>"; };
+		79BF779E2BA7180600C145E2 /* WeekStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekStepView.swift; sourceTree = "<group>"; };
+		79BF77A02BA7182C00C145E2 /* MonthStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthStepView.swift; sourceTree = "<group>"; };
 		79E9BB2A2B9DF0B7003CAF0B /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		79E9BB2D2B9DF15C003CAF0B /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		79E9BB302B9E078F003CAF0B /* TableViewFooterTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewFooterTextView.swift; sourceTree = "<group>"; };
@@ -220,6 +232,11 @@
 		793F596D2B9B7E3300B7FBE9 /* Step */ = {
 			isa = PBXGroup;
 			children = (
+				79BF77962BA70FD900C145E2 /* StepViewController.swift */,
+				79BF779C2BA717B100C145E2 /* TodayStepView.swift */,
+				79BF779E2BA7180600C145E2 /* WeekStepView.swift */,
+				79BF77A02BA7182C00C145E2 /* MonthStepView.swift */,
+				79BF77982BA7158200C145E2 /* StepViewModel.swift */,
 			);
 			path = Step;
 			sourceTree = "<group>";
@@ -338,6 +355,7 @@
 			children = (
 				79E9BB302B9E078F003CAF0B /* TableViewFooterTextView.swift */,
 				79E9BB322B9E12C6003CAF0B /* CapsulePointBarButton.swift */,
+				79BF77942BA6A02900C145E2 /* CheckButton.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -577,19 +595,24 @@
 				79E9BB562BA05922003CAF0B /* TransitionValueProtocol.swift in Sources */,
 				795B21732B99C8F300DA7D7F /* BaseTableViewCell.swift in Sources */,
 				79BF778D2BA4B23E00C145E2 /* SupplementName.swift in Sources */,
+				79BF77A12BA7182C00C145E2 /* MonthStepView.swift in Sources */,
 				79BF77912BA4B26B00C145E2 /* Water.swift in Sources */,
+				79BF779D2BA717B100C145E2 /* TodayStepView.swift in Sources */,
 				79E9BB5C2BA074C5003CAF0B /* UIButton+Extension.swift in Sources */,
 				795B21822B9AEA7700DA7D7F /* Supplement.swift in Sources */,
 				795B21802B9ADF2F00DA7D7F /* SupplementDTO.swift in Sources */,
 				795B21752B99C95800DA7D7F /* BaseCollectionViewCell.swift in Sources */,
 				795B216E2B99BCA400DA7D7F /* HealthManager.swift in Sources */,
 				79E9BB402B9F053B003CAF0B /* WaterViewModel.swift in Sources */,
+				79BF77972BA70FD900C145E2 /* StepViewController.swift in Sources */,
 				79E9BB2B2B9DF0B7003CAF0B /* SearchViewModel.swift in Sources */,
+				79BF77952BA6A02900C145E2 /* CheckButton.swift in Sources */,
 				793F59702B9B814600B7FBE9 /* SupplementViewController.swift in Sources */,
 				79E9BB3E2B9ED126003CAF0B /* RealmRepository.swift in Sources */,
 				79E9BB662BA17BA3003CAF0B /* RealmSupplement.swift in Sources */,
 				79E9BB3C2B9ECE95003CAF0B /* RealmGoal.swift in Sources */,
 				79A172422B9CBE53003AB10F /* Identifier.swift in Sources */,
+				79BF77992BA7158200C145E2 /* StepViewModel.swift in Sources */,
 				795B21882B9B0CB000DA7D7F /* WaterViewController.swift in Sources */,
 				79BF77882BA2D2ED00C145E2 /* Toast+Extension.swift in Sources */,
 				79BF77932BA4B27B00C145E2 /* MySupplement.swift in Sources */,
@@ -600,6 +623,7 @@
 				79BF77842BA1AD5C00C145E2 /* HeaderSupplementaryView.swift in Sources */,
 				79E9BB422B9F100C003CAF0B /* Date+Extension.swift in Sources */,
 				79863D5B2B9C2BCE00EFA3B3 /* SettingNotificationViewController.swift in Sources */,
+				79BF779F2BA7180600C145E2 /* WeekStepView.swift in Sources */,
 				79E9BB6A2BA1971B003CAF0B /* SupplementCollectionViewCell.swift in Sources */,
 				79E9BB682BA17BB3003CAF0B /* RealmSupplementLog.swift in Sources */,
 				79E9BB332B9E12C6003CAF0B /* CapsulePointBarButton.swift in Sources */,
