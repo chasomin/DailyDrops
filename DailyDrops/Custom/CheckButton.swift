@@ -9,7 +9,10 @@ import UIKit
 
 final class CheckButton: UIButton {
 
-    override init(frame: CGRect) {
+    var item: SupplementName
+
+    init(item: SupplementName, frame: CGRect) {
+        self.item = item
         super.init(frame: frame)
         
         var config = UIButton.Configuration.plain()
