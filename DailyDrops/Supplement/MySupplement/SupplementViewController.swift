@@ -50,6 +50,11 @@ final class SupplementViewController: BaseViewController {
             makeCellRegistration()
             updateSnapshot()
         }
+        viewModel.outputCheckButtonTapped.bind { [weak self] value in
+            guard let self, let value else { return }
+            makeCellRegistration()
+            updateSnapshot()
+        }
     }
     
     private func makeCellRegistration() {
@@ -83,6 +88,11 @@ extension SupplementViewController {
         let vc = SettingNotificationViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+    @objc func checkButtonTapped(_ sender: CheckButton) {
+        guard let section = dataSource.snapshot().sectionIdentifier(containingItem: sender.item) else { return }
+        viewModel.inputCheckButtonTapped.value = (section: section, supplement: sender.item.name)
+    }
 }
 
 // MARK: Layout
@@ -106,8 +116,11 @@ extension SupplementViewController {
     }
     
     private func cellRegistration() -> UICollectionView.CellRegistration<SupplementCollectionViewCell, SupplementName> {
-        return UICollectionView.CellRegistration { cell, indexPath, itemIdentifier in
-            cell.nameLabel.text = itemIdentifier.name
+        return UICollectionView.CellRegistration { [weak self] cell, indexPath, itemIdentifier in
+            guard let self else { return }
+            guard let section = dataSource.snapshot().sectionIdentifier(containingItem: itemIdentifier) else { return }
+            cell.configureCell(item: itemIdentifier, index: indexPath, section: section)
+            cell.checkButton.addTarget(self, action: #selector(checkButtonTapped), for: .touchUpInside)
         }
     }
     
