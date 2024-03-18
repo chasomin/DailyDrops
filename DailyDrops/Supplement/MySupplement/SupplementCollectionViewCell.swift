@@ -10,7 +10,7 @@ import SnapKit
 
 final class SupplementCollectionViewCell: BaseCollectionViewCell {
     let nameLabel = UILabel()
-    let checkButton = UIButton()
+    let checkButton = CheckButton(item: SupplementName(name: ""), frame: .zero)
     
     override func configureHierarchy() {
         contentView.addSubview(nameLabel)
@@ -33,7 +33,11 @@ final class SupplementCollectionViewCell: BaseCollectionViewCell {
         nameLabel.textAlignment = .left
         nameLabel.numberOfLines = 1
         nameLabel.textColor = .titleColor
-        
-        checkButton.backgroundColor = .red//test
+    }
+    
+    func configureCell(item: SupplementName, index: IndexPath, section: String) {
+        nameLabel.text = item.name
+        checkButton.item = item
+        checkButton.configuration = checkButton.isTapped(name: item.name, time: section)
     }
 }
