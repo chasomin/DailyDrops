@@ -22,7 +22,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let tabBar = UITabBarController()
         
-        //TODO: 네비타이틀 폰트
         let waterVC = UINavigationController(rootViewController: WaterViewController())
         waterVC.tabBarItem = UITabBarItem(title: "모아보기", image: UIImage(systemName: "eyes"), selectedImage: UIImage(systemName: "eyes"))
         

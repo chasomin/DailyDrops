@@ -19,7 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         
         setGlobalToastStyle()
-        
+        setGlobalFont()
+
         // TODO: 권한 요청 앱 진입 시 물어볼지, 걸음수 탭에 들어가면 물어볼지 정하기
         HealthManager.shared.requestAuthoriaztion()
         return true
@@ -51,6 +52,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ToastManager.shared.position = .top
     }
 
+    private func setGlobalFont() {
+        let navigationTitlefont = UIFont.boldTitle
+        let largeFont = UIFont.largeBoldTitle
+        let tabBarFont = UIFont.caption
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: navigationTitlefont]
+        UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.font: largeFont]
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: tabBarFont], for: .normal)
+        
+        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont.callout], for: .normal)
+        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont.boldCallout], for: .selected)
+
+    }
 
 }
 
