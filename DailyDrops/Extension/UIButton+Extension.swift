@@ -18,7 +18,7 @@ extension UIButton {
             attr.font = UIFont.body
             config.attributedSubtitle = attr
             return config
-
+            
         } else {
             var config = UIButton.Configuration.filled()
             config.cornerStyle = .capsule
@@ -27,6 +27,23 @@ extension UIButton {
             var attr = AttributedString.init(text)
             attr.font = UIFont.body
             config.attributedSubtitle = attr
+            return config
+        }
+    }
+    
+    func isTapped(name: String, time: String) -> UIButton.Configuration {
+        
+        let repository = RealmRepository()
+        
+        if repository.readSupplementLog().filter({ $0.supplementName == name && $0.supplementTime == time && $0.regDate.dateFormat() == Date().dateFormat() }).isEmpty {
+            var config = UIButton.Configuration.plain()
+            config.baseForegroundColor = .subTitleColor
+            config.image = UIImage(systemName: "circle")
+            return config
+        } else {
+            var config = UIButton.Configuration.plain()
+            config.baseForegroundColor = .pointColor
+            config.image = UIImage(systemName: "checkmark.circle.fill")
             return config
         }
     }
