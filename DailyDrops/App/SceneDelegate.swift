@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let tabBar = UITabBarController()
         
-        let waterVC = UINavigationController(rootViewController: WaterViewController())
+        let waterVC = UINavigationController(rootViewController: CalendarViewController())
         waterVC.tabBarItem = UITabBarItem(title: "모아보기", image: UIImage(systemName: "eyes"), selectedImage: UIImage(systemName: "eyes"))
         
         let supplementVC = UINavigationController(rootViewController: SupplementViewController())

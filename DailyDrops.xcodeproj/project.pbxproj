@@ -58,6 +58,10 @@
 		79BF779D2BA717B100C145E2 /* TodayStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF779C2BA717B100C145E2 /* TodayStepView.swift */; };
 		79BF779F2BA7180600C145E2 /* WeekStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF779E2BA7180600C145E2 /* WeekStepView.swift */; };
 		79BF77A12BA7182C00C145E2 /* MonthStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF77A02BA7182C00C145E2 /* MonthStepView.swift */; };
+		79BF77A42BA842C200C145E2 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF77A32BA842C200C145E2 /* CalendarViewController.swift */; };
+		79BF77A62BA84F5B00C145E2 /* WaterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF77A52BA84F5B00C145E2 /* WaterCollectionViewCell.swift */; };
+		79BF77AA2BA8551100C145E2 /* SupplementLogCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF77A92BA8551100C145E2 /* SupplementLogCollectionViewCell.swift */; };
+		79BF77AC2BA8552200C145E2 /* StepCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF77AB2BA8552200C145E2 /* StepCollectionViewCell.swift */; };
 		79E9BB2B2B9DF0B7003CAF0B /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E9BB2A2B9DF0B7003CAF0B /* SearchViewModel.swift */; };
 		79E9BB2E2B9DF15C003CAF0B /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E9BB2D2B9DF15C003CAF0B /* Observable.swift */; };
 		79E9BB312B9E078F003CAF0B /* TableViewFooterTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E9BB302B9E078F003CAF0B /* TableViewFooterTextView.swift */; };
@@ -121,6 +125,10 @@
 		79BF779C2BA717B100C145E2 /* TodayStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayStepView.swift; sourceTree = "<group>"; };
 		79BF779E2BA7180600C145E2 /* WeekStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekStepView.swift; sourceTree = "<group>"; };
 		79BF77A02BA7182C00C145E2 /* MonthStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthStepView.swift; sourceTree = "<group>"; };
+		79BF77A32BA842C200C145E2 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		79BF77A52BA84F5B00C145E2 /* WaterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterCollectionViewCell.swift; sourceTree = "<group>"; };
+		79BF77A92BA8551100C145E2 /* SupplementLogCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementLogCollectionViewCell.swift; sourceTree = "<group>"; };
+		79BF77AB2BA8552200C145E2 /* StepCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCollectionViewCell.swift; sourceTree = "<group>"; };
 		79E9BB2A2B9DF0B7003CAF0B /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		79E9BB2D2B9DF15C003CAF0B /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		79E9BB302B9E078F003CAF0B /* TableViewFooterTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewFooterTextView.swift; sourceTree = "<group>"; };
@@ -225,6 +233,10 @@
 		793F596C2B9B7E2600B7FBE9 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				79BF77A32BA842C200C145E2 /* CalendarViewController.swift */,
+				79BF77A52BA84F5B00C145E2 /* WaterCollectionViewCell.swift */,
+				79BF77A92BA8551100C145E2 /* SupplementLogCollectionViewCell.swift */,
+				79BF77AB2BA8552200C145E2 /* StepCollectionViewCell.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -624,8 +636,11 @@
 				79E9BB422B9F100C003CAF0B /* Date+Extension.swift in Sources */,
 				79863D5B2B9C2BCE00EFA3B3 /* SettingNotificationViewController.swift in Sources */,
 				79BF779F2BA7180600C145E2 /* WeekStepView.swift in Sources */,
+				79BF77AC2BA8552200C145E2 /* StepCollectionViewCell.swift in Sources */,
 				79E9BB6A2BA1971B003CAF0B /* SupplementCollectionViewCell.swift in Sources */,
 				79E9BB682BA17BB3003CAF0B /* RealmSupplementLog.swift in Sources */,
+				79BF77AA2BA8551100C145E2 /* SupplementLogCollectionViewCell.swift in Sources */,
+				79BF77A42BA842C200C145E2 /* CalendarViewController.swift in Sources */,
 				79E9BB332B9E12C6003CAF0B /* CapsulePointBarButton.swift in Sources */,
 				79A172402B9CBE2F003AB10F /* SearchTableViewCell.swift in Sources */,
 				79BF778A2BA2E38700C145E2 /* MySupplementViewModel.swift in Sources */,
@@ -635,6 +650,7 @@
 				79BF778F2BA4B25800C145E2 /* Goal.swift in Sources */,
 				79A1723E2B9CBCFA003AB10F /* SearchViewController.swift in Sources */,
 				795B21772B99C97100DA7D7F /* BaseView.swift in Sources */,
+				79BF77A62BA84F5B00C145E2 /* WaterCollectionViewCell.swift in Sources */,
 				79E9BB5A2BA0694E003CAF0B /* SettingNotificationViewModel.swift in Sources */,
 				795B217C2B99D1A600DA7D7F /* SupplementAPI.swift in Sources */,
 				795B21852B9AECB100DA7D7F /* APIManager.swift in Sources */,
