@@ -34,7 +34,7 @@ final class MonthStepView: BaseView {
     }
     
     override func configureView() {
-        setDataCount(steps.count, range: UInt32(10000))
+        setDataCount(steps.count-1, range: UInt32(10000))
     }
 
     func setDataCount(_ count: Int, range: UInt32) {
@@ -55,13 +55,11 @@ final class MonthStepView: BaseView {
             set1.drawValuesEnabled = false
             
             let data = BarChartData(dataSet: set1)
-            data.barWidth = 0.7
+            data.barWidth = 0.9
             
             chartView.data = data
             chartView.doubleTapToZoomEnabled = false
-            chartView.xAxis.enabled = false
             chartView.leftAxis.enabled = false
-            chartView.rightAxis.enabled = false
             chartView.legend.enabled = false
         }
     }

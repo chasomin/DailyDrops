@@ -57,6 +57,8 @@ class HealthManager {
                     if let sum = statistics.sumQuantity() {
                         let steps = sum.doubleValue(for: HKUnit.count())
                         stepsDataList.append(steps)
+                    } else {
+                        stepsDataList.append(0)
                     }
                 }
                 completion(stepsDataList)
@@ -91,6 +93,8 @@ class HealthManager {
                     if let sum = statistics.sumQuantity() {
                         let steps = sum.doubleValue(for: HKUnit.count())
                         stepsDataList.append(steps)
+                    } else {
+                        stepsDataList.append(0)
                     }
                 }
                 completion(stepsDataList)

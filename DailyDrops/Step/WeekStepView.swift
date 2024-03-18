@@ -35,7 +35,7 @@ final class WeekStepView: BaseView {
     }
     
     override func configureView() {
-        setDataCount(steps.count, range: UInt32(10000)) //test
+        setDataCount(steps.count-1, range: UInt32(10000)) //test
     }
 
     func setDataCount(_ count: Int, range: UInt32) {
@@ -60,9 +60,7 @@ final class WeekStepView: BaseView {
             
             chartView.data = data
             chartView.doubleTapToZoomEnabled = false
-            chartView.xAxis.enabled = false
             chartView.leftAxis.enabled = false
-            chartView.rightAxis.enabled = false
             chartView.legend.enabled = false
         }
     }

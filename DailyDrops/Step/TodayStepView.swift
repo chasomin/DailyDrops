@@ -60,9 +60,7 @@ class TodayStepView: BaseView {
             
             chartView.data = data
             chartView.doubleTapToZoomEnabled = false
-//            chartView.xAxis.enabled = false
             chartView.leftAxis.enabled = false
-            chartView.rightAxis.enabled = false
             chartView.legend.enabled = false
         }
     }
