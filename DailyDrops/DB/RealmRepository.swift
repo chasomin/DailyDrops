@@ -25,6 +25,10 @@ final class RealmRepository<T: Object> {
     }
     
     // MARK: - Read    
+    func readSupplementLog() -> Results<RealmSupplementLog> {
+        return realm.objects(RealmSupplementLog.self)
+    }
+    
     func readWaterByDate(date: Date) -> Float {
         let result = realm.objects(RealmWater.self).map{ $0.toEntity() }.filter{ $0.date.dateFormat() == date.dateFormat()}
         var total: Float = 0
@@ -38,7 +42,11 @@ final class RealmRepository<T: Object> {
         return realm.objects(RealmGoal.self).sorted(byKeyPath: "regDate").last?.waterCup ?? 0
     }
     
-    func readSupplement(_ item: T) -> [MySupplement] {
+    func readSupplement() -> Results<RealmSupplement> {
+        realm.objects(RealmSupplement.self)
+    }
+    
+    func readSupplement() -> [MySupplement] {
         realm.objects(RealmSupplement.self).map{ $0.toEntity() }
     }
     
@@ -69,5 +77,17 @@ final class RealmRepository<T: Object> {
             }
         }
         return Set(times).sorted()
+    }
+    
+    // MARK: Delete
+    func deleteSupplementLog(date: String, name: String, time: String) {
+        do {
+            try realm.write {
+                let result = readSupplementLog().filter({$0.supplementName == name && $0.supplementTime == time && $0.regDate.dateFormat() == date})
+                realm.delete(result)
+            }
+        } catch {
+            print(error)
+        }
     }
 }
