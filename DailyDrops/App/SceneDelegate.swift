@@ -22,16 +22,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let tabBar = UITabBarController()
         
-        let waterVC = UINavigationController(rootViewController: CalendarViewController())
-        waterVC.tabBarItem = UITabBarItem(title: "모아보기", image: UIImage(systemName: "eyes"), selectedImage: UIImage(systemName: "eyes"))
+        let CalendarView = UINavigationController(rootViewController: CalendarViewController())
+        CalendarView.tabBarItem = UITabBarItem(title: "모아보기", image: UIImage(systemName: "eyes"), selectedImage: UIImage(systemName: "eyes"))
         
-        let supplementVC = UINavigationController(rootViewController: SupplementViewController())
-        supplementVC.tabBarItem = UITabBarItem(title: "내 영양제", image: UIImage(systemName: "pills"), selectedImage: UIImage(systemName: "pills.fill"))
-        
-        let stepVC = UINavigationController(rootViewController: StepViewController())
-        stepVC.tabBarItem = UITabBarItem(title: "걸음 수", image: UIImage(systemName: "figure.walk"), selectedImage: UIImage(systemName: "figure.walk"))
-
-        tabBar.viewControllers = [waterVC, supplementVC, stepVC]
+        tabBar.viewControllers = [CalendarView]
         window?.rootViewController = tabBar
         window?.makeKeyAndVisible()
     }

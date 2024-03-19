@@ -26,6 +26,8 @@
 		790E900C2B99A62A004DC160 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 790E900B2B99A62A004DC160 /* FirebaseCrashlytics */; };
 		790E900E2B99A62A004DC160 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 790E900D2B99A62A004DC160 /* FirebaseMessaging */; };
 		793F59702B9B814600B7FBE9 /* SupplementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793F596F2B9B814600B7FBE9 /* SupplementViewController.swift */; };
+		794296392BA945B3003A1268 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794296382BA945B3003A1268 /* CalendarViewModel.swift */; };
+		7942963B2BA99101003A1268 /* MoveNextViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7942963A2BA99101003A1268 /* MoveNextViewButton.swift */; };
 		795B21622B99AB7700DA7D7F /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795B21612B99AB7700DA7D7F /* UIColor+Extension.swift */; };
 		795B21662B99AF1900DA7D7F /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 795B21642B99AF1800DA7D7F /* Pretendard-Regular.otf */; };
 		795B21672B99AF1900DA7D7F /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 795B21652B99AF1900DA7D7F /* Pretendard-Bold.otf */; };
@@ -92,6 +94,8 @@
 		790E8FCC2B998602004DC160 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		790E90062B99A5C0004DC160 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		793F596F2B9B814600B7FBE9 /* SupplementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementViewController.swift; sourceTree = "<group>"; };
+		794296382BA945B3003A1268 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
+		7942963A2BA99101003A1268 /* MoveNextViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveNextViewButton.swift; sourceTree = "<group>"; };
 		795B21612B99AB7700DA7D7F /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		795B21642B99AF1800DA7D7F /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		795B21652B99AF1900DA7D7F /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
@@ -237,6 +241,7 @@
 				79BF77A52BA84F5B00C145E2 /* WaterCollectionViewCell.swift */,
 				79BF77A92BA8551100C145E2 /* SupplementLogCollectionViewCell.swift */,
 				79BF77AB2BA8552200C145E2 /* StepCollectionViewCell.swift */,
+				794296382BA945B3003A1268 /* CalendarViewModel.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -368,6 +373,7 @@
 				79E9BB302B9E078F003CAF0B /* TableViewFooterTextView.swift */,
 				79E9BB322B9E12C6003CAF0B /* CapsulePointBarButton.swift */,
 				79BF77942BA6A02900C145E2 /* CheckButton.swift */,
+				7942963A2BA99101003A1268 /* MoveNextViewButton.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -611,6 +617,7 @@
 				79BF77912BA4B26B00C145E2 /* Water.swift in Sources */,
 				79BF779D2BA717B100C145E2 /* TodayStepView.swift in Sources */,
 				79E9BB5C2BA074C5003CAF0B /* UIButton+Extension.swift in Sources */,
+				794296392BA945B3003A1268 /* CalendarViewModel.swift in Sources */,
 				795B21822B9AEA7700DA7D7F /* Supplement.swift in Sources */,
 				795B21802B9ADF2F00DA7D7F /* SupplementDTO.swift in Sources */,
 				795B21752B99C95800DA7D7F /* BaseCollectionViewCell.swift in Sources */,
@@ -625,6 +632,7 @@
 				79E9BB3C2B9ECE95003CAF0B /* RealmGoal.swift in Sources */,
 				79A172422B9CBE53003AB10F /* Identifier.swift in Sources */,
 				79BF77992BA7158200C145E2 /* StepViewModel.swift in Sources */,
+				7942963B2BA99101003A1268 /* MoveNextViewButton.swift in Sources */,
 				795B21882B9B0CB000DA7D7F /* WaterViewController.swift in Sources */,
 				79BF77882BA2D2ED00C145E2 /* Toast+Extension.swift in Sources */,
 				79BF77932BA4B27B00C145E2 /* MySupplement.swift in Sources */,
