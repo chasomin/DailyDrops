@@ -32,7 +32,7 @@ class HealthManager {
         }
     }
     
-    func getMonthStepCount(completion: @escaping ([Double]) -> Void) {
+    func getMonthStepCount(completion: @escaping ([Double]?, Error?) -> Void) {
         guard let stepQuantityType = HKQuantityType.quantityType(forIdentifier: .stepCount) else {
             return
         }
@@ -48,6 +48,7 @@ class HealthManager {
             if let error {
                 //TODO: Toast
                 print("걸음 수 쿼리 실패: \(error.localizedDescription)")
+                completion(nil, error)
             } else {
                 guard let results = results else {
                     return
@@ -61,14 +62,14 @@ class HealthManager {
                         stepsDataList.append(0)
                     }
                 }
-                completion(stepsDataList)
+                completion(stepsDataList, nil)
             }
         }
         healthStore.execute(query)
     }
 
     
-    func getWeekStepCount(completion: @escaping ([Double]) -> Void) {
+    func getWeekStepCount(completion: @escaping ([Double]?, Error?) -> Void) {
         guard let stepQuantityType = HKQuantityType.quantityType(forIdentifier: .stepCount) else {
             return
         }
@@ -84,6 +85,7 @@ class HealthManager {
             if let error {
                 //TODO: Toast
                 print("걸음 수 쿼리 실패: \(error.localizedDescription)")
+                completion(nil, error)
             } else {
                 guard let results = results else {
                     return
@@ -97,13 +99,13 @@ class HealthManager {
                         stepsDataList.append(0)
                     }
                 }
-                completion(stepsDataList)
+                completion(stepsDataList.dropLast(), nil)
             }
         }
         healthStore.execute(query)
     }
     
-    func getOneDayStepCount(today: Date, completion: @escaping (Double) -> Void) {
+    func getOneDayStepCount(today: Date, completion: @escaping (Double?, Error?) -> Void) {
         guard let stepQuantityType = HKQuantityType.quantityType(forIdentifier: .stepCount) else {
             return
         }
@@ -117,16 +119,17 @@ class HealthManager {
                 print(error.debugDescription)
                 print("fail")
                 // TODO: Toast
+                completion(nil, error)
                 return
             }
             DispatchQueue.main.async {
-                completion(sum.doubleValue(for: HKUnit.count()))
+                completion(sum.doubleValue(for: HKUnit.count()), nil)
             }
         }
         healthStore.execute(query)
     }
     
-    func getOneDayHourlyStepCount(completion: @escaping ([Double]) -> Void) {
+    func getOneDayHourlyStepCount(completion: @escaping ([Double]?, Error?) -> Void) {
         guard let stepQuantityType = HKQuantityType.quantityType(forIdentifier: .stepCount) else {
             return
         }
@@ -142,6 +145,7 @@ class HealthManager {
             if let error {
                 //TODO: Toast
                 print("걸음 수 쿼리 실패: \(error.localizedDescription)")
+                completion(nil, error)
             } else {
                 guard let results = results else {
                     return
@@ -156,7 +160,7 @@ class HealthManager {
                         stepsDataList.append(0)
                     }
                 }
-                completion(stepsDataList)
+                completion(stepsDataList.dropLast(), nil)
             }
         }
         healthStore.execute(query)
