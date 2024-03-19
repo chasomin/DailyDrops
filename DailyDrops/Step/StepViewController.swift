@@ -11,9 +11,9 @@ import SnapKit
 final class StepViewController: BaseViewController {
     let viewModel = StepViewModel()
     let dateSegment = UISegmentedControl()
-    lazy var todayChartView = TodayStepView(steps: viewModel.outputTodaySteps.value, frame: .zero)
-    lazy var weekChartView = WeekStepView(steps: viewModel.outputWeekSteps.value, frame: .zero)
-    lazy var monthChartView = MonthStepView(steps: viewModel.outputMonthSteps.value, frame: .zero)
+    let todayChartView = TodayStepView()
+    lazy var weekChartView = WeekStepView()
+    lazy var monthChartView = MonthStepView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,11 +22,6 @@ final class StepViewController: BaseViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
     }
         
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        viewModel.inputViewWillAppear.value = ()
-    }
-    
     override func configureHierarchy() {
         view.addSubview(dateSegment)
         view.addSubview(todayChartView)
@@ -62,6 +57,8 @@ final class StepViewController: BaseViewController {
     }
     
     private func bindData() {
+        viewModel.inputViewDidLoad.value = ()
+        
         viewModel.outputSegmentChanged.bind { [weak self] value in
             guard let self else { return }
             switch value {
@@ -82,19 +79,26 @@ final class StepViewController: BaseViewController {
             }
         }
         
-        viewModel.outputWeekSteps.bind { [weak self] value in
-            guard let self else { return }
-            weekChartView.steps = viewModel.outputWeekSteps.value
-        }
-        
-        viewModel.outputMonthSteps.bind { [weak self] value in
-            guard let self else { return }
-            monthChartView.steps = viewModel.outputWeekSteps.value
-        }
-        
         viewModel.outputTodaySteps.bind { [weak self] value in
             guard let self else { return }
-            todayChartView.steps = viewModel.outputTodaySteps.value
+            DispatchQueue.main.async {
+                self.todayChartView.setDataCount(value, range: UInt32(10000))
+            }
+        }
+        
+        viewModel.outputWeekSteps.bind { [weak self] value in
+            guard let self else { return }
+            DispatchQueue.main.async {
+                self.weekChartView.setDataCount(value, range: UInt32(10000))
+            }
+        }
+
+        viewModel.outputMonthSteps.bind { [weak self] value in
+            guard let self else { return }
+            DispatchQueue.main.async {
+                self.monthChartView.setDataCount(value, range: UInt32(10000))
+            }
+
         }
     }
 }

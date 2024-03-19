@@ -11,20 +11,9 @@ import DGCharts
 
 final class MonthStepView: BaseView {
     let chartView = BarChartView()
-    var steps: [Double]
-    
-    init(steps: [Double], frame: CGRect) {
-        self.steps = steps
-        super.init(frame: frame)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     override func configureHierarchy() {
         addSubview(chartView)
-
     }
     
     override func configureLayout() {
@@ -32,15 +21,10 @@ final class MonthStepView: BaseView {
             make.edges.equalTo(safeAreaLayoutGuide)
         }
     }
-    
-    override func configureView() {
-        setDataCount(steps.count, range: UInt32(10000))
-    }
 
-    func setDataCount(_ count: Int, range: UInt32) {
-        let yVals = (0..<count).map { (i) -> BarChartDataEntry in
-            let data = steps
-            return BarChartDataEntry(x: Double(i), y: Double(data[i]))
+    func setDataCount(_ value: [Double], range: UInt32) {
+        let yVals = (0..<value.count).map { (i) -> BarChartDataEntry in
+            return BarChartDataEntry(x: Double(i), y: Double(value[i]))
         }
         
         var set1: BarChartDataSet! = nil

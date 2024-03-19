@@ -7,9 +7,9 @@
 
 import Foundation
 
-final class StepViewModel {
+final class StepViewModel {    
+    let inputViewDidLoad: Observable<Void?> = Observable(nil)
     let inputSegmentChanged: Observable<Int?> = Observable(nil)
-    let inputViewWillAppear: Observable<Void?> = Observable(nil)
     
     let outputSegmentChanged:  Observable<Int> = Observable(0)
     let outputWeekSteps: Observable<[Double]> = Observable([])
@@ -24,33 +24,28 @@ final class StepViewModel {
             outputSegmentChanged.value = value
         }
         
-        inputViewWillAppear.bind { [weak self] _ in
+        inputViewDidLoad.bind { [weak self] _ in
             guard let self else { return }
             HealthManager.shared.getWeekStepCount { value, error  in
-                if let error {
-                    //TODO: ERROR
-                } else {
+                guard let error else {
                     guard let value else { return }
                     self.outputWeekSteps.value = value
+                    return
                 }
             }
             HealthManager.shared.getMonthStepCount { value, error in
-                if let error {
-                    
-                } else {
+                guard let error else {
                     guard let value else { return }
                     self.outputMonthSteps.value = value
+                    return
                 }
-
             }
             HealthManager.shared.getOneDayHourlyStepCount { value, error in
-                if let error {
-                    
-                } else {
+                guard let error else {
                     guard let value else { return }
                     self.outputTodaySteps.value = value
+                    return
                 }
-
             }
         }
     }
