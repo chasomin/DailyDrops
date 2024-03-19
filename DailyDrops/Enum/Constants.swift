@@ -46,4 +46,10 @@ enum Constants {
         case second
         case third
     }
+    
+    enum Topic: String, CaseIterable {
+        case water = "물 마시기"
+        case supplement = "영양제"
+        case step = "걸음 수"
+    }
 }
