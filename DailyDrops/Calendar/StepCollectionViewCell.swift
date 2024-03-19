@@ -13,17 +13,19 @@ class StepCollectionViewCell: BaseCollectionViewCell {
     let statusLabel = UILabel()
     let progressBar = UIProgressView()
     let descriptionLabel = UILabel()
-    
+    let stepDetailMoveButton = MoveNextViewButton(kind: Constants.Topic.step, frame: .zero)
+
     override func configureHierarchy() {
         contentView.addSubview(stepsTitle)
         contentView.addSubview(statusLabel)
         contentView.addSubview(progressBar)
         contentView.addSubview(descriptionLabel)
+        contentView.addSubview(stepDetailMoveButton)
     }
     
     override func configureLayout() {
         stepsTitle.snp.makeConstraints { make in
-            make.top.horizontalEdges.equalTo(contentView).inset(15)
+            make.top.leading.equalTo(contentView).inset(15)
         }
         statusLabel.snp.makeConstraints { make in
             make.top.equalTo(stepsTitle.snp.bottom).offset(5)
@@ -39,17 +41,32 @@ class StepCollectionViewCell: BaseCollectionViewCell {
             make.horizontalEdges.equalTo(contentView).inset(15)
             make.bottom.equalTo(contentView).inset(15)
         }
+        stepDetailMoveButton.snp.makeConstraints { make in
+            make.top.trailing.equalTo(contentView).inset(15)
+            make.leading.equalTo(stepsTitle.snp.trailing).offset(10)
+            make.height.equalTo(stepsTitle)
+            make.width.equalTo(stepDetailMoveButton.snp.height)
+        }
     }
     
     override func configureView() {
-        stepsTitle.text = "걸음 수"
+        stepsTitle.text = Constants.Topic.step.rawValue
         stepsTitle.font = .boldTitle
-        statusLabel.text = "4049 걸음"
+        
         statusLabel.font = .title
-        descriptionLabel.text = "어제보다 900 걸음 덜 걸었어요"
+//        descriptionLabel.text = "어제보다 900 걸음 덜 걸었어요"
         descriptionLabel.font = .body
         progressBar.tintColor = .pointColor
-        progressBar.progress = 0.4
-        
+    }
+    
+    func configureCell(text: String, value: Float, selectedDate: Date?) {
+        guard let selectedDate else { return }
+        statusLabel.text = text
+        progressBar.progress = value
+        if selectedDate.dateFormat() == Date().dateFormat() {
+            stepDetailMoveButton.isHidden = false
+        } else {
+            stepDetailMoveButton.isHidden = true
+        }
     }
 }

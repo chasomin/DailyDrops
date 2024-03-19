@@ -13,17 +13,19 @@ class SupplementLogCollectionViewCell: BaseCollectionViewCell {
     let statusLabel = UILabel()
     let progressBar = UIProgressView()
     let nextNotificationLabel = UILabel()
+    let supplementDetailMoveButton = MoveNextViewButton(kind: Constants.Topic.supplement, frame: .zero)
     
     override func configureHierarchy() {
         contentView.addSubview(supplementTitle)
         contentView.addSubview(statusLabel)
         contentView.addSubview(progressBar)
         contentView.addSubview(nextNotificationLabel)
+        contentView.addSubview(supplementDetailMoveButton)
     }
     
     override func configureLayout() {
         supplementTitle.snp.makeConstraints { make in
-            make.top.horizontalEdges.equalTo(contentView).inset(15)
+            make.top.leading.equalTo(contentView).inset(15)
         }
         statusLabel.snp.makeConstraints { make in
             make.top.equalTo(supplementTitle.snp.bottom).offset(5)
@@ -39,17 +41,32 @@ class SupplementLogCollectionViewCell: BaseCollectionViewCell {
             make.horizontalEdges.equalTo(contentView).inset(15)
             make.bottom.equalTo(contentView).inset(15)
         }
+        supplementDetailMoveButton.snp.makeConstraints { make in
+            make.top.trailing.equalTo(contentView).inset(15)
+            make.leading.equalTo(supplementTitle.snp.trailing).offset(10)
+            make.height.equalTo(supplementTitle)
+            make.width.equalTo(supplementDetailMoveButton.snp.height)
+        }
     }
     
     override func configureView() {
-        supplementTitle.text = "영양제"
+        supplementTitle.text = Constants.Topic.supplement.rawValue
         supplementTitle.font = .boldTitle
-        statusLabel.text = "2개 남았어요"
         statusLabel.font = .title
-        nextNotificationLabel.text = "다음 알림 오후 9시"
+//        nextNotificationLabel.text = "다음 알림 오후 9시"
         nextNotificationLabel.font = .body
-        progressBar.tintColor = .pointColor
-        progressBar.progress = 0.5
+        progressBar.tintColor = .pointColor        
+    }
+    
+    func configureCell(text: String, value: Float, selectedDate: Date?) {
+        guard let selectedDate else { return }
+        statusLabel.text = text
+        progressBar.progress = value
         
+        if selectedDate.dateFormat() == Date().dateFormat() {
+            supplementDetailMoveButton.isHidden = false
+        } else {
+            supplementDetailMoveButton.isHidden = true
+        }
     }
 }
