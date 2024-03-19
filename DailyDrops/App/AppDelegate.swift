@@ -45,11 +45,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         style.messageColor = .pointColor
         style.backgroundColor = .titleColor
         style.messageFont = .boldBody
-        style.verticalPadding = 10
-        style.horizontalPadding = 15
+        style.verticalPadding = 15
+        style.horizontalPadding = 20
         style.cornerRadius = 15
         ToastManager.shared.style = style
-        ToastManager.shared.position = .top
     }
 
     private func setGlobalFont() {
