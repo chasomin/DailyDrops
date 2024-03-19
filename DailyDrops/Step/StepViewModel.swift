@@ -26,14 +26,31 @@ final class StepViewModel {
         
         inputViewWillAppear.bind { [weak self] _ in
             guard let self else { return }
-            HealthManager.shared.getWeekStepCount { value in
-                self.outputWeekSteps.value = value
+            HealthManager.shared.getWeekStepCount { value, error  in
+                if let error {
+                    //TODO: ERROR
+                } else {
+                    guard let value else { return }
+                    self.outputWeekSteps.value = value
+                }
             }
-            HealthManager.shared.getMonthStepCount { value in
-                self.outputMonthSteps.value = value
+            HealthManager.shared.getMonthStepCount { value, error in
+                if let error {
+                    
+                } else {
+                    guard let value else { return }
+                    self.outputMonthSteps.value = value
+                }
+
             }
-            HealthManager.shared.getOneDayHourlyStepCount { value in
-                self.outputTodaySteps.value = value
+            HealthManager.shared.getOneDayHourlyStepCount { value, error in
+                if let error {
+                    
+                } else {
+                    guard let value else { return }
+                    self.outputTodaySteps.value = value
+                }
+
             }
         }
     }
