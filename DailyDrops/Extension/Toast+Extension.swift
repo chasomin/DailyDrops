@@ -9,7 +9,8 @@ import UIKit
 import Toast
 
 extension UIViewController {
-    func showToast(_ message: String) {
-        view.makeToast(message, duration: 2)
+    func showToast(_ message: String, position: ToastPosition) {
+        view.makeToast(message, duration: 2, position: position)
+
     }
 }
