@@ -220,7 +220,7 @@ final class SettingNotificationViewController: BaseViewController {
         
         viewModel.outputFailSave.bind { [weak self] value in
             guard let self, let value else { return }
-            showToast(value)
+            showToast(value, position: .top)
         }
     }
 }
