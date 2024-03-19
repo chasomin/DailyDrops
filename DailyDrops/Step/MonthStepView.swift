@@ -34,7 +34,7 @@ final class MonthStepView: BaseView {
     }
     
     override func configureView() {
-        setDataCount(steps.count-1, range: UInt32(10000))
+        setDataCount(steps.count, range: UInt32(10000))
     }
 
     func setDataCount(_ count: Int, range: UInt32) {
