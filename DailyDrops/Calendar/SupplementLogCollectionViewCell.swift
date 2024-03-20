@@ -55,7 +55,9 @@ class SupplementLogCollectionViewCell: BaseCollectionViewCell {
         statusLabel.font = .title
 //        nextNotificationLabel.text = "다음 알림 오후 9시"
         nextNotificationLabel.font = .body
-        progressBar.tintColor = .pointColor        
+        progressBar.tintColor = .pointColor
+        progressBar.clipsToBounds = true
+        progressBar.layer.cornerRadius = 10
     }
     
     func configureCell(text: String, value: Float, selectedDate: Date?) {

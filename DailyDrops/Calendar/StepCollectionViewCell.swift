@@ -57,6 +57,8 @@ class StepCollectionViewCell: BaseCollectionViewCell {
 //        descriptionLabel.text = "어제보다 900 걸음 덜 걸었어요"
         descriptionLabel.font = .body
         progressBar.tintColor = .pointColor
+        progressBar.clipsToBounds = true
+        progressBar.layer.cornerRadius = 10
     }
     
     func configureCell(text: String, value: Float, selectedDate: Date?) {
