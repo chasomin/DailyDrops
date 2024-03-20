@@ -20,7 +20,7 @@ enum Constants {
             case .Water(let goal):
                 return "물 \(goal)잔 마시기"
             case .MySupplement:
-                return "내 영양제 관리"
+                return "오늘의 영양제"
             case .SetNotification:
                 return "알림 설정"
             case .SearchSupplement:
