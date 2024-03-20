@@ -23,6 +23,7 @@ final class SupplementCollectionViewCell: BaseCollectionViewCell {
         }
         
         checkButton.snp.makeConstraints { make in
+            make.leading.equalTo(nameLabel.snp.trailing).offset(10)
             make.verticalEdges.trailing.equalTo(contentView.safeAreaLayoutGuide).inset(10)
             make.width.equalTo(checkButton.snp.height)
         }
