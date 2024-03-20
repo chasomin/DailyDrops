@@ -119,11 +119,17 @@ extension CalendarViewController {
     @objc func moveButtonTapped(_ sender: MoveNextViewButton) {
         switch sender.kind {
         case .water:
-            navigationController?.pushViewController(WaterViewController(), animated: true)
+            let vc = WaterViewController()
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
         case .supplement:
-            navigationController?.pushViewController(SupplementViewController(), animated: true)
+            let vc = SupplementViewController()
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
         case .step:
-            navigationController?.pushViewController(StepViewController(), animated: true)
+            let vc = StepViewController()
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
         }
     }
 }
@@ -164,7 +170,7 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
             calendar.select(Date())
             viewModel.inputSelectDate.value = Date()
         } else {
-            viewModel.inputSelectDate.value = date
+            viewModel.inputSelectDate.value = date.dateWithMidnight()
         }
     }
 }
