@@ -8,6 +8,8 @@
 import UIKit
 
 extension UIFont {
+    static let bigBoldTitle = UIFont(name: "Pretendard-Bold", size: 50) ?? UIFont()
+    
     static let largeBoldTitle = UIFont(name: "Pretendard-Bold", size: 34) ?? UIFont()
     
     static let boldTitle = UIFont(name: "Pretendard-Bold", size: 20) ?? UIFont()
