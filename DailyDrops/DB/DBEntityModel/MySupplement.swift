@@ -10,6 +10,8 @@ import RealmSwift
 
 struct MySupplement {
 
+    let id: UUID
+    let regDate: Date
     let name: String
     let days: [Int]
     let times: [Date]
