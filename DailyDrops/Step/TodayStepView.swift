@@ -45,6 +45,12 @@ class TodayStepView: BaseView {
             chartView.doubleTapToZoomEnabled = false
             chartView.leftAxis.enabled = false
             chartView.legend.enabled = false
+            chartView.leftAxis.axisMinimum = 0
+            chartView.rightAxis.axisMinimum = 0
+            chartView.scaleYEnabled = false
+            chartView.scaleXEnabled = false
+            let marker = BalloonMarker(color: .black, font: .callout, textColor: .pointColor, insets: .zero)
+            chartView.marker = marker
         }
     }
 }
