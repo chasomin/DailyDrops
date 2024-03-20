@@ -18,7 +18,7 @@ enum Constants {
         var title: String {
             switch self {
             case .Water(let goal):
-                return "목표! \(goal)잔 마시기"
+                return "물 \(goal)잔 마시기"
             case .MySupplement:
                 return "내 영양제 관리"
             case .SetNotification:
@@ -26,7 +26,7 @@ enum Constants {
             case .SearchSupplement:
                 return "영양제 검색"
             case .Step(let goal):
-                return "목표! \(goal)걸음"
+                return "\(goal)걸음 걷기"
             }
         }
     }
