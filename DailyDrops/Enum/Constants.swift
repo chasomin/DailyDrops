@@ -52,4 +52,11 @@ enum Constants {
         case supplement = "영양제"
         case step = "걸음 수"
     }
+    
+    enum Setting: String, CaseIterable {
+        case waterGoal = "물 마시기 목표 설정"
+        case stepGoal = "걸음 수 목표 설정"
+        case supplement = "영양제 관리"
+        case notification = "알림 설정"
+    }
 }
