@@ -20,18 +20,5 @@ final class RealmSupplementLog: Object {
         self.supplementName = supplementName
         self.supplementTime = supplementTime
     }
-    
-    func toEntity() -> SupplementLog {
-        return SupplementLog(regDate: regDate, name: supplementName, time: supplementTime)
-    }
 }
 
-struct SupplementLog {
-    let regDate: Date
-    let name: String
-    let time: String
-    
-    func toDTO() -> RealmSupplementLog {
-        return RealmSupplementLog(supplementName: name, supplementTime: time)
-    }
-}
