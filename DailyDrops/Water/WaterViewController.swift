@@ -14,7 +14,7 @@ final class WaterViewController: BaseViewController {
     private let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
     private lazy var window = windowScene?.windows.first
     private lazy var safeTop = window?.safeAreaInsets.top ?? 0 + (self.navigationController?.navigationBar.frame.height ?? 0)   // safeArea + Navigation
-    private lazy var waveView = WaveAnimationView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - safeTop ), frontColor: .white, backColor: .systemTeal)
+    private lazy var waveView = WaveAnimationView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - safeTop ), frontColor: .backgroundColor, backColor: .pointColor)
     private let countLabel = UILabel()
     private let plusButton = CapsulePointButton(frame: .zero, text: "+ 한 잔")
     private let minusButton = CapsulePointButton(frame: .zero, text: "- 한 잔")
