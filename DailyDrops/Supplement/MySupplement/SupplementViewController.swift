@@ -39,7 +39,6 @@ final class SupplementViewController: BaseViewController {
         viewModel.outputSetNavigation.bind { [weak self] _ in
             guard let self else { return }
             navigationItem.title = Constants.NavigationTitle.MySupplement.title
-            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(plusButtonTapped))
             navigationController?.navigationBar.prefersLargeTitles = false
         }
         viewModel.outputSupplementData.bind { [weak self] value in
@@ -81,11 +80,6 @@ final class SupplementViewController: BaseViewController {
 
 
 extension SupplementViewController {
-    @objc func plusButtonTapped() {
-        let vc = SettingNotificationViewController()
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
     @objc func checkButtonTapped(_ sender: CheckButton) {
         guard let section = dataSource.snapshot().sectionIdentifier(containingItem: sender.item) else { return }
         viewModel.inputCheckButtonTapped.value = (section: section, supplement: sender.item.name)
