@@ -182,7 +182,7 @@ final class SettingNotificationViewController: BaseViewController {
         }
         
         viewModel.outputSegmentTapped.bind { [weak self] value in
-            guard let self, let value else { return }
+            guard let self else { return }
             if value == Constants.AlarmRepeatCount.first.rawValue {
                 firstHStack.isHidden = false
                 secondHStack.isHidden = true
@@ -242,7 +242,7 @@ extension SettingNotificationViewController {
         guard let name = nameTextField.text else { return }
         let days: [Int] = viewModel.outputWeekButtonTapped.value
         let times: [Date] = [firstDatepicker.date, secondDatePicker.date, thirdDatePicker.date]
-        viewModel.inputSaveButtonTapped.value = MySupplement(name: name, days: days, times: times)
+        viewModel.inputSaveButtonTapped.value = MySupplement(id: UUID(), regDate: Date(), name: name, days: days, times: times)
     }
 }
 
