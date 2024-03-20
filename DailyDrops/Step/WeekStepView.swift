@@ -37,6 +37,7 @@ final class WeekStepView: BaseView {
             set1 = BarChartDataSet(entries: yVals)
             set1.colors = [.systemTeal]
             set1.drawValuesEnabled = false
+            set1.highlightColor = .pointColor
             
             let data = BarChartData(dataSet: set1)
             data.barWidth = 0.9
@@ -49,9 +50,42 @@ final class WeekStepView: BaseView {
             chartView.rightAxis.axisMinimum = 0
             chartView.scaleYEnabled = false
             chartView.scaleXEnabled = false
-            let marker = BalloonMarker(color: .black, font: .callout, textColor: .pointColor, insets: .zero)
+            
+            let marker = ChartMarker(frame: CGRect(x: 0, y: 0, width: 50, height: 24))
             chartView.marker = marker
         }
+    }
+}
+
+class ChartMarker: MarkerView {
+    let label = UILabel()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        self.offset.x = -self.frame.size.width / 2.0
+        self.offset.y = -self.frame.size.height - 10
+
+        addSubview(label)
+        label.snp.makeConstraints { make in
+            make.edges.equalTo(self)
+        }
+        
+        label.backgroundColor = .secondaryColor
+        label.layer.cornerRadius = 12
+        label.clipsToBounds = true
+        label.textAlignment = .center
+        label.font = .boldCallout
+        label.textColor = .titleColor
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    public override func refreshContent(entry: ChartDataEntry, highlight: Highlight) {
+        label.text = "\(Int(round(entry.y)))"
+        layoutIfNeeded()
     }
 }
 
@@ -139,7 +173,6 @@ class BalloonMarker: MarkerImage {
         rect.origin.y -= size.height
         
         context.saveGState()
-
         context.setFillColor(color.cgColor)
 
         if offset.y > 0 {

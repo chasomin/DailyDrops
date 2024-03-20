@@ -37,7 +37,8 @@ class TodayStepView: BaseView {
             set1 = BarChartDataSet(entries: yVals)
             set1.colors = [.systemTeal]
             set1.drawValuesEnabled = false
-            
+            set1.highlightColor = .pointColor
+
             let data = BarChartData(dataSet: set1)
             data.barWidth = 0.9
             
@@ -49,7 +50,7 @@ class TodayStepView: BaseView {
             chartView.rightAxis.axisMinimum = 0
             chartView.scaleYEnabled = false
             chartView.scaleXEnabled = false
-            let marker = BalloonMarker(color: .black, font: .callout, textColor: .pointColor, insets: .zero)
+            let marker = ChartMarker(frame: CGRect(x: 0, y: 0, width: 50, height: 24))
             chartView.marker = marker
         }
     }
