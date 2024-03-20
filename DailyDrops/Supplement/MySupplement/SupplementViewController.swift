@@ -36,14 +36,11 @@ final class SupplementViewController: BaseViewController {
     func bindData() {
         viewModel.inputViewDidLoad.value = ()
         
-        viewModel.outputViewDidLoad.bind { [weak self] _ in
-            guard let self else { return }
-        }
-        
         viewModel.outputSetNavigation.bind { [weak self] _ in
             guard let self else { return }
             navigationItem.title = Constants.NavigationTitle.MySupplement.title
             navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(plusButtonTapped))
+            navigationController?.navigationBar.prefersLargeTitles = false
         }
         viewModel.outputSupplementData.bind { [weak self] value in
             guard let self, let value else { return }
@@ -105,11 +102,11 @@ extension SupplementViewController {
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
 
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 30, trailing: 10)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 15, bottom: 20, trailing: 15)
         
         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                 heightDimension: .estimated(44))
-        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: HeaderSupplementaryView.id, alignment: .top)
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: HeaderSupplementaryView.id, alignment: .topLeading)
         section.boundarySupplementaryItems = [sectionHeader]
         
         return UICollectionViewCompositionalLayout(section: section)
