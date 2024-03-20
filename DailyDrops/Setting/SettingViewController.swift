@@ -43,6 +43,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "setting")
         cell.accessoryType = .disclosureIndicator
+        cell.selectionStyle = .none
         var config = UIListContentConfiguration.cell()
         switch indexPath.row {
         case 0:
@@ -64,13 +65,21 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            navigationController?.pushViewController(WaterGoalSettingViewController(), animated: true)
+            let vc = WaterGoalSettingViewController()
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
         case 1:
-            navigationController?.pushViewController(StepGoalSettingViewController(), animated: true)
+            let vc = StepGoalSettingViewController()
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
         case 2:
-            navigationController?.pushViewController(WaterGoalSettingViewController(), animated: true)
+            let vc = SupplementSettingViewController()
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
         case 3:
-            navigationController?.pushViewController(WaterGoalSettingViewController(), animated: true)
+            let vc = WaterGoalSettingViewController()
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
         default:
             break
         }
