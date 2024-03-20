@@ -26,7 +26,7 @@ final class WaterViewModel {
     private func transform() {
         inputViewDidLoad.bind { [weak self] _ in
             guard let self else { return }
-            outputViewDidLoad.value = (repository.readWaterByDate(date: Date()), repository.readGoalCups())
+            outputViewDidLoad.value = (repository.readWaterByDate(date: Date()), repository.readGoalCups(date: Date()))
             if checkCompletion() {
                 outputLabelHidden.value = true
             } else {
@@ -43,10 +43,10 @@ final class WaterViewModel {
                     guard let self else { return }
                     if checkCompletion() {
                         outputLabelHidden.value = true
-                        outputData.value = (repository.readWaterByDate(date: Date()), repository.readGoalCups())
+                        outputData.value = (repository.readWaterByDate(date: Date()), repository.readGoalCups(date: Date()))
                     } else {
                         outputLabelHidden.value = false
-                        outputData.value = (repository.readWaterByDate(date: Date()), repository.readGoalCups())
+                        outputData.value = (repository.readWaterByDate(date: Date()), repository.readGoalCups(date: Date()))
                     }
                 }
 
@@ -58,7 +58,7 @@ final class WaterViewModel {
             outputLabelHidden.value = false
             if repository.readWaterByDate(date: Date()) > 0 {
                 repository.createItem(RealmWater(drinkWater: -1.0), completion: nil)
-                outputData.value = (repository.readWaterByDate(date: Date()), repository.readGoalCups())
+                outputData.value = (repository.readWaterByDate(date: Date()), repository.readGoalCups(date: Date()))
             }
         }
         
@@ -74,7 +74,7 @@ final class WaterViewModel {
     }
     
     func checkCompletion() -> Bool {
-        if repository.readWaterByDate(date: Date()) == repository.readGoalCups() {
+        if repository.readWaterByDate(date: Date()) == repository.readGoalCups(date: Date()) {
             return true
         } else {
             return false

@@ -30,7 +30,7 @@ final class StepViewModel {
         inputViewDidLoad.bind { [weak self] _ in
             guard let self else { return }
             
-            outputGoal.value = repository.readGoalSteps()
+            outputGoal.value = repository.readGoalSteps(date: Date())
             
             HealthManager.shared.getWeekStepCount { value, error  in
                 guard let error else {
