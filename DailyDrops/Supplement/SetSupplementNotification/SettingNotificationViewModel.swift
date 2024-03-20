@@ -17,7 +17,7 @@ final class SettingNotificationViewModel {
     let inputSaveButtonTapped: Observable<MySupplement?> = Observable(nil)
     
     let outputWeekButtonTapped:  Observable<[Int]> = Observable([])
-    let outputSegmentTapped: Observable<Int?> = Observable(nil)
+    let outputSegmentTapped: Observable<Int> = Observable(0)
     let outputSetNavigation: Observable<Void?> = Observable(nil)
     let outputSearchButtonTapped: Observable<Void?> = Observable(nil)
     let outputSaveButtonTapped: Observable<Void?> = Observable(nil)
@@ -57,20 +57,18 @@ final class SettingNotificationViewModel {
         }
     }
     
-    func checkSaveData(_ value:  MySupplement) {
-        if value.name.isEmpty || value.days.isEmpty {
+    func checkSaveData(_ value: MySupplement) {
+        guard !value.name.isEmpty && !value.days.isEmpty else {
             outputFailSave.value = "모든 항목을 입력해주세요!"
-        } else {
-            var time: [Date] = []
-            if outputSegmentTapped.value == 0 {
-                time = [value.times[0]]
-            } else if outputSegmentTapped.value == 1 {
-                time = [value.times[0], value.times[1]].sorted()
-            } else {
-                time = value.times.sorted()
-            }
-            repository.createItem(MySupplement(name: value.name, days: value.days, times: time).toDTO(), completion: nil)
-            outputSaveButtonTapped.value = ()
+            return
         }
+        
+        var time: [Date] = []
+        
+        time = value.times[...outputSegmentTapped.value].map { $0 }.sorted()
+        
+        repository.createItem(MySupplement(id: value.id, regDate: Date(), name: value.name, days: value.days.sorted(), times: time).toDTO(), completion: nil)
+        outputSaveButtonTapped.value = ()
+        
     }
 }
