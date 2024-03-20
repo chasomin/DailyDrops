@@ -49,6 +49,7 @@
 		798BFFC12BAABB1300F34FD9 /* StepGoalSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798BFFC02BAABB1300F34FD9 /* StepGoalSettingViewController.swift */; };
 		798BFFC32BAAC1B600F34FD9 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798BFFC22BAAC1B600F34FD9 /* SettingViewModel.swift */; };
 		798BFFC52BAAD04400F34FD9 /* SupplementSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798BFFC42BAAD04400F34FD9 /* SupplementSettingViewController.swift */; };
+		798BFFC72BAAD50C00F34FD9 /* SupplementSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798BFFC62BAAD50C00F34FD9 /* SupplementSettingTableViewCell.swift */; };
 		79A1723E2B9CBCFA003AB10F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A1723D2B9CBCFA003AB10F /* SearchViewController.swift */; };
 		79A172402B9CBE2F003AB10F /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A1723F2B9CBE2F003AB10F /* SearchTableViewCell.swift */; };
 		79A172422B9CBE53003AB10F /* Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A172412B9CBE53003AB10F /* Identifier.swift */; };
@@ -123,6 +124,7 @@
 		798BFFC02BAABB1300F34FD9 /* StepGoalSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepGoalSettingViewController.swift; sourceTree = "<group>"; };
 		798BFFC22BAAC1B600F34FD9 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		798BFFC42BAAD04400F34FD9 /* SupplementSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementSettingViewController.swift; sourceTree = "<group>"; };
+		798BFFC62BAAD50C00F34FD9 /* SupplementSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementSettingTableViewCell.swift; sourceTree = "<group>"; };
 		79A1723D2B9CBCFA003AB10F /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		79A1723F2B9CBE2F003AB10F /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		79A172412B9CBE53003AB10F /* Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifier.swift; sourceTree = "<group>"; };
@@ -365,6 +367,7 @@
 				798BFFBE2BAAB24700F34FD9 /* WaterGoalSettingViewController.swift */,
 				798BFFC02BAABB1300F34FD9 /* StepGoalSettingViewController.swift */,
 				798BFFC42BAAD04400F34FD9 /* SupplementSettingViewController.swift */,
+				798BFFC62BAAD50C00F34FD9 /* SupplementSettingTableViewCell.swift */,
 				798BFFC22BAAC1B600F34FD9 /* SettingViewModel.swift */,
 			);
 			path = Setting;
@@ -670,6 +673,7 @@
 				79863D5B2B9C2BCE00EFA3B3 /* SettingNotificationViewController.swift in Sources */,
 				798BFFBD2BAAAC0B00F34FD9 /* SettingViewController.swift in Sources */,
 				79BF779F2BA7180600C145E2 /* WeekStepView.swift in Sources */,
+				798BFFC72BAAD50C00F34FD9 /* SupplementSettingTableViewCell.swift in Sources */,
 				79BF77AC2BA8552200C145E2 /* StepCollectionViewCell.swift in Sources */,
 				79E9BB6A2BA1971B003CAF0B /* SupplementCollectionViewCell.swift in Sources */,
 				79E9BB682BA17BB3003CAF0B /* RealmSupplementLog.swift in Sources */,

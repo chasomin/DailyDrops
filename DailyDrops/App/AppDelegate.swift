@@ -61,8 +61,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont.callout], for: .normal)
         UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont.boldCallout], for: .selected)
-
     }
-
 }
 
