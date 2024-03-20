@@ -55,7 +55,8 @@ final  class CalendarViewModel {
     }
     
     private func getLeftSupplementCount(date: Date) {
-        let goal = repository.readSupplementByDate(date: date).count
+        let supplementTimes = repository.readSupplementByDate(date: date).map{$0.times.count}
+        let goal = supplementTimes.reduce(0, +)
         let intake = repository.readSupplementLog().filter{$0.regDate.dateFormat() == date.dateFormat()}.count
         
         switch goal {
@@ -70,18 +71,22 @@ final  class CalendarViewModel {
     }
     
     private func getSteps(date: Date) {
+        let goal: Double = Double(repository.readGoalSteps())
         HealthManager.shared.getOneDayStepCount(today: date) { [weak self] value, error in
             guard let self else { return }
-            let goal: Double = Double(repository.readGoalSteps())
-            if let error {
-                print(error)
-            } else {
+            guard let error else {
                 guard let value else { return }
                 
                 outputSteps.value = "\(Int(value)) 걸음"
                 outputStepsProgress.value = Float(value/goal)
                 outputReload.value += 1
+                return
             }
+            // 12시라서 걸음수가 없다면??
+            outputSteps.value = "\(Int(0)) 걸음"
+            outputStepsProgress.value = Float(0)
+            outputReload.value += 1
+
         }
     }
     
