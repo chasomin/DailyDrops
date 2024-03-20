@@ -18,7 +18,7 @@ final class WaterGoalSettingViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        SettingViewModel.shared.inputViewDidLoad.value = .waterGoal
+        SettingViewModel.shared.inputGoalViewDidLoad.value = .waterGoal
         bindData()
     }
     
@@ -32,7 +32,7 @@ final class WaterGoalSettingViewController: BaseViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        SettingViewModel.shared.inputViewDidDisappear.value = (kind: .waterGoal, goalValue: goalLabel.text)
+        SettingViewModel.shared.inputGoalViewDidDisappear.value = (kind: .waterGoal, goalValue: goalLabel.text)
     }
     
     override func configureHierarchy() {

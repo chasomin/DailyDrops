@@ -17,7 +17,7 @@ final class StepGoalSettingViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        SettingViewModel.shared.inputViewDidLoad.value = .stepGoal
+        SettingViewModel.shared.inputGoalViewDidLoad.value = .stepGoal
         bindData()
         goalTextField.delegate = self
     }
@@ -37,7 +37,7 @@ final class StepGoalSettingViewController: BaseViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        SettingViewModel.shared.inputViewDidDisappear.value = (kind: .stepGoal, goalValue: goalTextField.text)
+        SettingViewModel.shared.inputGoalViewDidDisappear.value = (kind: .stepGoal, goalValue: goalTextField.text)
     }
 
     override func configureHierarchy() {
