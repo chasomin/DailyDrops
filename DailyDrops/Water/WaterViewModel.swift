@@ -32,7 +32,6 @@ final class WaterViewModel {
             } else {
                 outputLabelHidden.value = false
             }
-            repository.createItem(RealmGoal(waterCup: 10.0, steps: 1000), completion: nil)//test
         }
         
         inputPlusButtonTapped.bind { [weak self] value in
