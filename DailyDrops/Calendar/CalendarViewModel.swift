@@ -48,9 +48,14 @@ final  class CalendarViewModel {
     }
     
     private func getAmountOfDrinksWater(date: Date) {
-        let goal = repository.readGoalCups()
+        let goal = repository.readGoalCups(date: date)
         let drink = repository.readWaterByDate(date: date)
-        outputAmountOfDrinksWater.value = drink / goal
+        print("==", goal)
+        if goal == 0 {
+            outputAmountOfDrinksWater.value = 1
+        } else {
+            outputAmountOfDrinksWater.value = drink / goal
+        }
         outputReload.value += 1
     }
     
@@ -71,14 +76,18 @@ final  class CalendarViewModel {
     }
     
     private func getSteps(date: Date) {
-        let goal: Double = Double(repository.readGoalSteps())
+        let goal: Double = Double(repository.readGoalSteps(date: date))
         HealthManager.shared.getOneDayStepCount(today: date) { [weak self] value, error in
             guard let self else { return }
             guard let error else {
                 guard let value else { return }
-                
-                outputSteps.value = "\(Int(value)) 걸음"
-                outputStepsProgress.value = Float(value/goal)
+                if goal == 0 {
+                    outputSteps.value = "\(Int(value)) 걸음"
+                    outputStepsProgress.value = 1
+                } else {
+                    outputSteps.value = "\(Int(value)) 걸음"
+                    outputStepsProgress.value = Float(value/goal)
+                }
                 outputReload.value += 1
                 return
             }
@@ -86,7 +95,6 @@ final  class CalendarViewModel {
             outputSteps.value = "\(Int(0)) 걸음"
             outputStepsProgress.value = Float(0)
             outputReload.value += 1
-
         }
     }
     
