@@ -22,10 +22,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let tabBar = UITabBarController()
         
-        let CalendarView = UINavigationController(rootViewController: CalendarViewController())
-        CalendarView.tabBarItem = UITabBarItem(title: "모아보기", image: UIImage(systemName: "eyes"), selectedImage: UIImage(systemName: "eyes"))
-        
-        tabBar.viewControllers = [CalendarView]
+        let calendarView = UINavigationController(rootViewController: CalendarViewController())
+        calendarView.tabBarItem = UITabBarItem(title: "모아보기", image: UIImage(systemName: "eyes"), selectedImage: UIImage(systemName: "eyes"))
+        let settingView = UINavigationController(rootViewController: SettingViewController())
+        settingView.tabBarItem = UITabBarItem(title: "설정", image: UIImage(systemName: "gearshape"), selectedImage: UIImage(systemName: "gearshape.fill"))
+        tabBar.viewControllers = [calendarView, settingView]
         window?.rootViewController = tabBar
         window?.makeKeyAndVisible()
     }
