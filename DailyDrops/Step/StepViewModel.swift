@@ -8,6 +8,8 @@
 import Foundation
 
 final class StepViewModel {    
+    let repository = RealmRepository()
+    
     let inputViewDidLoad: Observable<Void?> = Observable(nil)
     let inputSegmentChanged: Observable<Int?> = Observable(nil)
     
@@ -15,6 +17,7 @@ final class StepViewModel {
     let outputWeekSteps: Observable<[Double]> = Observable([])
     let outputMonthSteps: Observable<[Double]> = Observable([])
     let outputTodaySteps: Observable<[Double]> = Observable([])
+    let outputGoal: Observable<Int?> = Observable(nil)
     
     init () { transform() }
     
@@ -26,6 +29,9 @@ final class StepViewModel {
         
         inputViewDidLoad.bind { [weak self] _ in
             guard let self else { return }
+            
+            outputGoal.value = repository.readGoalSteps()
+            
             HealthManager.shared.getWeekStepCount { value, error  in
                 guard let error else {
                     guard let value else { return }

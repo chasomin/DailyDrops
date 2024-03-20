@@ -18,7 +18,6 @@ final class StepViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bindData()
-        navigationItem.title = Constants.NavigationTitle.Step(goal: 10000).title //test
         navigationController?.navigationBar.prefersLargeTitles = true
     }
         
@@ -58,6 +57,11 @@ final class StepViewController: BaseViewController {
     
     private func bindData() {
         viewModel.inputViewDidLoad.value = ()
+        
+        viewModel.outputGoal.bind { [weak self] value in
+            guard let self, let value else { return }
+            navigationItem.title = Constants.NavigationTitle.Step(goal: value).title
+        }
         
         viewModel.outputSegmentChanged.bind { [weak self] value in
             guard let self else { return }
