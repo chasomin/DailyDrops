@@ -13,22 +13,25 @@ final class SettingViewModel {
         
     private let repository = RealmRepository()
     
-    let inputViewDidLoad: Observable<Constants.Setting?> = Observable(nil)
-    let inputViewDidDisappear: Observable<(kind: Constants.Setting, goalValue: String?)?> = Observable(nil)
+    let inputGoalViewDidLoad: Observable<Constants.Setting?> = Observable(nil)
+    let inputGoalViewDidDisappear: Observable<(kind: Constants.Setting, goalValue: String?)?> = Observable(nil)
     let inputTextFieldValueChanged: Observable<String?> = Observable(nil)
+    let inputSupplementViewDidLoad: Observable<Void?> = Observable(nil)
+    let inputSupplementDeleteAction: Observable<MySupplement?> = Observable(nil)
     
     let outputGoal: Observable<Int?> = Observable(nil)
     let outputInvaild: Observable<String?> = Observable(nil)
+    let outputSupplement: Observable<[MySupplement]?> = Observable(nil)
     
     private init() { transform() }
     
     private func transform() {
-        inputViewDidLoad.bind { [weak self] value in
+        inputGoalViewDidLoad.bind { [weak self] value in
             guard let self, let value else { return }
             fetchData(kind: value)
         }
         
-        inputViewDidDisappear.bind { [weak self] value in
+        inputGoalViewDidDisappear.bind { [weak self] value in
             guard let self, let value else { return }
             saveData(kind: value.kind, value: value.goalValue)
         }
@@ -48,14 +51,26 @@ final class SettingViewModel {
             }
 
         }
+        
+        inputSupplementViewDidLoad.bind { [weak self] value in
+            guard let self, let value else { return }
+            outputSupplement.value = repository.readSupplement()
+        }
+        
+        inputSupplementDeleteAction.bind { [weak self] value in
+            guard let self, let value else { return }
+            repository.deleteSupplement(id: value.id) {
+                self.outputSupplement.value = self.repository.readSupplement()
+            }
+        }
     }
     
     private func fetchData(kind: Constants.Setting) {
         switch kind {
         case .waterGoal:
-            outputGoal.value = Int(repository.readGoalCups())
+            outputGoal.value = Int(repository.readGoalCups(date: Date()))
         case .stepGoal:
-            outputGoal.value = repository.readGoalSteps()
+            outputGoal.value = repository.readGoalSteps(date: Date())
         case .supplement:
             break
         case .notification:
@@ -67,8 +82,8 @@ final class SettingViewModel {
         guard let text = value else { return }
         guard let goal = Int(text) else { return }
 
-        let waterGoal = repository.readGoalCups()
-        let stepGoal = repository.readGoalSteps()
+        let waterGoal = repository.readGoalCups(date: Date())
+        let stepGoal = repository.readGoalSteps(date: Date())
         switch kind {
         case .waterGoal:
             if waterGoal != Float(goal) {
