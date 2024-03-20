@@ -20,6 +20,10 @@ final class MoveNextViewButton: UIButton {
         config.cornerStyle = .capsule
         config.image = UIImage(systemName: "chevron.forward")
         self.configuration = config
+        self.layer.shadowColor = UIColor.subTitleColor.cgColor
+        self.layer.shadowOpacity = 0.5
+        self.layer.shadowRadius = 2
+        self.layer.shadowOffset = CGSize(width: 0, height: 0)
     }
     
     required init?(coder: NSCoder) {
