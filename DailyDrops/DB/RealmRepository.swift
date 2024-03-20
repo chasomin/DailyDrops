@@ -38,16 +38,19 @@ final class RealmRepository<T: Object> {
         return total
     }
     
-    func readGoalCups() -> Float {
-        return realm.objects(RealmGoal.self).sorted(byKeyPath: "regDate").last?.waterCup ?? 0
+    func readGoalCups(date: Date) -> Float {
+        let goal = realm.objects(RealmGoal.self).map { $0.toEntity() }
+        return goal.filter{$0.regDate.dateWithMidnight() <= date}.sorted(by: {$0.regDate < $1.regDate}).last?.waterCup ?? 0
     }
     
-    func readGoalSteps() -> Int {
-        return realm.objects(RealmGoal.self).sorted(byKeyPath: "regDate").last?.steps ?? 0
+    func readGoalSteps(date: Date) -> Int {
+        let goal = realm.objects(RealmGoal.self).map { $0.toEntity() }
+        return goal.filter { $0.regDate.dateWithMidnight() <= date }.sorted(by: {$0.regDate < $1.regDate}).last?.steps ?? 0
     }
     
     func readSupplement() -> Results<RealmSupplement> {
         realm.objects(RealmSupplement.self)
+            //.where({$0.regDate <= date})
     }
     
     func readSupplement() -> [MySupplement] {
@@ -58,7 +61,7 @@ final class RealmRepository<T: Object> {
     func readSupplementByDate(date: Date) -> [MySupplement] {
         let supplements = realm.objects(RealmSupplement.self)
         let filterContainToday = supplements.where{$0.days.contains(date.dateFilterDay())}
-        return filterContainToday.map{ $0.toEntity() }
+        return filterContainToday.map{ $0.toEntity() }.filter{ $0.regDate.dateWithMidnight() <= date }
     }
     
     /// 해당 시간 대에 복용할 약 배열을 리턴하는 메서드
@@ -88,6 +91,19 @@ final class RealmRepository<T: Object> {
             try realm.write {
                 let result = readSupplementLog().filter({$0.supplementName == name && $0.supplementTime == time && $0.regDate.dateFormat() == date})
                 realm.delete(result)
+            }
+        } catch {
+            print(error)
+        }
+    }    
+    
+    func deleteSupplement(id: UUID, completion: @escaping () -> Void) {
+        do {
+            try realm.write {
+                let supplements: Results<RealmSupplement> = readSupplement()
+                let result = supplements.where({$0.id == id})
+                realm.delete(result)
+                completion()
             }
         } catch {
             print(error)
