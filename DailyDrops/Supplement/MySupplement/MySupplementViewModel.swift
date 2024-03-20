@@ -14,7 +14,6 @@ final class MySupplementViewModel {
     let inputViewWillAppear: Observable<Void?> = Observable(nil)
     let inputCheckButtonTapped: Observable<(section: String, supplement: String)?> = Observable(nil)
     
-    let outputViewDidLoad: Observable<Void?> = Observable(nil)
     let outputSetNavigation: Observable<Void?> = Observable(nil)
     let outputSection: Observable<[String]> = Observable([])
     let outputSupplementData : Observable<[String:[SupplementName]]?> = Observable(nil)
@@ -28,7 +27,6 @@ final class MySupplementViewModel {
         inputViewDidLoad.bind { [weak self] _ in
             guard let self else { return }
             outputSetNavigation.value = ()
-            outputViewDidLoad.value = ()
         }
         inputViewWillAppear.bind { [weak self] value in
             guard let self else { return }
