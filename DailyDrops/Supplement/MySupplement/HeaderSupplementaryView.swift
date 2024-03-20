@@ -30,14 +30,19 @@ final class HeaderSupplementaryView: UICollectionReusableView {
     
     private func configureLayout() {
         label.snp.makeConstraints { make in
-            make.bottom.leading.equalTo(safeAreaLayoutGuide)
+            make.bottom.horizontalEdges.equalTo(safeAreaLayoutGuide)
             make.top.equalTo(safeAreaLayoutGuide).inset(10)
+            make.height.equalTo(30)
+//            make.width.equalTo(80)
         }
     }
     
     private func configureView() {
         label.font = .boldBody
-        label.textColor = .subTitleColor
+        label.textColor = .titleColor
         label.backgroundColor = .secondaryColor
+        label.layer.cornerRadius = 15
+        label.clipsToBounds = true
+        label.textAlignment = .center
     }
 }
