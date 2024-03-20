@@ -26,4 +26,11 @@ extension Date {
         format.dateFormat = "HH시 mm분"
         return format.string(from: self)
     }
+    
+    func dateWithMidnight() -> Date {
+        let format = DateFormatter()
+        format.dateFormat = "yyyyMMdd"
+        let dateString = format.string(from: self)
+        return format.date(from: dateString) ?? Date()
+    }
 }
