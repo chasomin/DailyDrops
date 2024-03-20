@@ -39,11 +39,13 @@ extension UIButton {
             var config = UIButton.Configuration.plain()
             config.baseForegroundColor = .subTitleColor
             config.image = UIImage(systemName: "circle")
+            config.buttonSize = .large
             return config
         } else {
             var config = UIButton.Configuration.plain()
             config.baseForegroundColor = .pointColor
             config.image = UIImage(systemName: "checkmark.circle.fill")
+            config.buttonSize = .large
             return config
         }
     }
