@@ -9,6 +9,8 @@ import UIKit
 import SnapKit
 
 final class WaterGoalSettingViewController: BaseViewController {
+    private let viewModel = WaterGoalSettingViewModel()
+
     private let titleLabel = UILabel()
     private let goalStack = UIStackView()
     private let goalLabel = UILabel()
@@ -18,12 +20,12 @@ final class WaterGoalSettingViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        SettingViewModel.shared.inputGoalViewDidLoad.value = .waterGoal
+        viewModel.inputGoalViewDidLoad.value = ()
         bindData()
     }
     
     private func bindData() {
-        SettingViewModel.shared.outputGoal.bind { [weak self] value in
+        viewModel.outputGoal.bind { [weak self] value in
             guard let self, let value else { return }
             goalLabel.text = "\(value)"
             stepper.value = Double(value)
@@ -32,7 +34,7 @@ final class WaterGoalSettingViewController: BaseViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        SettingViewModel.shared.inputGoalViewDidDisappear.value = (kind: .waterGoal, goalValue: goalLabel.text)
+        viewModel.inputGoalViewDidDisappear.value = goalLabel.text
     }
     
     override func configureHierarchy() {
@@ -70,6 +72,7 @@ final class WaterGoalSettingViewController: BaseViewController {
         titleLabel.font = .boldTitle
         
         goalLabel.font = .bigBoldTitle
+        goalLabel.textAlignment = .center
         cupLabel.text = "잔"
         cupLabel.font = .title
         
