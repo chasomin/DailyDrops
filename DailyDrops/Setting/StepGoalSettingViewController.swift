@@ -9,26 +9,29 @@ import UIKit
 import SnapKit
 
 final class StepGoalSettingViewController: BaseViewController {
+    private let viewModel = StepGoalSettingViewModel()
+
     private let titleLabel = UILabel()
     private let goalStack = UIStackView()
     private let goalTextField = UITextField()
     private let stepLabel = UILabel()
+    private let tapGesture = UITapGestureRecognizer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        SettingViewModel.shared.inputGoalViewDidLoad.value = .stepGoal
+        viewModel.inputGoalViewDidLoad.value = ()
         bindData()
         goalTextField.delegate = self
     }
     
     private func bindData() {
-        SettingViewModel.shared.outputGoal.bind { [weak self] value in
+        viewModel.outputGoal.bind { [weak self] value in
             guard let self, let value else { return }
             goalTextField.text = "\(value)"
         }
         
-        SettingViewModel.shared.outputInvaild.bind { [weak self] value in
+        viewModel.outputInvaild.bind { [weak self] value in
             guard let self, let value else { return }
             goalTextField.deleteBackward()
             showToast(value, position: .top)
@@ -37,10 +40,11 @@ final class StepGoalSettingViewController: BaseViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        SettingViewModel.shared.inputGoalViewDidDisappear.value = (kind: .stepGoal, goalValue: goalTextField.text)
+        viewModel.inputGoalViewDidDisappear.value = goalTextField.text
     }
 
     override func configureHierarchy() {
+        view.addGestureRecognizer(tapGesture)
         view.addSubview(titleLabel)
         view.addSubview(goalStack)
         goalStack.addArrangedSubview(goalTextField)
@@ -69,17 +73,31 @@ final class StepGoalSettingViewController: BaseViewController {
         titleLabel.font = .boldTitle
         
         goalTextField.font = .bigBoldTitle
+        goalTextField.textAlignment = .center
         goalTextField.borderStyle = .roundedRect
         goalTextField.keyboardType = .numberPad
         
         stepLabel.text = "걸음"
         stepLabel.font = .title
         
+        tapGesture.addTarget(self, action: #selector(tapGestureTapped))
     }
 }
 
 extension StepGoalSettingViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        SettingViewModel.shared.inputTextFieldValueChanged.value = textField.text
+        viewModel.inputTextFieldValueChanged.value = textField.text
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField.text == "0" {
+            textField.text = ""
+        }
+    }
+}
+
+extension StepGoalSettingViewController {
+    @objc func tapGestureTapped() {
+        view.endEditing(true)
     }
 }
