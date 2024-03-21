@@ -12,22 +12,65 @@ final class CalendarViewController: BaseViewController {
     private let viewModel = CalendarViewModel()
     private let calendar = FSCalendar()
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: setCollectionViewLayout())
+    private var dataSource: UICollectionViewDiffableDataSource<Constants.Topic, String>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        makeCellRegistration()
+        updateSnapshot()
+
         bindData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
         viewModel.inputViewWillAppear.value = calendar.selectedDate
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    private func bindData() {
+        viewModel.inputViewDidLoad.value = ()
+        
+        viewModel.outputViewDidLoad.bind { [weak self] value in
+            guard let self, let value else { return }
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(settingButtonTapped))
+            navigationItem.leftBarButtonItem = UIBarButtonItem(image: .DD, style: .plain, target: self, action: #selector(logoButtonTapped))
+        //FIXME: 로고?
+        }
+        
+        viewModel.outputSetCalendar.bind { [weak self] value in
+            guard let self, let value else { return }
+            calendar.delegate = self
+            calendar.dataSource = self
+            calendar.currentPage = Date()
+            calendar.select(Date())
+        }
+        
+        viewModel.outputReload.bind { [weak self] value in
+            guard let self else { return }
+            if value == 3 {
+                DispatchQueue.main.async {
+                    self.updateSnapshot()
+                }
+                viewModel.outputReload.value = 0
+            }
+        }
+        
+        viewModel.outputFutureDate.bind { [weak self] value in
+            guard let self, let value else { return }
+            showToast(value, position: .center)
+            calendar.select(Date())
+        }
+        
+        viewModel.outputNotToday.bind { [weak self] value in
+            guard let self, let value else { return }
+            switch value {
+            case true:
+                calendar.appearance.titleSelectionColor = .backgroundColor
+            case false:
+                calendar.appearance.titleSelectionColor = .titleColor
+            }
+        }
     }
     
     override func configureHierarchy() {
@@ -42,77 +85,79 @@ final class CalendarViewController: BaseViewController {
         }
         
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(calendar.collectionView.snp.bottom).offset(15)
+            make.top.equalTo(calendar.collectionView.snp.bottom)//.offset(5)
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
-            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(15)
+            make.bottom.equalTo(view)//.inset(15)
         }
     }
     
     override func configureView() {
         setCalendar()
         collectionView.showsVerticalScrollIndicator = false
+//        collectionView.bounces = false
     }
     
-    private func setCollectionViewLayout() -> UICollectionViewLayout {
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: view.frame.width, height: 170)
-        layout.minimumLineSpacing = 0
-        layout.minimumInteritemSpacing = 0
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        layout.scrollDirection = .vertical
-        return layout
-    }
-    
-    private func bindData() {
-        viewModel.inputViewDidLoad.value = ()
+    private func makeCellRegistration() {
+        let waterCellRegistration = waterCellRegistration()
+        let supplementCellRegistration = supplementCellRegistration()
+        let stepCellRegistration = stepCellRegistration()
         
-        viewModel.outputSetCalendar.bind { [weak self] value in
-            guard let self, let value else { return }
-            calendar.delegate = self
-            calendar.dataSource = self
-            calendar.currentPage = Date()
-            calendar.select(Date())
-        }
-        
-        viewModel.outputSetCollectionView.bind { [weak self] value in
-            guard let self, let value else { return }
-            collectionView.delegate = self
-            collectionView.dataSource = self
-            collectionView.register(WaterCollectionViewCell.self, forCellWithReuseIdentifier: WaterCollectionViewCell.id)
-            collectionView.register(SupplementLogCollectionViewCell.self, forCellWithReuseIdentifier: SupplementLogCollectionViewCell.id)
-            collectionView.register(StepCollectionViewCell.self, forCellWithReuseIdentifier: StepCollectionViewCell.id)
-        }
+        dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
+            if let section = Constants.Topic(rawValue: indexPath.section) {
+                switch section {
+                case .water:
+                    let cell = collectionView.dequeueConfiguredReusableCell(using: waterCellRegistration, for: indexPath, item: itemIdentifier)
+                    print(indexPath.section)
+                    return cell
+                case .supplement:
+                    let cell = collectionView.dequeueConfiguredReusableCell(using: supplementCellRegistration, for: indexPath, item: itemIdentifier)
+                    print(indexPath.section)
 
-        viewModel.outputReload.bind { [weak self] value in
-            guard let self else { return }
-            if value == 3 {
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
+                    return cell
+                case .step:
+                    let cell = collectionView.dequeueConfiguredReusableCell(using: stepCellRegistration, for: indexPath, item: itemIdentifier)
+                    print(indexPath.section)
+
+                    return cell
                 }
-                viewModel.outputReload.value = 0
+            } else {
+                return nil
             }
-        }
+        })
     }
+
+    private func updateSnapshot() {
+        var snapshot = NSDiffableDataSourceSnapshot<Constants.Topic, String>()
+        snapshot.appendSections(Constants.Topic.allCases)
+        snapshot.appendItems(["1"], toSection: .water)
+        snapshot.appendItems(["2"], toSection: .step)
+        snapshot.appendItems(["3"], toSection: .supplement)
+
+        dataSource.applySnapshotUsingReloadData(snapshot)
+    }
+
 }
 
 extension CalendarViewController {
+    
     func setCalendar() {
         calendar.locale = Locale(identifier: "ko_KR")
         calendar.scope = .week
-        calendar.backgroundColor = .white
-        calendar.appearance.headerTitleColor = .systemTeal
+        calendar.backgroundColor = .backgroundColor
+        calendar.appearance.headerTitleColor = .titleColor
         calendar.appearance.headerMinimumDissolvedAlpha = 0.0
         calendar.appearance.headerTitleAlignment = .center
-        calendar.appearance.headerTitleFont = .boldSystemFont(ofSize: 20)
+        calendar.appearance.headerTitleFont = .boldTitle
         calendar.appearance.headerDateFormat = "YYYY년 MM월"
-        calendar.appearance.weekdayTextColor = .black
-        calendar.appearance.weekdayFont = .systemFont(ofSize: 14)
-        calendar.appearance.titleFont = .systemFont(ofSize: 20)
-        calendar.appearance.titleSelectionColor = .white
-        calendar.appearance.titleTodayColor = .systemOrange
-        calendar.appearance.selectionColor = .systemTeal
+        calendar.appearance.weekdayTextColor = .titleColor
+        calendar.appearance.weekdayFont = .body
+        calendar.appearance.titleFont = .title
+        calendar.appearance.titleSelectionColor = .backgroundColor
+        calendar.appearance.selectionColor = .secondaryColor
+        
+        calendar.appearance.titleTodayColor = .pointColor
+        calendar.appearance.todaySelectionColor = .pointColor
         calendar.appearance.todayColor = .clear
-        calendar.appearance.todaySelectionColor = .systemYellow
         calendar.scrollDirection = .horizontal
     }
     
@@ -132,45 +177,86 @@ extension CalendarViewController {
             navigationController?.pushViewController(vc, animated: true)
         }
     }
-}
-
-extension CalendarViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        Constants.Topic.allCases.count
-    }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        switch indexPath.item {
-        case 0:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WaterCollectionViewCell.id, for: indexPath) as! WaterCollectionViewCell
-            cell.configureCell(value: viewModel.outputAmountOfDrinksWater.value, selectedDate: calendar.selectedDate)
-            cell.waterDetailMoveButton.addTarget(self, action: #selector(moveButtonTapped), for: .touchUpInside)
-            return cell
-        case 1:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SupplementLogCollectionViewCell.id, for: indexPath) as! SupplementLogCollectionViewCell
-            cell.configureCell(text: viewModel.outputLeftSupplementCount.value, value: viewModel.outputSupplementProgress.value, selectedDate: calendar.selectedDate)
-            cell.supplementDetailMoveButton.addTarget(self, action: #selector(moveButtonTapped), for: .touchUpInside)
-            return cell
-        case 2:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StepCollectionViewCell.id, for: indexPath) as! StepCollectionViewCell
-            cell.configureCell(text: viewModel.outputSteps.value, value: viewModel.outputStepsProgress.value, selectedDate: calendar.selectedDate)
-            cell.stepDetailMoveButton.addTarget(self, action: #selector(moveButtonTapped), for: .touchUpInside)
-            return cell
-        default:
-            return UICollectionViewCell()
-        }
+    @objc func settingButtonTapped() {
+        let vc = SettingViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+
+    //FIXME: --- 로고 누르면 오늘날짜로 가는게 말이 됨?., 근데 leftbarbutton 클릭 반짝이는거 못없애,.,,
+    @objc func logoButtonTapped() {
+        calendar.select(Date())
+        viewModel.inputSelectDate.value = Date()
+        let topOffset = CGPoint(x: 0, y: -collectionView.contentInset.top)
+        collectionView.setContentOffset(topOffset, animated: true)
     }
 }
 
 extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        if date > Date() {
-            showToast("미래의 날짜는 선택할 수 없어요", position: .center)
-            calendar.select(Date())
-            viewModel.inputSelectDate.value = Date()
-        } else {
-            viewModel.inputSelectDate.value = date.dateWithMidnight()
+        viewModel.inputSelectDate.value = date
+    }
+}
+
+// MARK: - Layout
+extension CalendarViewController {
+    
+    private func setCollectionViewLayout() -> UICollectionViewLayout {
+        
+        let layout = UICollectionViewCompositionalLayout { sectionIndex, environment in
+            guard let section = Constants.Topic(rawValue: sectionIndex) else { return nil }
+            let layoutSection: NSCollectionLayoutSection
+            
+            switch section {
+            case .water:
+                let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+                let item = NSCollectionLayoutItem(layoutSize: itemSize)
+                
+                let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(250))
+                let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+                layoutSection = NSCollectionLayoutSection(group: group)
+                return layoutSection
+                
+            case .supplement:
+                var config = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
+                config.backgroundColor = .backgroundColor
+                config.showsSeparators = false
+                let layoutSection =  NSCollectionLayoutSection.list(using: config, layoutEnvironment: environment)
+                return layoutSection
+
+            case .step:
+                var config = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
+                config.backgroundColor = .backgroundColor
+                config.showsSeparators = false
+                let layoutSection =  NSCollectionLayoutSection.list(using: config, layoutEnvironment: environment)
+                layoutSection.contentInsets.top = 0
+                return layoutSection
+            }
+        }
+        return layout
+    }
+
+    private func waterCellRegistration() -> UICollectionView.CellRegistration<WaterCollectionViewCell, String> {
+        UICollectionView.CellRegistration { [weak self] cell, indexPath, itemIdentifier in
+            guard let self else { return }
+            cell.configureCell(value: viewModel.outputAmountOfDrinksWater.value, selectedDate: calendar.selectedDate)
+            cell.waterDetailMoveButton.addTarget(self, action: #selector(moveButtonTapped), for: .touchUpInside)
+        }
+    }
+    
+    private func supplementCellRegistration() -> UICollectionView.CellRegistration<SupplementLogCollectionViewCell, String> {
+        UICollectionView.CellRegistration { [weak self] cell, indexPath, itemIdentifier in
+            guard let self else { return }
+            cell.configureCell(text: viewModel.outputLeftSupplementCount.value, value: viewModel.outputSupplementProgress.value, selectedDate: calendar.selectedDate)
+            cell.supplementDetailMoveButton.addTarget(self, action: #selector(moveButtonTapped), for: .touchUpInside)
+        }
+    }
+    
+    private func stepCellRegistration() -> UICollectionView.CellRegistration<StepCollectionViewCell, String> {
+        UICollectionView.CellRegistration { [weak self] cell, indexPath, itemIdentifier in
+            guard let self else { return }
+            cell.configureCell(text: viewModel.outputSteps.value, value: viewModel.outputStepsProgress.value, selectedDate: calendar.selectedDate)
+            cell.stepDetailMoveButton.addTarget(self, action: #selector(moveButtonTapped), for: .touchUpInside)
         }
     }
 }
