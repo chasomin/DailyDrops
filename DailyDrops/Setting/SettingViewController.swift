@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 final class SettingViewController: BaseViewController {
-
+    
     private let tableView = UITableView(frame: .zero, style: .plain)
     
     override func viewDidLoad() {
