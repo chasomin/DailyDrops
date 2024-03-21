@@ -50,10 +50,12 @@ class StepCollectionViewCell: BaseCollectionViewCell {
     }
     
     override func configureView() {
-        stepsTitle.text = Constants.Topic.step.rawValue
-        stepsTitle.font = .boldTitle
+        layer.borderWidth = 1
+        layer.borderColor = UIColor.secondaryBackgroundColor.cgColor
         
-        statusLabel.font = .title
+        stepsTitle.text = Constants.Topic.step.title
+        stepsTitle.font = .boldTitle
+        statusLabel.font = .body
 //        descriptionLabel.text = "어제보다 900 걸음 덜 걸었어요"
         descriptionLabel.font = .body
         progressBar.tintColor = .pointColor

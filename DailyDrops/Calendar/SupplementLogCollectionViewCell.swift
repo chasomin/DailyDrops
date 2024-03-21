@@ -49,10 +49,13 @@ class SupplementLogCollectionViewCell: BaseCollectionViewCell {
         }
     }
     
-    override func configureView() {
-        supplementTitle.text = Constants.Topic.supplement.rawValue
+    override func configureView() {      
+        layer.borderWidth = 0.8
+        layer.borderColor = UIColor.secondaryBackgroundColor.cgColor
+
+        supplementTitle.text = Constants.Topic.supplement.title
         supplementTitle.font = .boldTitle
-        statusLabel.font = .title
+        statusLabel.font = .body
 //        nextNotificationLabel.text = "다음 알림 오후 9시"
         nextNotificationLabel.font = .body
         progressBar.tintColor = .pointColor

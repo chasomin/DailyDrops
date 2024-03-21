@@ -37,7 +37,7 @@ class WaterCollectionViewCell: BaseCollectionViewCell {
     
     override func configureView() {
         waterView.startAnimation()
-        waterTitle.text = Constants.Topic.water.rawValue
+        waterTitle.text = Constants.Topic.water.title
         waterTitle.font = .boldTitle
     }
     
