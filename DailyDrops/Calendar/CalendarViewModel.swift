@@ -14,14 +14,16 @@ final  class CalendarViewModel {
     let inputViewWillAppear: Observable<Date?> = Observable(nil)
     let inputSelectDate: Observable<Date?> = Observable(nil)
     
+    let outputViewDidLoad: Observable<Void?> = Observable(nil)
     let outputSetCalendar: Observable<Void?> = Observable(nil)
-    let outputSetCollectionView: Observable<Void?> = Observable(nil)
     let outputAmountOfDrinksWater: Observable<Float> = Observable(0)
     let outputLeftSupplementCount: Observable<String> = Observable("")
     let outputSupplementProgress: Observable<Float> = Observable(0)
     let outputSteps: Observable<String> = Observable("")
     let outputStepsProgress: Observable<Float> = Observable(0)
     let outputReload: Observable<Int> = Observable(0)
+    let outputFutureDate: Observable<String?> = Observable(nil)
+    let outputNotToday: Observable<Bool?> = Observable(nil)
     
     init() { transform() }
 
@@ -29,7 +31,7 @@ final  class CalendarViewModel {
         inputViewDidLoad.bind { [weak self] value in
             guard let self, let value else { return }
             outputSetCalendar.value = ()
-            outputSetCollectionView.value = ()
+            outputViewDidLoad.value = ()
         }
         
         inputViewWillAppear.bind { [weak self] date in
@@ -41,9 +43,22 @@ final  class CalendarViewModel {
         
         inputSelectDate.bind { [weak self] date in
             guard let self, let date else { return }
-            getAmountOfDrinksWater(date: date)
-            getLeftSupplementCount(date: date)
-            getSteps(date: date)
+            if date > Date() {
+                getAmountOfDrinksWater(date: Date())
+                getLeftSupplementCount(date: Date())
+                getSteps(date: Date())
+                outputFutureDate.value = "미래의 날짜는 선택할 수 없어요"
+            } else {
+                getAmountOfDrinksWater(date: date)
+                getLeftSupplementCount(date: date)
+                getSteps(date: date)
+            }
+            
+            if date < Date().dateWithMidnight() {
+                outputNotToday.value = false
+            } else {
+                outputNotToday.value = true
+            }
         }
     }
     
@@ -69,8 +84,13 @@ final  class CalendarViewModel {
             outputLeftSupplementCount.value = "오늘 복용할 영양제가 없어요"
             outputSupplementProgress.value = 1
         default :
-            outputLeftSupplementCount.value = "\(goal - intake)개 남았어요!"
-            outputSupplementProgress.value = Float(intake)/Float(goal)
+            if date < Date().dateWithMidnight() {
+                outputLeftSupplementCount.value = "\(Int((Float(intake)/Float(goal))*100))% 완료!"
+                outputSupplementProgress.value = Float(intake)/Float(goal)
+            } else {
+                outputLeftSupplementCount.value = "\(goal - intake)개 남았어요!"
+                outputSupplementProgress.value = Float(intake)/Float(goal)
+            }
         }
         outputReload.value += 1
     }
@@ -97,5 +117,4 @@ final  class CalendarViewModel {
             outputReload.value += 1
         }
     }
-    
 }
