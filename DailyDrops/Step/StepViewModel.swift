@@ -11,9 +11,10 @@ final class StepViewModel {
     let repository = RealmRepository()
     
     let inputViewDidLoad: Observable<Void?> = Observable(nil)
-    let inputSegmentChanged: Observable<Int?> = Observable(nil)
+    let inputSegmentChanged: Observable<Int> = Observable(0)
     
-    let outputSegmentChanged:  Observable<Int> = Observable(0)
+    let outputSegmentChanged: Observable<Int> = Observable(0)
+    let outputTotalSteps: Observable<String?> = Observable(nil)
     let outputWeekSteps: Observable<[Double]> = Observable([])
     let outputMonthSteps: Observable<[Double]> = Observable([])
     let outputTodaySteps: Observable<[Double]> = Observable([])
@@ -23,8 +24,11 @@ final class StepViewModel {
     
     private func transform() {
         inputSegmentChanged.bind { [weak self] value in
-            guard let self, let value else { return }
+            guard let self else { return }
             outputSegmentChanged.value = value
+            
+                getTotalSteps(segmentValue: value)
+            
         }
         
         inputViewDidLoad.bind { [weak self] _ in
@@ -53,6 +57,48 @@ final class StepViewModel {
                     return
                 }
             }
+        }
+    }
+    
+    private func getTotalSteps(segmentValue: Int) {
+        switch segmentValue {
+        case 0:
+            HealthManager.shared.getOneDayStepCount(today: Date()) { [weak self] value, error in
+                guard let self else { return }
+                guard let error else {
+                    guard let value else { return }
+                    outputTotalSteps.value = "총 \(Int(value))걸음"
+                    return
+                }
+                outputTotalSteps.value = "총 0걸음"
+                print(error)
+            }
+        case 1:
+            HealthManager.shared.getAverageWeekStepCount { [weak self] value, error in
+                guard let self else { return }
+                guard let error else {
+                    guard let value else { return }
+                    
+                    outputTotalSteps.value = "평균 \(Int(value))걸음"
+                    return
+                }
+                outputTotalSteps.value = "평균 0걸음"
+                print(error)
+            }
+        case 2:
+            HealthManager.shared.getAverageMonthStepCount { [weak self] value, error in
+                guard let self else { return }
+                guard let error else {
+                    guard let value else { return }
+                    
+                    outputTotalSteps.value = "평균 \(Int(value))걸음"
+                    return
+                }
+                outputTotalSteps.value = "평균 0걸음"
+                print(error)
+            }
+        default:
+            break
         }
     }
 }
