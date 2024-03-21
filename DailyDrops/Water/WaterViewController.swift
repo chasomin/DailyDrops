@@ -15,10 +15,12 @@ final class WaterViewController: BaseViewController {
     private lazy var window = windowScene?.windows.first
     private lazy var safeTop = window?.safeAreaInsets.top ?? 0 + (self.navigationController?.navigationBar.frame.height ?? 0)   // safeArea + Navigation
     private lazy var waveView = WaveAnimationView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - safeTop ), frontColor: .backgroundColor, backColor: .pointColor)
+    private let titleLabel = UILabel()
     private let countLabel = UILabel()
     private let plusButton = CapsulePointButton(frame: .zero, text: "+ 한 잔")
     private let minusButton = CapsulePointButton(frame: .zero, text: "- 한 잔")
-        
+    private let moveButton = UIButton()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,6 +32,11 @@ final class WaterViewController: BaseViewController {
         viewModel.inputViewWillAppear.value = ()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.tintColor = .pointColor
+    }
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         viewModel.inputViewDidDisappear.value = ()
@@ -38,6 +45,8 @@ final class WaterViewController: BaseViewController {
     override func configureHierarchy() {
         view.addSubview(waveView)
         waveView.addSubview(countLabel)
+        waveView.addSubview(titleLabel)
+        
     }
     
     override func configureLayout() {
@@ -46,6 +55,12 @@ final class WaterViewController: BaseViewController {
             make.bottom.equalTo(view)
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
         }
+        
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.leading.equalToSuperview().inset(15)
+        }
+        
         if viewModel.outputLabelHidden.value == false {
             countLabel.snp.makeConstraints { make in
                 let data = viewModel.outputViewDidLoad.value.0
@@ -58,8 +73,11 @@ final class WaterViewController: BaseViewController {
     
     override func configureView() {
         let data = viewModel.outputViewDidLoad.value.0
-         let goal = viewModel.outputViewDidLoad.value.1
-
+        let goal = viewModel.outputViewDidLoad.value.1
+        
+        titleLabel.font = .largeBoldTitle
+        titleLabel.numberOfLines = 2
+        
         waveView.progress = data / goal
         countLabel.text = "\(Int(goal - data))잔 남았어요!"
 
@@ -86,8 +104,7 @@ extension WaterViewController {
         viewModel.inputViewDidLoad.value = ()
         viewModel.outputViewDidLoad.bind { [weak self] (data, goal) in
             guard let self else { return }
-            navigationItem.title = Constants.NavigationTitle.Water(goal: Int(goal)).title
-            navigationController?.navigationBar.prefersLargeTitles = true
+            titleLabel.text = Constants.NavigationTitle.Water(goal: Int(goal)).title
             navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: plusButton), UIBarButtonItem(customView: minusButton)]
         }
         viewModel.outputData.bind { [weak self] (value, goal) in
@@ -109,6 +126,9 @@ extension WaterViewController {
         viewModel.outputLabelHidden.bind { [weak self] value in
             guard let self, let value else { return }
             countLabel.isHidden = value
+            navigationController?.navigationBar.tintColor = UIColor.setStatusColor(status: value)
+            plusButton.configuration = UIButton.setStatusCapsuleButton(status: value, text: "+ 한 잔")
+            minusButton.configuration = UIButton.setStatusCapsuleButton(status: value, text: "- 한 잔")
         }
     }
     
@@ -141,4 +161,6 @@ extension WaterViewController {
     
     }
 }
+
+
 
