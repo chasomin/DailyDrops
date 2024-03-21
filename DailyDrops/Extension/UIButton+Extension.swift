@@ -49,4 +49,22 @@ extension UIButton {
             return config
         }
     }
+    
+    static func setStatusCapsuleButton(status: Bool, text: String) -> UIButton.Configuration {
+        var config = UIButton.Configuration.filled()
+        config.cornerStyle = .capsule
+        config.baseForegroundColor = .titleColor
+        var attr = AttributedString.init(text)
+        attr.font = UIFont.body
+        config.attributedSubtitle = attr
+
+        switch status {
+        case true:
+            config.baseBackgroundColor = .secondaryColor
+            return config
+        case false:
+            config.baseBackgroundColor = .pointColor
+            return config
+        }
+    }
 }
