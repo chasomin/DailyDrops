@@ -18,7 +18,7 @@ enum Constants {
         var title: String {
             switch self {
             case .Water(let goal):
-                return "물 \(goal)잔 마시기"
+                return "목표!\n\(goal)잔 마시기"
             case .MySupplement:
                 return "오늘의 영양제"
             case .SetNotification:
@@ -26,7 +26,7 @@ enum Constants {
             case .SearchSupplement:
                 return "영양제 검색"
             case .Step(let goal):
-                return "\(goal)걸음 걷기"
+                return "목표!\n\(goal)걸음 걷기"
             }
         }
     }
@@ -47,10 +47,21 @@ enum Constants {
         case third
     }
     
-    enum Topic: String, CaseIterable {
-        case water = "물 마시기"
-        case supplement = "영양제"
-        case step = "걸음 수"
+    enum Topic: Int, CaseIterable {
+        case water
+        case supplement
+        case step
+        
+        var title: String {
+            switch self {
+            case .water:
+                "물 마시기"
+            case .supplement:
+                "영양제"
+            case .step:
+                "걸음 수"
+            }
+        }
     }
     
     enum Setting: String, CaseIterable {
