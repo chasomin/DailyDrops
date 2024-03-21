@@ -8,12 +8,13 @@
 import UIKit
 import SnapKit
 
-class SearchViewController: BaseViewController {
-    let searchBar = UISearchBar()
-    let tableView = UITableView()
-    let viewModel = SearchViewModel()
+final class SearchViewController: BaseViewController {
+    private let searchBar = UISearchBar()
+    private let tableView = UITableView()
+    private let viewModel = SearchViewModel()
     weak var delegate: TransitionValue?
     var searchText: String?
+    private let gesture = UISwipeGestureRecognizer()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,7 @@ class SearchViewController: BaseViewController {
     }
     
     override func configureHierarchy() {
+        view.addGestureRecognizer(gesture)
         view.addSubview(searchBar)
         view.addSubview(tableView)
     }
@@ -41,6 +43,7 @@ class SearchViewController: BaseViewController {
         searchBar.searchTextField.font = .body
         searchBar.searchBarStyle = .minimal
         searchBar.text = searchText
+        gesture.addTarget(self, action: #selector(tapGestureTapped))
     }
 }
 
@@ -68,6 +71,12 @@ extension SearchViewController {
             tableView.reloadData()
             view.endEditing(true)
         }
+    }
+}
+
+extension SearchViewController {
+    @objc func tapGestureTapped() {
+        view.endEditing(true)
     }
 }
 
