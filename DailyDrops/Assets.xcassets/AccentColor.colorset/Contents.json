@@ -2,7 +2,7 @@
   "colors" : [
     {
       "color" : {
-        "platform" : "XR",
+        "platform" : "universal",
         "reference" : "systemTealColor"
       },
       "idiom" : "universal"
