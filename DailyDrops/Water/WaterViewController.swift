@@ -32,12 +32,13 @@ final class WaterViewController: BaseViewController {
         viewModel.inputViewDidLoad.value = ()
         viewModel.outputViewDidLoad.bind { [weak self] (data, goal) in
             guard let self else { return }
-            titleLabel.text = Constants.NavigationTitle.Water(goal: Int(goal)).title
+            titleLabel.text = Constants.NavigationTitle.Water(goal: Int(goal), cup: Int(data)).title
             navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: plusButton), UIBarButtonItem(customView: minusButton)]
             setUpEmitterLayer()
         }
         viewModel.outputData.bind { [weak self] (value, goal) in
             guard let self, let value, let goal else { return }
+            titleLabel.text = Constants.NavigationTitle.Water(goal: Int(goal), cup: Int(value)).title
             changingView(data: value, goal: goal)
             if viewModel.outputLabelHidden.value == false {
                 setAnimation()

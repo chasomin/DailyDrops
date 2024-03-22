@@ -9,7 +9,7 @@ import Foundation
 
 enum Constants {
     enum NavigationTitle {
-        case Water(goal: Int)
+        case Water(goal: Int, cup: Int)
         case MySupplement
         case SetNotification
         case SearchSupplement
@@ -17,8 +17,12 @@ enum Constants {
         
         var title: String {
             switch self {
-            case .Water(let goal):
-                return "목표!\n\(goal)잔 마시기"
+            case .Water(let goal, let cup):
+                if goal == cup {
+                    return "목표 달성!"
+                } else {
+                    return "목표!\n\(goal)잔 마시기"
+                }
             case .MySupplement:
                 return "오늘의 영양제"
             case .SetNotification:
