@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		26D65632239E7DB912A830D2 /* Pods_DailyDrops.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E96AB1C0CD9779E05D99E0C /* Pods_DailyDrops.framework */; };
+		790578D72BAD627800EAD2D1 /* CAEmitterCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790578D62BAD627800EAD2D1 /* CAEmitterCell+Extension.swift */; };
 		790E8FB92B99838C004DC160 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790E8FB82B99838C004DC160 /* AppDelegate.swift */; };
 		790E8FBB2B99838C004DC160 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790E8FBA2B99838C004DC160 /* SceneDelegate.swift */; };
 		790E8FC22B99838E004DC160 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 790E8FC12B99838E004DC160 /* Assets.xcassets */; };
@@ -93,6 +94,7 @@
 
 /* Begin PBXFileReference section */
 		14EE9E7815A24FF1031D0B57 /* Pods-DailyDrops.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyDrops.debug.xcconfig"; path = "Target Support Files/Pods-DailyDrops/Pods-DailyDrops.debug.xcconfig"; sourceTree = "<group>"; };
+		790578D62BAD627800EAD2D1 /* CAEmitterCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CAEmitterCell+Extension.swift"; sourceTree = "<group>"; };
 		790E8FB52B99838C004DC160 /* DailyDrops.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyDrops.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		790E8FB82B99838C004DC160 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		790E8FBA2B99838C004DC160 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 				79E9BB522BA04892003CAF0B /* Alert+Extension.swift */,
 				79E9BB5B2BA074C5003CAF0B /* UIButton+Extension.swift */,
 				79BF77872BA2D2ED00C145E2 /* Toast+Extension.swift */,
+				790578D62BAD627800EAD2D1 /* CAEmitterCell+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -695,6 +698,7 @@
 				795B21692B99B19300DA7D7F /* UIFont+Extension.swift in Sources */,
 				79E9BB3A2B9ECE0F003CAF0B /* RealmWater.swift in Sources */,
 				79BF778F2BA4B25800C145E2 /* Goal.swift in Sources */,
+				790578D72BAD627800EAD2D1 /* CAEmitterCell+Extension.swift in Sources */,
 				79A1723E2B9CBCFA003AB10F /* SearchViewController.swift in Sources */,
 				795B21772B99C97100DA7D7F /* BaseView.swift in Sources */,
 				79BF77A62BA84F5B00C145E2 /* WaterCollectionViewCell.swift in Sources */,
@@ -848,7 +852,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DailyDrops/DailyDrops.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 696W38VQ47;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -883,7 +887,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DailyDrops/DailyDrops.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 696W38VQ47;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DailyDrops/Info.plist;

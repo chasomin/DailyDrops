@@ -20,13 +20,48 @@ final class WaterViewController: BaseViewController {
     private let plusButton = CapsulePointButton(frame: .zero, text: "+ 한 잔")
     private let minusButton = CapsulePointButton(frame: .zero, text: "- 한 잔")
     private let moveButton = UIButton()
-    
+    private let emitterLayer = CAEmitterLayer()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         bindData()
     }
     
+    private func bindData() {
+        viewModel.inputViewDidLoad.value = ()
+        viewModel.outputViewDidLoad.bind { [weak self] (data, goal) in
+            guard let self else { return }
+            titleLabel.text = Constants.NavigationTitle.Water(goal: Int(goal)).title
+            navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: plusButton), UIBarButtonItem(customView: minusButton)]
+            setUpEmitterLayer()
+        }
+        viewModel.outputData.bind { [weak self] (value, goal) in
+            guard let self, let value, let goal else { return }
+            changingView(data: value, goal: goal)
+            if viewModel.outputLabelHidden.value == false {
+                setAnimation()
+                changingLayout()
+            }
+        }
+        viewModel.outputViewDidDisappear.bind { [weak self] value in
+            guard let self, let value else { return }
+            waveView.stopAnimation()
+        }
+        viewModel.outputViewWillAppear.bind { [weak self] value in
+            guard let self, let value else { return }
+            waveView.startAnimation()
+        }
+        viewModel.outputLabelHidden.bind { [weak self] value in
+            guard let self, let value else { return }
+            countLabel.isHidden = value
+            navigationController?.navigationBar.tintColor = UIColor.setStatusColor(status: value)
+            plusButton.configuration = UIButton.setStatusCapsuleButton(status: value, text: "+ 한 잔")
+            minusButton.configuration = UIButton.setStatusCapsuleButton(status: value, text: "- 한 잔")
+            showSparkle(status: value)
+        }
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.inputViewWillAppear.value = ()
@@ -46,7 +81,6 @@ final class WaterViewController: BaseViewController {
         view.addSubview(waveView)
         waveView.addSubview(countLabel)
         waveView.addSubview(titleLabel)
-        
     }
     
     override func configureLayout() {
@@ -100,35 +134,27 @@ extension WaterViewController {
 }
 
 extension WaterViewController {
-    private func bindData() {
-        viewModel.inputViewDidLoad.value = ()
-        viewModel.outputViewDidLoad.bind { [weak self] (data, goal) in
-            guard let self else { return }
-            titleLabel.text = Constants.NavigationTitle.Water(goal: Int(goal)).title
-            navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: plusButton), UIBarButtonItem(customView: minusButton)]
-        }
-        viewModel.outputData.bind { [weak self] (value, goal) in
-            guard let self, let value, let goal else { return }
-            changingView(data: value, goal: goal)
-            if viewModel.outputLabelHidden.value == false {
-                setAnimation()
-                changingLayout()
+    private func setUpEmitterLayer() {
+        let yellowSparkleCell = CAEmitterCell()
+        let redSparkleCell = CAEmitterCell()
+        let greenSparkleCell = CAEmitterCell()
+        yellowSparkleCell.setEmitterCell(image: .sparkle, birth: 50, scale: 1.3)
+        redSparkleCell.setEmitterCell(image: .sparkle2, birth: 70, scale: 1)
+        greenSparkleCell.setEmitterCell(image: .sparkle3, birth: 50, scale: 1.5)
+        emitterLayer.emitterCells = [yellowSparkleCell, redSparkleCell, greenSparkleCell]
+    }
+    
+    private func showSparkle(status: Bool) {
+        switch status {
+        case true:
+            emitterLayer.emitterPosition = CGPoint(x: view.frame.width/2, y: view.frame.height+10)
+            emitterLayer.birthRate = 1
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+                self?.emitterLayer.birthRate = 0
             }
-        }
-        viewModel.outputViewDidDisappear.bind { [weak self] value in
-            guard let self, let value else { return }
-            waveView.stopAnimation()
-        }
-        viewModel.outputViewWillAppear.bind { [weak self] value in
-            guard let self, let value else { return }
-            waveView.startAnimation()
-        }
-        viewModel.outputLabelHidden.bind { [weak self] value in
-            guard let self, let value else { return }
-            countLabel.isHidden = value
-            navigationController?.navigationBar.tintColor = UIColor.setStatusColor(status: value)
-            plusButton.configuration = UIButton.setStatusCapsuleButton(status: value, text: "+ 한 잔")
-            minusButton.configuration = UIButton.setStatusCapsuleButton(status: value, text: "- 한 잔")
+            view.layer.addSublayer(emitterLayer)
+        case false:
+            break
         }
     }
     
