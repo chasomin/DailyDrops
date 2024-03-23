@@ -23,6 +23,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // TODO: 권한 요청 앱 진입 시 물어볼지, 걸음수 탭에 들어가면 물어볼지 정하기
         HealthManager.shared.requestAuthoriaztion()
+        
+        UNUserNotificationCenter.current().delegate = self
+        // 알림 권한 설정
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { success, error in
+            guard error == nil else {
+                print("=== 알림 권한 설정 오류!!: ", error)
+                return
+            }
+            
+            if success {
+                print("알림 권한 허용")
+            } else {
+                print("알림 권한 거부")
+                //TODO: Alert
+            }
+        }
+
         return true
     }
 
@@ -64,3 +81,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    
+    // foreground 에서 알림을 받고자 할 경우
+    // ex) 친구랑 1:1 채팅할 경우, 다른 단톡방이나 다른 갠톡방 푸시만 오는 것 처럼, 특정 화면/특정 조건에 대해서 포그라운드 알림을 받게 설정하는 것도 가능!
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        completionHandler([.badge,.banner,.list,.sound])
+    }
+
+    
+    
+}
