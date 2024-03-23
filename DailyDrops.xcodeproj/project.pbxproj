@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		26D65632239E7DB912A830D2 /* Pods_DailyDrops.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E96AB1C0CD9779E05D99E0C /* Pods_DailyDrops.framework */; };
 		790578D72BAD627800EAD2D1 /* CAEmitterCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790578D62BAD627800EAD2D1 /* CAEmitterCell+Extension.swift */; };
+		790578D92BAEE11B00EAD2D1 /* PermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790578D82BAEE11B00EAD2D1 /* PermissionViewController.swift */; };
+		790578DB2BAEE34A00EAD2D1 /* PermissionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790578DA2BAEE34A00EAD2D1 /* PermissionTableViewCell.swift */; };
+		790578DD2BAEF0BB00EAD2D1 /* ReloadProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790578DC2BAEF0BB00EAD2D1 /* ReloadProtocol.swift */; };
+		790578DF2BAEF26D00EAD2D1 /* ReloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790578DE2BAEF26D00EAD2D1 /* ReloadManager.swift */; };
+		790578E12BAEF4DF00EAD2D1 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790578E02BAEF4DF00EAD2D1 /* EmptyView.swift */; };
 		790E8FB92B99838C004DC160 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790E8FB82B99838C004DC160 /* AppDelegate.swift */; };
 		790E8FBB2B99838C004DC160 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790E8FBA2B99838C004DC160 /* SceneDelegate.swift */; };
 		790E8FC22B99838E004DC160 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 790E8FC12B99838E004DC160 /* Assets.xcassets */; };
@@ -95,6 +100,11 @@
 /* Begin PBXFileReference section */
 		14EE9E7815A24FF1031D0B57 /* Pods-DailyDrops.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyDrops.debug.xcconfig"; path = "Target Support Files/Pods-DailyDrops/Pods-DailyDrops.debug.xcconfig"; sourceTree = "<group>"; };
 		790578D62BAD627800EAD2D1 /* CAEmitterCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CAEmitterCell+Extension.swift"; sourceTree = "<group>"; };
+		790578D82BAEE11B00EAD2D1 /* PermissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionViewController.swift; sourceTree = "<group>"; };
+		790578DA2BAEE34A00EAD2D1 /* PermissionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionTableViewCell.swift; sourceTree = "<group>"; };
+		790578DC2BAEF0BB00EAD2D1 /* ReloadProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadProtocol.swift; sourceTree = "<group>"; };
+		790578DE2BAEF26D00EAD2D1 /* ReloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadManager.swift; sourceTree = "<group>"; };
+		790578E02BAEF4DF00EAD2D1 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		790E8FB52B99838C004DC160 /* DailyDrops.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyDrops.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		790E8FB82B99838C004DC160 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		790E8FBA2B99838C004DC160 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -315,6 +325,7 @@
 			isa = PBXGroup;
 			children = (
 				795B216D2B99BCA400DA7D7F /* HealthManager.swift */,
+				790578DE2BAEF26D00EAD2D1 /* ReloadManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -378,6 +389,8 @@
 				798BFFC42BAAD04400F34FD9 /* SupplementSettingViewController.swift */,
 				798BFFCC2BAC44A200F34FD9 /* SupplementSettingViewModel.swift */,
 				798BFFC62BAAD50C00F34FD9 /* SupplementSettingTableViewCell.swift */,
+				790578D82BAEE11B00EAD2D1 /* PermissionViewController.swift */,
+				790578DA2BAEE34A00EAD2D1 /* PermissionTableViewCell.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -409,6 +422,7 @@
 				79E9BB322B9E12C6003CAF0B /* CapsulePointBarButton.swift */,
 				79BF77942BA6A02900C145E2 /* CheckButton.swift */,
 				7942963A2BA99101003A1268 /* MoveNextViewButton.swift */,
+				790578E02BAEF4DF00EAD2D1 /* EmptyView.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -429,6 +443,7 @@
 			isa = PBXGroup;
 			children = (
 				79E9BB552BA05922003CAF0B /* TransitionValueProtocol.swift */,
+				790578DC2BAEF0BB00EAD2D1 /* ReloadProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -656,6 +671,7 @@
 				79E9BB5C2BA074C5003CAF0B /* UIButton+Extension.swift in Sources */,
 				794296392BA945B3003A1268 /* CalendarViewModel.swift in Sources */,
 				795B21822B9AEA7700DA7D7F /* Supplement.swift in Sources */,
+				790578DB2BAEE34A00EAD2D1 /* PermissionTableViewCell.swift in Sources */,
 				795B21802B9ADF2F00DA7D7F /* SupplementDTO.swift in Sources */,
 				795B21752B99C95800DA7D7F /* BaseCollectionViewCell.swift in Sources */,
 				795B216E2B99BCA400DA7D7F /* HealthManager.swift in Sources */,
@@ -664,6 +680,7 @@
 				79E9BB2B2B9DF0B7003CAF0B /* SearchViewModel.swift in Sources */,
 				79BF77952BA6A02900C145E2 /* CheckButton.swift in Sources */,
 				793F59702B9B814600B7FBE9 /* SupplementViewController.swift in Sources */,
+				790578DF2BAEF26D00EAD2D1 /* ReloadManager.swift in Sources */,
 				79E9BB3E2B9ED126003CAF0B /* RealmRepository.swift in Sources */,
 				79E9BB662BA17BA3003CAF0B /* RealmSupplement.swift in Sources */,
 				79E9BB3C2B9ECE95003CAF0B /* RealmGoal.swift in Sources */,
@@ -676,12 +693,14 @@
 				79E9BB312B9E078F003CAF0B /* TableViewFooterTextView.swift in Sources */,
 				790E8FB92B99838C004DC160 /* AppDelegate.swift in Sources */,
 				790E8FBB2B99838C004DC160 /* SceneDelegate.swift in Sources */,
+				790578E12BAEF4DF00EAD2D1 /* EmptyView.swift in Sources */,
 				79E9BB532BA04892003CAF0B /* Alert+Extension.swift in Sources */,
 				79BF77842BA1AD5C00C145E2 /* HeaderSupplementaryView.swift in Sources */,
 				798BFFC52BAAD04400F34FD9 /* SupplementSettingViewController.swift in Sources */,
 				79E9BB422B9F100C003CAF0B /* Date+Extension.swift in Sources */,
 				798BFFC92BAC447900F34FD9 /* WaterGoalSettingViewModel.swift in Sources */,
 				79863D5B2B9C2BCE00EFA3B3 /* SettingNotificationViewController.swift in Sources */,
+				790578DD2BAEF0BB00EAD2D1 /* ReloadProtocol.swift in Sources */,
 				798BFFBD2BAAAC0B00F34FD9 /* SettingViewController.swift in Sources */,
 				79BF779F2BA7180600C145E2 /* WeekStepView.swift in Sources */,
 				798BFFC72BAAD50C00F34FD9 /* SupplementSettingTableViewCell.swift in Sources */,
@@ -704,6 +723,7 @@
 				79BF77A62BA84F5B00C145E2 /* WaterCollectionViewCell.swift in Sources */,
 				798BFFC12BAABB1300F34FD9 /* StepGoalSettingViewController.swift in Sources */,
 				79E9BB5A2BA0694E003CAF0B /* SettingNotificationViewModel.swift in Sources */,
+				790578D92BAEE11B00EAD2D1 /* PermissionViewController.swift in Sources */,
 				795B217C2B99D1A600DA7D7F /* SupplementAPI.swift in Sources */,
 				795B21852B9AECB100DA7D7F /* APIManager.swift in Sources */,
 				795B21712B99C8A000DA7D7F /* BaseViewController.swift in Sources */,
