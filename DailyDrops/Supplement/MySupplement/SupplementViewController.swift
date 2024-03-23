@@ -12,7 +12,8 @@ final class SupplementViewController: BaseViewController {
     private let viewModel = MySupplementViewModel()
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
     private var dataSource: UICollectionViewDiffableDataSource<String, SupplementName>!
-
+    private let emptyView = EmptyView(image: .mySupplementEmpty, text: Constants.Empty.todaySupplement.rawValue, frame: .zero)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         bindData()
@@ -24,10 +25,14 @@ final class SupplementViewController: BaseViewController {
     }
     
     override func configureHierarchy() {
+        view.addSubview(emptyView)
         view.addSubview(collectionView)
     }
     
     override func configureLayout() {
+        emptyView.snp.makeConstraints { make in
+            make.edges.equalTo(view.safeAreaLayoutGuide)
+        }
         collectionView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
@@ -50,6 +55,10 @@ final class SupplementViewController: BaseViewController {
             guard let self, let value else { return }
             makeCellRegistration()
             updateSnapshot()
+        }
+        viewModel.outputEmpty.bind { [weak self] value in
+            guard let self, let value else { return }
+            collectionView.isHidden = value
         }
     }
     

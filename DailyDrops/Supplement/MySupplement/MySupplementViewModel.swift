@@ -18,6 +18,7 @@ final class MySupplementViewModel {
     let outputSection: Observable<[String]> = Observable([])
     let outputSupplementData : Observable<[String:[SupplementName]]?> = Observable(nil)
     let outputCheckButtonTapped: Observable<Void?> = Observable(nil)
+    let outputEmpty: Observable<Bool?> = Observable(nil)
     
     init() {
         transform()
@@ -31,6 +32,11 @@ final class MySupplementViewModel {
         inputViewWillAppear.bind { [weak self] value in
             guard let self else { return }
             outputSection.value = repository.readTodaySupplementTime()
+            if repository.readTodaySupplementTime().isEmpty {
+                outputEmpty.value = true
+            } else {
+                outputEmpty.value = false
+            }
             guard let value else { return }
             outputSupplementData.value = [:]
             setTodaySupplementForTime()
