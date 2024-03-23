@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+final class ReloadManager {
+    static let shared = ReloadManager()
+    
+    private init() { }
+    
+    weak var delegate: ReloadProtocol?
+    
+    func didBecomeActive() {
+        delegate?.didBecomeActive()
+    }
+}
