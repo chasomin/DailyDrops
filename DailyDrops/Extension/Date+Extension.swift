@@ -33,4 +33,19 @@ extension Date {
         let dateString = format.string(from: self)
         return format.date(from: dateString) ?? Date()
     }
+    
+    func dateFilterHour() -> Int? {
+        let format = DateFormatter()
+        format.dateFormat = "HH"
+        let hour = format.string(from: self)
+        return Int(hour)
+    }
+    
+    func dateFilterMinute() -> Int? {
+        let format = DateFormatter()
+        format.dateFormat = "mm"
+        let hour = format.string(from: self)
+        return Int(hour)
+    }
+
 }
