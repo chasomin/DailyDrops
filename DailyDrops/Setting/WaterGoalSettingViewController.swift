@@ -76,7 +76,7 @@ final class WaterGoalSettingViewController: BaseViewController {
         cupLabel.text = "잔"
         cupLabel.font = .title
         
-        stepper.minimumValue = 0
+        stepper.minimumValue = 1
         stepper.maximumValue = 20
         stepper.stepValue = 1
         stepper.addTarget(self, action: #selector(stepperTapped), for: .valueChanged)
