@@ -14,14 +14,14 @@ enum SupplementAPI {
     
     static var start: Int = 1
     static var end: Int = 15
-
     
     var endPoint: String {
         switch self {
         case .all:
             return "https://openapi.foodsafetykorea.go.kr/api/35fb7bd585e24efa9699/I0030/json/\(SupplementAPI.start)/\(SupplementAPI.end)"
         case .search(let searchText):
-            return "https://openapi.foodsafetykorea.go.kr/api/35fb7bd585e24efa9699/I0030/json/\(SupplementAPI.start)/\(SupplementAPI.end)/PRDLST_NM=\(searchText)"
+            let query = searchText.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+            return "https://openapi.foodsafetykorea.go.kr/api/35fb7bd585e24efa9699/I0030/json/\(SupplementAPI.start)/\(SupplementAPI.end)/PRDLST_NM=\(query)"
         }
     }
 }
