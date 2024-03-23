@@ -12,6 +12,7 @@ final class SettingNotificationViewController: BaseViewController {
     
     private let viewModel = SettingNotificationViewModel()
 
+    private let tapGesture = UITapGestureRecognizer()
     private let nameTitleLabel = UILabel()
     private let nameSubTitleLabel = UILabel()
     private let nameTextField = UITextField()
@@ -56,6 +57,7 @@ final class SettingNotificationViewController: BaseViewController {
     
     override func configureHierarchy() {
         view.addSubview(VStack)
+        view.addGestureRecognizer(tapGesture)
         VStack.addArrangedSubview(nameVStack)
         VStack.addArrangedSubview(weekVStack)
         VStack.addArrangedSubview(repeatVStack)
@@ -168,6 +170,8 @@ final class SettingNotificationViewController: BaseViewController {
         
         thirdHStack.axis = .horizontal
         thirdHStack.distribution = .fill
+        
+        tapGesture.addTarget(self, action: #selector(tapGestureTapped))
     }
 
     private func bindData() {
@@ -243,6 +247,10 @@ extension SettingNotificationViewController {
         let days: [Int] = viewModel.outputWeekButtonTapped.value
         let times: [Date] = [firstDatepicker.date, secondDatePicker.date, thirdDatePicker.date]
         viewModel.inputSaveButtonTapped.value = MySupplement(id: UUID(), regDate: Date(), name: name, days: days, times: times)
+    }
+    
+    @objc func tapGestureTapped() {
+        view.endEditing(true)
     }
 }
 
