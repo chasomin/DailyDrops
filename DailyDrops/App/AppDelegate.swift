@@ -39,7 +39,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 //TODO: Alert
             }
         }
-
+        
+        // MARK: 앱 최초 실행 시 목표 기본 값 저장
+        if !UserDefaults.standard.bool(forKey: "isFirstLaunch") {
+            let repository = RealmRepository()
+            repository.createItem(RealmGoal(waterCup: 10, steps: 10000), completion: nil)
+            UserDefaults.standard.set(true, forKey: "isFirstLaunch")
+        }
+        
         return true
     }
 
@@ -82,14 +89,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
-    
     // foreground 에서 알림을 받고자 할 경우
-    // ex) 친구랑 1:1 채팅할 경우, 다른 단톡방이나 다른 갠톡방 푸시만 오는 것 처럼, 특정 화면/특정 조건에 대해서 포그라운드 알림을 받게 설정하는 것도 가능!
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        
         completionHandler([.badge,.banner,.list,.sound])
     }
-
-    
-    
 }
