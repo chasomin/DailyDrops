@@ -77,7 +77,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
         case 3:
-            let vc = WaterGoalSettingViewController()
+            let vc = PermissionViewController()
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
         default:
