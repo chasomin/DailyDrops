@@ -8,15 +8,16 @@
 import UIKit
 import SnapKit
 
-class SupplementSettingViewController: BaseViewController {
+final class SupplementSettingViewController: BaseViewController {
     private let viewModel = SupplementSettingViewModel()
 
-    let tableView = UITableView()
+    private let tableView = UITableView()
+    private let emptyView = EmptyView(image: .mySupplementEmpty, text: Constants.Empty.supplement.rawValue, frame: .zero)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         bindData()
-        navigationItem.title = "영양제 관리"
+        navigationItem.title = Constants.Setting.supplement.rawValue
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(plusButtonTapped))
     }
     
@@ -29,14 +30,25 @@ class SupplementSettingViewController: BaseViewController {
         viewModel.outputSupplement.bind { [weak self] value in
             guard let self, let value else { return }
             tableView.reloadData()
+            if value.isEmpty {
+                tableView.isHidden = true
+            } else {
+                tableView.isHidden = false
+            }
+
         }
     }
     
     override func configureHierarchy() {
+        view.addSubview(emptyView)
         view.addSubview(tableView)
     }
     
     override func configureLayout() {
+        emptyView.snp.makeConstraints { make in
+            make.edges.equalTo(view.safeAreaLayoutGuide)
+        }
+
         tableView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
