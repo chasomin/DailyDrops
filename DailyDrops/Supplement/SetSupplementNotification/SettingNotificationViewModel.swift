@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import UserNotifications
+import UIKit
 
 final class SettingNotificationViewModel {
     let repository = RealmRepository()
@@ -63,12 +65,53 @@ final class SettingNotificationViewModel {
             return
         }
         
-        var time: [Date] = []
-        
-        time = value.times[...outputSegmentTapped.value].map { $0 }.sorted()
+        var time: [Date] = value.times[...outputSegmentTapped.value].map { $0 }.sorted()
         
         repository.createItem(MySupplement(id: value.id, regDate: Date(), name: value.name, days: value.days.sorted(), times: time).toDTO(), completion: nil)
         outputSaveButtonTapped.value = ()
+        setNotification(value)
+    }
+    
+    func setNotification(_ value: MySupplement) {
+        let name = value.name
+        let days = value.days
+        let times = value.times[...outputSegmentTapped.value].map { $0 }.sorted()
         
+        let content = UNMutableNotificationContent()
+        var component = DateComponents()
+        let center = UNUserNotificationCenter.current()
+        content.body = "오늘도 건강한 하루 보내세요 :)"
+        content.badge = 1
+
+        // FIXME: 반복문+반복문+조건문+반복문 이게 최선인가........ 그리고 id 64개 넘으면 어떡하징
+        
+        for day in days {
+            for time in times {
+                
+                let id = day.description+time.dateFilterTime()
+                center.getPendingNotificationRequests { requests in
+                    print(requests.count)
+                    if requests.isEmpty {
+                        content.title = "[\(time.dateFilterTime())] \(name)"
+                    } else {
+                        let request = requests.filter{ $0.identifier == id }
+                        if request.isEmpty {
+                            content.title = "[\(time.dateFilterTime())] \(name)"
+
+                        } else {
+                            request.forEach { content.title = "\($0.content.title), \(name)" }
+                        }
+                    }
+                    component.weekday = day
+                    component.hour = time.dateFilterHour()
+                    component.minute = time.dateFilterMinute()
+                                        
+                    let trigger = UNCalendarNotificationTrigger(dateMatching: component, repeats: true)
+                    let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
+                    center.add(request)
+
+                }
+            }
+        }
     }
 }
