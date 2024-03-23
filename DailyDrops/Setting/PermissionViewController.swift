@@ -60,6 +60,7 @@ final class PermissionViewController: BaseViewController {
 extension PermissionViewController: ReloadProtocol {
     func didBecomeActive() {
         tableView.reloadData()
+        viewModel.inputViewDidLoad.value = ()
     }
 }
 
