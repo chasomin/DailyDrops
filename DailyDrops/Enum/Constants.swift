@@ -72,6 +72,35 @@ enum Constants {
         case waterGoal = "물 마시기 목표 설정"
         case stepGoal = "걸음 수 목표 설정"
         case supplement = "영양제 관리"
-        case notification = "알림 설정"
+        case notification = "알림 / 건강데이터 권한 설정"
+    }
+    
+    enum Permission: CaseIterable {
+        case notification
+        case health
+        
+        var title: String {
+            switch self {
+            case .notification:
+                "알림 설정"
+            case .health:
+                "건강 데이터 설정"
+            }
+        }
+        
+        var description: String {
+            switch self {
+            case .notification:
+                "영양제 알림을 위해 알림 허용이 필요해요\n⚠️ 알림을 끄면 이전에 설정해둔 알림이 사라져요"
+            case .health:
+                "걸음 수 측정을 위해 건강 데이터 허용이 필요해요\n아이폰 설정 > 건강 > 데이터 접근 및 기기 > DailyDrops > 걸음"
+            }
+        }
+    }
+    
+    enum Empty: String {
+        case supplement = "저장된 영양제가 없어요\n+ 버튼을 눌러 영양제를 추가해 보세요"
+        case search = "검색 결과가 없어요\n키워드로 검색하면 더 정확한 결과가 나와요"
+        case todaySupplement = "오늘 복용할 영양제가 없어요"
     }
 }
