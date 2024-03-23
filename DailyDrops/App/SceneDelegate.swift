@@ -11,7 +11,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
@@ -39,6 +38,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         // 사용자에게 이미 전달되어 있는 노티들을 제거 (ex. 카카오톡)
         UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+        
+        ReloadManager.shared.didBecomeActive()
     }
 
     func sceneWillResignActive(_ scene: UIScene) {

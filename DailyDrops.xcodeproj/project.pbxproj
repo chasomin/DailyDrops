@@ -14,6 +14,8 @@
 		790578DD2BAEF0BB00EAD2D1 /* ReloadProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790578DC2BAEF0BB00EAD2D1 /* ReloadProtocol.swift */; };
 		790578DF2BAEF26D00EAD2D1 /* ReloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790578DE2BAEF26D00EAD2D1 /* ReloadManager.swift */; };
 		790578E12BAEF4DF00EAD2D1 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790578E02BAEF4DF00EAD2D1 /* EmptyView.swift */; };
+		790578E32BAF29B300EAD2D1 /* PermissionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790578E22BAF29B300EAD2D1 /* PermissionViewModel.swift */; };
+		790578E52BAF2D5800EAD2D1 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790578E42BAF2D5800EAD2D1 /* NotificationManager.swift */; };
 		790E8FB92B99838C004DC160 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790E8FB82B99838C004DC160 /* AppDelegate.swift */; };
 		790E8FBB2B99838C004DC160 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790E8FBA2B99838C004DC160 /* SceneDelegate.swift */; };
 		790E8FC22B99838E004DC160 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 790E8FC12B99838E004DC160 /* Assets.xcassets */; };
@@ -105,6 +107,8 @@
 		790578DC2BAEF0BB00EAD2D1 /* ReloadProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadProtocol.swift; sourceTree = "<group>"; };
 		790578DE2BAEF26D00EAD2D1 /* ReloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadManager.swift; sourceTree = "<group>"; };
 		790578E02BAEF4DF00EAD2D1 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		790578E22BAF29B300EAD2D1 /* PermissionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionViewModel.swift; sourceTree = "<group>"; };
+		790578E42BAF2D5800EAD2D1 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		790E8FB52B99838C004DC160 /* DailyDrops.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyDrops.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		790E8FB82B99838C004DC160 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		790E8FBA2B99838C004DC160 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -326,6 +330,7 @@
 			children = (
 				795B216D2B99BCA400DA7D7F /* HealthManager.swift */,
 				790578DE2BAEF26D00EAD2D1 /* ReloadManager.swift */,
+				790578E42BAF2D5800EAD2D1 /* NotificationManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -391,6 +396,7 @@
 				798BFFC62BAAD50C00F34FD9 /* SupplementSettingTableViewCell.swift */,
 				790578D82BAEE11B00EAD2D1 /* PermissionViewController.swift */,
 				790578DA2BAEE34A00EAD2D1 /* PermissionTableViewCell.swift */,
+				790578E22BAF29B300EAD2D1 /* PermissionViewModel.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -688,6 +694,7 @@
 				79BF77992BA7158200C145E2 /* StepViewModel.swift in Sources */,
 				7942963B2BA99101003A1268 /* MoveNextViewButton.swift in Sources */,
 				795B21882B9B0CB000DA7D7F /* WaterViewController.swift in Sources */,
+				790578E52BAF2D5800EAD2D1 /* NotificationManager.swift in Sources */,
 				79BF77882BA2D2ED00C145E2 /* Toast+Extension.swift in Sources */,
 				79BF77932BA4B27B00C145E2 /* MySupplement.swift in Sources */,
 				79E9BB312B9E078F003CAF0B /* TableViewFooterTextView.swift in Sources */,
@@ -709,6 +716,7 @@
 				79E9BB682BA17BB3003CAF0B /* RealmSupplementLog.swift in Sources */,
 				79BF77AA2BA8551100C145E2 /* SupplementLogCollectionViewCell.swift in Sources */,
 				798BFFCD2BAC44A200F34FD9 /* SupplementSettingViewModel.swift in Sources */,
+				790578E32BAF29B300EAD2D1 /* PermissionViewModel.swift in Sources */,
 				79BF77A42BA842C200C145E2 /* CalendarViewController.swift in Sources */,
 				79E9BB332B9E12C6003CAF0B /* CapsulePointBarButton.swift in Sources */,
 				79A172402B9CBE2F003AB10F /* SearchTableViewCell.swift in Sources */,
