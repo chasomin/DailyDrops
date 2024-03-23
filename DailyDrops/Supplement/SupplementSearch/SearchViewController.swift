@@ -15,6 +15,7 @@ final class SearchViewController: BaseViewController {
     weak var delegate: TransitionValue?
     var searchText: String?
     private let gesture = UISwipeGestureRecognizer()
+    private let emptyView = EmptyView(image: .searchEmpty, text: Constants.Empty.search.rawValue, frame: .zero)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,7 @@ final class SearchViewController: BaseViewController {
     
     override func configureHierarchy() {
         view.addGestureRecognizer(gesture)
+        view.addSubview(emptyView)
         view.addSubview(searchBar)
         view.addSubview(tableView)
     }
@@ -31,6 +33,10 @@ final class SearchViewController: BaseViewController {
     override func configureLayout() {
         searchBar.snp.makeConstraints { make in
             make.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
+        }
+        emptyView.snp.makeConstraints { make in
+            make.top.equalTo(searchBar.snp.bottom)
+            make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
         }
         tableView.snp.makeConstraints { make in
             make.top.equalTo(searchBar.snp.bottom)
@@ -70,6 +76,22 @@ extension SearchViewController {
             guard let self else { return }
             tableView.reloadData()
             view.endEditing(true)
+        }
+        viewModel.outputEmpty.bind { [weak self] value in
+            guard let self, let value else { return }
+            if value {
+                tableView.isHidden = true
+            } else {
+                tableView.isHidden = false
+            }
+        }
+        viewModel.outputLoading.bind { [weak self] value in
+            guard let self, let value else { return }
+            if value {
+                view.makeToastActivity(.center)
+            } else {
+                view.hideToastActivity()
+            }
         }
     }
 }

@@ -19,6 +19,8 @@ final class SearchViewModel {
     let outputSetNavigation: Observable<Void?> = Observable(nil)
     let outputSetSearchBar: Observable<Void?> = Observable(nil)
     let outputWeekButtonTapped:  Observable<[Int]?> = Observable(nil)
+    let outputEmpty: Observable<Bool?> = Observable(nil)
+    let outputLoading: Observable<Bool?> = Observable(nil)
     
     init () { transform() }
     
@@ -56,10 +58,12 @@ final class SearchViewModel {
     }
     
     private func allFetch() {
+        outputLoading.value = true
         APIManager.shared.callRequest(api: .all) { [weak self] result, error in
             guard let error else {
                 guard let result, let self else { return }
                 outputData.value.append(contentsOf: result)
+                outputLoading.value = false
                 return
             }
             print(error)//TODO: Error
@@ -67,11 +71,17 @@ final class SearchViewModel {
     }
     
     private func searchFetch(_ text: String) {
+        outputLoading.value = true
         APIManager.shared.callRequest(api: .search(searchText: text)) { [weak self] result, error in
             guard let error else {
                 guard let result, let self else { return }
                 outputData.value.append(contentsOf: result)
-                print("===", result)
+                if result.isEmpty {
+                    outputEmpty.value = true
+                } else {
+                    outputEmpty.value = false
+                }
+                outputLoading.value = false
                 return
             }
             print(error)//TODO: Error
