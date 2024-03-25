@@ -64,10 +64,11 @@ final class SettingNotificationViewModel {
             outputFailSave.value = "모든 항목을 입력해주세요!"
             return
         }
-        
-        var time: [Date] = value.times[...outputSegmentTapped.value].map { $0 }.sorted()
-        
-        repository.createItem(MySupplement(id: value.id, regDate: Date(), name: value.name, days: value.days.sorted(), times: time).toDTO(), completion: nil)
+        var time: [Date] = []
+        Set(value.times.map{$0.dateFilterTime()}).forEach { date in
+            time.append(value.times[...outputSegmentTapped.value].first { date == $0.dateFilterTime() } ?? Date())
+        }
+        repository.createItem(MySupplement(id: value.id, regDate: Date(), name: value.name, days: value.days.sorted(), times: time.sorted()).toDTO(), completion: nil)
         outputSaveButtonTapped.value = ()
         setNotification(value)
     }
