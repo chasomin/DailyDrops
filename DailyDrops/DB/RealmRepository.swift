@@ -38,6 +38,12 @@ final class RealmRepository<T: Object> {
         return total
     }
     
+    func readFirstGoal() -> Goal {
+        let goal = realm.objects(RealmGoal.self).map { $0.toEntity() }
+        guard let firstGoal = goal.sorted(by: {$0.regDate < $1.regDate}).first else { return Goal(id: "", waterCup: 0, steps: 0, regDate: Date())}
+        return firstGoal
+    }
+    
     func readGoalCups(date: Date) -> Float {
         let goal = realm.objects(RealmGoal.self).map { $0.toEntity() }
         return goal.filter{$0.regDate.dateWithMidnight() <= date}.sorted(by: {$0.regDate < $1.regDate}).last?.waterCup ?? 0
@@ -65,10 +71,10 @@ final class RealmRepository<T: Object> {
     }
     
     /// 해당 시간 대에 복용할 약 배열을 리턴하는 메서드
-    func readSupplementForTime(_ time: String) -> [MySupplement] {
-        let today = Date()
+    func readSupplementForTime(_ time: String, date: Date) -> [MySupplement] {
+//        let today = Date()
         let supplements = realm.objects(RealmSupplement.self)
-        let filterContainToday = supplements.where{$0.days.contains(today.dateFilterDay())}.map{ $0.toEntity() }
+        let filterContainToday = supplements.where{$0.days.contains(date.dateFilterDay())}.map{ $0.toEntity() }
         return filterContainToday.filter{ $0.times.map{ $0.dateFilterTime() }.contains(time) }
     }
 
@@ -84,6 +90,20 @@ final class RealmRepository<T: Object> {
         }
         return Set(times).sorted()
     }
+    
+    /// 특정 날짜에 복용할 약의 시간대를 리턴하는 메서드
+    func readSupplementTimeForDate(_ date: Date) -> [String] {
+        let todaySupplement = readSupplementByDate(date: date)
+        
+        var times: [String] = []
+        todaySupplement.forEach {
+            $0.times.forEach {
+                times.append($0.dateFilterTime())
+            }
+        }
+        return Set(times).sorted()
+    }
+
         
     // MARK: Delete
     func deleteSupplementLog(date: String, name: String, time: String) {
