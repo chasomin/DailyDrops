@@ -13,6 +13,16 @@ final class SupplementViewController: BaseViewController {
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
     private var dataSource: UICollectionViewDiffableDataSource<String, SupplementName>!
     private let emptyView = EmptyView(image: .mySupplementEmpty, text: Constants.Empty.todaySupplement.rawValue, frame: .zero)
+    let date: Date
+    
+    init(date: Date) {
+        self.date = date
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +31,7 @@ final class SupplementViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel.inputViewWillAppear.value = ()
+        viewModel.inputViewWillAppear.value = date
     }
     
     override func configureHierarchy() {
@@ -119,7 +129,8 @@ extension SupplementViewController {
         return UICollectionView.CellRegistration { [weak self] cell, indexPath, itemIdentifier in
             guard let self else { return }
             guard let section = dataSource.snapshot().sectionIdentifier(containingItem: itemIdentifier) else { return }
-            cell.configureCell(item: itemIdentifier, index: indexPath, section: section)
+            guard let date = viewModel.inputViewWillAppear.value else { return }
+            cell.configureCell(item: itemIdentifier, index: indexPath, section: section, isToday: viewModel.outputCheckButtonEnabled.value, date: date)
             cell.checkButton.addTarget(self, action: #selector(checkButtonTapped), for: .touchUpInside)
         }
     }

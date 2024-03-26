@@ -13,14 +13,12 @@ class SupplementLogCollectionViewCell: BaseCollectionViewCell {
     let statusLabel = UILabel()
     let progressBar = UIProgressView()
     let nextNotificationLabel = UILabel()
-    let supplementDetailMoveButton = MoveNextViewButton(kind: Constants.Topic.supplement, frame: .zero)
     
     override func configureHierarchy() {
         contentView.addSubview(supplementTitle)
         contentView.addSubview(statusLabel)
         contentView.addSubview(progressBar)
         contentView.addSubview(nextNotificationLabel)
-        contentView.addSubview(supplementDetailMoveButton)
     }
     
     override func configureLayout() {
@@ -40,12 +38,6 @@ class SupplementLogCollectionViewCell: BaseCollectionViewCell {
             make.height.equalTo(20)
             make.horizontalEdges.equalTo(contentView).inset(15)
             make.bottom.equalTo(contentView).inset(15)
-        }
-        supplementDetailMoveButton.snp.makeConstraints { make in
-            make.top.trailing.equalTo(contentView).inset(15)
-            make.leading.equalTo(supplementTitle.snp.trailing).offset(10)
-            make.height.equalTo(supplementTitle)
-            make.width.equalTo(supplementDetailMoveButton.snp.height)
         }
     }
     
@@ -67,11 +59,5 @@ class SupplementLogCollectionViewCell: BaseCollectionViewCell {
         guard let selectedDate else { return }
         statusLabel.text = text
         progressBar.progress = value
-        
-        if selectedDate.dateFormat() == Date().dateFormat() {
-            supplementDetailMoveButton.isHidden = false
-        } else {
-            supplementDetailMoveButton.isHidden = true
-        }
     }
 }

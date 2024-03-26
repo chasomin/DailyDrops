@@ -16,6 +16,16 @@ final class StepViewController: BaseViewController {
     let monthChartView = MonthStepView()
     let titleLabel = UILabel()
     let stepLabel = UILabel()
+    let date: Date
+    
+    init(date: Date) {
+        self.date = date
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,7 +82,7 @@ final class StepViewController: BaseViewController {
     }
     
     private func bindData() {
-        viewModel.inputViewDidLoad.value = ()
+        viewModel.inputViewDidLoad.value = date
         
         viewModel.outputGoal.bind { [weak self] value in
             guard let self, let value else { return }

@@ -13,14 +13,12 @@ class StepCollectionViewCell: BaseCollectionViewCell {
     let statusLabel = UILabel()
     let progressBar = UIProgressView()
     let descriptionLabel = UILabel()
-    let stepDetailMoveButton = MoveNextViewButton(kind: Constants.Topic.step, frame: .zero)
 
     override func configureHierarchy() {
         contentView.addSubview(stepsTitle)
         contentView.addSubview(statusLabel)
         contentView.addSubview(progressBar)
         contentView.addSubview(descriptionLabel)
-        contentView.addSubview(stepDetailMoveButton)
     }
     
     override func configureLayout() {
@@ -40,12 +38,6 @@ class StepCollectionViewCell: BaseCollectionViewCell {
             make.height.equalTo(20)
             make.horizontalEdges.equalTo(contentView).inset(15)
             make.bottom.equalTo(contentView).inset(15)
-        }
-        stepDetailMoveButton.snp.makeConstraints { make in
-            make.top.trailing.equalTo(contentView).inset(15)
-            make.leading.equalTo(stepsTitle.snp.trailing).offset(10)
-            make.height.equalTo(stepsTitle)
-            make.width.equalTo(stepDetailMoveButton.snp.height)
         }
     }
     
@@ -67,10 +59,5 @@ class StepCollectionViewCell: BaseCollectionViewCell {
         guard let selectedDate else { return }
         statusLabel.text = text
         progressBar.progress = value
-        if selectedDate.dateFormat() == Date().dateFormat() {
-            stepDetailMoveButton.isHidden = false
-        } else {
-            stepDetailMoveButton.isHidden = true
-        }
     }
 }

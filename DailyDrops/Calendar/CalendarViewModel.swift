@@ -22,8 +22,8 @@ final  class CalendarViewModel {
     let outputSteps: Observable<String> = Observable("")
     let outputStepsProgress: Observable<Float> = Observable(0)
     let outputReload: Observable<Int> = Observable(0)
-    let outputFutureDate: Observable<String?> = Observable(nil)
     let outputNotToday: Observable<Bool?> = Observable(nil)
+    let outputNoData: Observable<String?> = Observable(nil)
     
     init() { transform() }
 
@@ -47,7 +47,12 @@ final  class CalendarViewModel {
                 getAmountOfDrinksWater(date: Date())
                 getLeftSupplementCount(date: Date())
                 getSteps(date: Date())
-                outputFutureDate.value = "미래의 날짜는 선택할 수 없어요"
+                outputNoData.value = "미래의 날짜는 선택할 수 없어요"
+            } else if date < repository.readFirstGoal().regDate.dateWithMidnight() {
+                getAmountOfDrinksWater(date: Date())
+                getLeftSupplementCount(date: Date())
+                getSteps(date: Date())
+                outputNoData.value = "이때는 DailyDrops를 만나기 전이에요 :("
             } else {
                 getAmountOfDrinksWater(date: date)
                 getLeftSupplementCount(date: date)

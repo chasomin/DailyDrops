@@ -21,7 +21,17 @@ final class WaterViewController: BaseViewController {
     private let minusButton = CapsulePointButton(frame: .zero, text: "- 한 잔")
     private let moveButton = UIButton()
     private let emitterLayer = CAEmitterLayer()
-
+    let date: Date
+    
+    init(date: Date) {
+        self.date = date
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,12 +39,18 @@ final class WaterViewController: BaseViewController {
     }
     
     private func bindData() {
-        viewModel.inputViewDidLoad.value = ()
+        viewModel.inputViewDidLoad.value = date
         viewModel.outputViewDidLoad.bind { [weak self] (data, goal) in
             guard let self else { return }
             titleLabel.text = Constants.NavigationTitle.Water(goal: Int(goal), cup: Int(data)).title
             navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: plusButton), UIBarButtonItem(customView: minusButton)]
             setUpEmitterLayer()
+            changingView(data: data, goal: goal)
+            changingLayout(data: data, goal: goal)
+        }
+        viewModel.outputWaterCount.bind { [weak self] value in
+            guard let self, let value else { return }
+            countLabel.text = value
         }
         viewModel.outputData.bind { [weak self] (value, goal) in
             guard let self, let value, let goal else { return }
@@ -42,7 +58,7 @@ final class WaterViewController: BaseViewController {
             changingView(data: value, goal: goal)
             if viewModel.outputLabelHidden.value == false {
                 setAnimation()
-                changingLayout()
+                changingLayout(data: value, goal: goal)
             }
         }
         viewModel.outputViewDidDisappear.bind { [weak self] value in
@@ -60,6 +76,12 @@ final class WaterViewController: BaseViewController {
             plusButton.configuration = UIButton.setStatusCapsuleButton(status: value, text: "+ 한 잔")
             minusButton.configuration = UIButton.setStatusCapsuleButton(status: value, text: "- 한 잔")
             showSparkle(status: value)
+        }
+        viewModel.outputNotToday.bind { [weak self] value in
+            guard let self, let value else { return }
+            print(value)
+            minusButton.isHidden = value
+            plusButton.isHidden = value
         }
     }
 
@@ -95,27 +117,11 @@ final class WaterViewController: BaseViewController {
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.leading.equalToSuperview().inset(15)
         }
-        
-        if viewModel.outputLabelHidden.value == false {
-            countLabel.snp.makeConstraints { make in
-                let data = viewModel.outputViewDidLoad.value.0
-                let goal = viewModel.outputViewDidLoad.value.1
-                make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(20)
-                make.bottom.equalToSuperview().multipliedBy((1 - (data / goal)) - 0.001)//FIXME: 바닥에 닿으면 다시 안올라오는 이슈 해결......
-            }
-        }
     }
     
     override func configureView() {
-        let data = viewModel.outputViewDidLoad.value.0
-        let goal = viewModel.outputViewDidLoad.value.1
-        
         titleLabel.font = .largeBoldTitle
         titleLabel.numberOfLines = 2
-        
-        waveView.progress = data / goal
-        countLabel.text = "\(Int(goal - data))잔 남았어요!"
-
         countLabel.textColor = .titleColor
         countLabel.font = .boldTitle
         countLabel.textAlignment = .right
@@ -176,15 +182,12 @@ extension WaterViewController {
         waveView.progress = Float(data / goal)
     }
     
-    private func changingLayout() {
-        guard let data = viewModel.outputData.value.0 else { return }
-        guard let goal = viewModel.outputData.value.1 else { return }
+    private func changingLayout(data: Float, goal: Float) {
         countLabel.snp.makeConstraints { [weak self] make in
             guard let self else { return }
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(20)
             make.bottom.equalToSuperview().multipliedBy((1 - (data / goal)) - 0.001)//FIXME: 바닥에 닿으면 다시 안올라오는 이슈 해결......
         }
-        countLabel.text = "\(Int(goal - data))잔 남았어요!"
     
     }
 }

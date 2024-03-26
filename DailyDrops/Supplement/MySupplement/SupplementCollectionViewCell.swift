@@ -36,9 +36,12 @@ final class SupplementCollectionViewCell: BaseCollectionViewCell {
         nameLabel.textColor = .titleColor
     }
     
-    func configureCell(item: SupplementName, index: IndexPath, section: String) {
+    func configureCell(item: SupplementName, index: IndexPath, section: String, isToday: Bool?, date: Date) {
+        guard let isToday else { return }
+        print("====", isToday)
+        checkButton.isEnabled = isToday
         nameLabel.text = item.name
         checkButton.item = item
-        checkButton.configuration = checkButton.isTapped(name: item.name, time: section)
+        checkButton.configuration = checkButton.isTapped(name: item.name, time: section, date: date)
     }
 }

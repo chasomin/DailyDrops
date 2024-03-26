@@ -13,6 +13,7 @@ final class CalendarViewController: BaseViewController {
     private let calendar = FSCalendar()
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: setCollectionViewLayout())
     private var dataSource: UICollectionViewDiffableDataSource<Constants.Topic, String>!
+    private let gesture = UIPanGestureRecognizer()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,7 @@ final class CalendarViewController: BaseViewController {
             guard let self, let value else { return }
             navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(settingButtonTapped))
             navigationItem.leftBarButtonItem = UIBarButtonItem(image: .DD, style: .plain, target: self, action: #selector(logoButtonTapped))
+            collectionView.delegate = self
         //FIXME: 로고?
         }
         
@@ -44,6 +46,7 @@ final class CalendarViewController: BaseViewController {
             calendar.dataSource = self
             calendar.currentPage = Date()
             calendar.select(Date())
+            calendar.register(FSCalendarCell.self, forCellReuseIdentifier: FSCalendarCell.id)
         }
         
         viewModel.outputReload.bind { [weak self] value in
@@ -56,7 +59,7 @@ final class CalendarViewController: BaseViewController {
             }
         }
         
-        viewModel.outputFutureDate.bind { [weak self] value in
+        viewModel.outputNoData.bind { [weak self] value in
             guard let self, let value else { return }
             showToast(value, position: .center)
             calendar.select(Date())
@@ -76,6 +79,7 @@ final class CalendarViewController: BaseViewController {
     override func configureHierarchy() {
         view.addSubview(calendar)
         view.addSubview(collectionView)
+        view.addGestureRecognizer(gesture)
     }
     
     override func configureLayout() {
@@ -159,23 +163,7 @@ extension CalendarViewController {
         calendar.appearance.todaySelectionColor = .pointColor
         calendar.appearance.todayColor = .clear
         calendar.scrollDirection = .horizontal
-    }
-    
-    @objc func moveButtonTapped(_ sender: MoveNextViewButton) {
-        switch sender.kind {
-        case .water:
-            let vc = WaterViewController()
-            vc.hidesBottomBarWhenPushed = true
-            navigationController?.pushViewController(vc, animated: true)
-        case .supplement:
-            let vc = SupplementViewController()
-            vc.hidesBottomBarWhenPushed = true
-            navigationController?.pushViewController(vc, animated: true)
-        case .step:
-            let vc = StepViewController()
-            vc.hidesBottomBarWhenPushed = true
-            navigationController?.pushViewController(vc, animated: true)
-        }
+        calendar.handleScopeGesture(gesture)//TODO: gesture 달/주, 선택 안되는 날짜 회색처리
     }
     
     @objc func settingButtonTapped() {
@@ -192,10 +180,36 @@ extension CalendarViewController {
     }
 }
 
+extension CalendarViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let date = calendar.selectedDate else { return }
+        switch indexPath.section {
+        case 0:
+            let vc = WaterViewController(date: date)
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+        case 1:
+            let vc = SupplementViewController(date: date)
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+        case 2:
+            let vc = StepViewController(date: date)
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+        default:
+            break
+        }
+    }
+}
+
 extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         viewModel.inputSelectDate.value = date
     }
+    
+//    func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
+//        return date <= Date()
+//    }
 }
 
 // MARK: - Layout
@@ -240,7 +254,6 @@ extension CalendarViewController {
         UICollectionView.CellRegistration { [weak self] cell, indexPath, itemIdentifier in
             guard let self else { return }
             cell.configureCell(value: viewModel.outputAmountOfDrinksWater.value, selectedDate: calendar.selectedDate)
-            cell.waterDetailMoveButton.addTarget(self, action: #selector(moveButtonTapped), for: .touchUpInside)
         }
     }
     
@@ -248,7 +261,6 @@ extension CalendarViewController {
         UICollectionView.CellRegistration { [weak self] cell, indexPath, itemIdentifier in
             guard let self else { return }
             cell.configureCell(text: viewModel.outputLeftSupplementCount.value, value: viewModel.outputSupplementProgress.value, selectedDate: calendar.selectedDate)
-            cell.supplementDetailMoveButton.addTarget(self, action: #selector(moveButtonTapped), for: .touchUpInside)
         }
     }
     
@@ -256,7 +268,6 @@ extension CalendarViewController {
         UICollectionView.CellRegistration { [weak self] cell, indexPath, itemIdentifier in
             guard let self else { return }
             cell.configureCell(text: viewModel.outputSteps.value, value: viewModel.outputStepsProgress.value, selectedDate: calendar.selectedDate)
-            cell.stepDetailMoveButton.addTarget(self, action: #selector(moveButtonTapped), for: .touchUpInside)
         }
     }
 }
