@@ -54,12 +54,12 @@ class HealthManager {
 //    }
     
     // MARK: 한 달
-    func getMonthStepCount(completion: @escaping ([Double]?, Error?) -> Void) {
+    func getMonthStepCount(date: Date, completion: @escaping ([Double]?, Error?) -> Void) {
         guard let stepQuantityType = HKQuantityType.quantityType(forIdentifier: .stepCount) else {
             return
         }
         
-        let end = Calendar.current.startOfDay(for: Date() + 86400)
+        let end = Calendar.current.startOfDay(for: date + 86400)
         let startDate = Calendar.current.date(byAdding: .day, value: -30, to: end)!
         
         let predicate = HKQuery.predicateForSamples(withStart: startDate, end: end, options: .strictStartDate)
@@ -90,11 +90,11 @@ class HealthManager {
         healthStore.execute(query)
     }
     
-    func getAverageMonthStepCount(completion: @escaping (Double?, Error?) -> Void) {
+    func getAverageMonthStepCount(date: Date, completion: @escaping (Double?, Error?) -> Void) {
         guard let stepQuantityType = HKQuantityType.quantityType(forIdentifier: .stepCount) else {
             return
         }
-        let end = Calendar.current.startOfDay(for: Date() + 86400)
+        let end = Calendar.current.startOfDay(for: date + 86400)
         let startDate = Calendar.current.date(byAdding: .day, value: -30, to: end)!
         
         let predicate = HKQuery.predicateForSamples(withStart: startDate, end: end, options: .strictStartDate)
@@ -114,12 +114,12 @@ class HealthManager {
     
 
     // MARK: 한 주
-    func getWeekStepCount(completion: @escaping ([Double]?, Error?) -> Void) {
+    func getWeekStepCount(date: Date, completion: @escaping ([Double]?, Error?) -> Void) {
         guard let stepQuantityType = HKQuantityType.quantityType(forIdentifier: .stepCount) else {
             return
         }
         
-        let end = Calendar.current.startOfDay(for: Date() + 86400)
+        let end = Calendar.current.startOfDay(for: date + 86400)
         let startDate = Calendar.current.date(byAdding: .day, value: -7, to: end)!
         
         let predicate = HKQuery.predicateForSamples(withStart: startDate, end: end, options: .strictStartDate)
@@ -150,11 +150,11 @@ class HealthManager {
         healthStore.execute(query)
     }
     
-    func getAverageWeekStepCount(completion: @escaping (Double?, Error?) -> Void) {
+    func getAverageWeekStepCount(date: Date, completion: @escaping (Double?, Error?) -> Void) {
         guard let stepQuantityType = HKQuantityType.quantityType(forIdentifier: .stepCount) else {
             return
         }
-        let end = Calendar.current.startOfDay(for: Date() + 86400)
+        let end = Calendar.current.startOfDay(for: date + 86400)
         let startDate = Calendar.current.date(byAdding: .day, value: -7, to: end)!
         
         let predicate = HKQuery.predicateForSamples(withStart: startDate, end: end, options: .strictStartDate)
@@ -197,12 +197,12 @@ class HealthManager {
         healthStore.execute(query)
     }
     
-    func getOneDayHourlyStepCount(completion: @escaping ([Double]?, Error?) -> Void) {
+    func getOneDayHourlyStepCount(date: Date, completion: @escaping ([Double]?, Error?) -> Void) {
         guard let stepQuantityType = HKQuantityType.quantityType(forIdentifier: .stepCount) else {
             return
         }
         
-        let end = Calendar.current.startOfDay(for: Date() + 86400)
+        let end = Calendar.current.startOfDay(for: date + 86400)
         let startDate = Calendar.current.date(byAdding: .hour, value: -24, to: end)!
         
         let predicate = HKQuery.predicateForSamples(withStart: startDate, end: end, options: .strictStartDate)
