@@ -31,11 +31,11 @@ extension UIButton {
         }
     }
     
-    func isTapped(name: String, time: String) -> UIButton.Configuration {
+    func isTapped(name: String, time: String, date: Date) -> UIButton.Configuration {
         
         let repository = RealmRepository()
         
-        if repository.readSupplementLog().filter({ $0.supplementName == name && $0.supplementTime == time && $0.regDate.dateFormat() == Date().dateFormat() }).isEmpty {
+        if repository.readSupplementLog().filter({ $0.supplementName == name && $0.supplementTime == time && $0.regDate.dateFormat() == date.dateFormat() }).isEmpty {
             var config = UIButton.Configuration.plain()
             config.baseForegroundColor = .subTitleColor
             config.image = UIImage(systemName: "circle")
