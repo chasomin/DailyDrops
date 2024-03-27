@@ -117,12 +117,16 @@ final class RealmRepository<T: Object> {
         }
     }    
     
-    func deleteSupplement(id: UUID, completion: @escaping () -> Void) {
+    func deleteSupplement(id: UUID, name: String, completion: @escaping () -> Void) {
         do {
             try realm.write {
                 let supplements: Results<RealmSupplement> = readSupplement()
-                let result = supplements.where({$0.id == id})
-                realm.delete(result)
+                let supplementLog: Results<RealmSupplementLog> = readSupplementLog()
+                
+                let resultSupplement = supplements.where({$0.id == id})
+                let resultLog = supplementLog.where({$0.supplementName == name})
+                realm.delete(resultSupplement)
+                realm.delete(resultLog)
                 completion()
             }
         } catch {
