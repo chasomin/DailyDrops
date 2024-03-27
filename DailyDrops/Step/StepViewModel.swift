@@ -67,7 +67,7 @@ final class StepViewModel {
                 guard let self else { return }
                 guard let error else {
                     guard let value else { return }
-                    outputTotalSteps.value = "총 \(Int(value))걸음"
+                    outputTotalSteps.value = "총 \(Int(value).numberToDecimal())걸음"
                     return
                 }
                 outputTotalSteps.value = "총 0걸음"
@@ -78,7 +78,7 @@ final class StepViewModel {
                 guard let self else { return }
                 guard let error else {
                     guard let value else { return }
-                    outputTotalSteps.value = "평균 \(Int(value))걸음"
+                    outputTotalSteps.value = "평균 \(Int(value).numberToDecimal())걸음"
                     return
                 }
                 outputTotalSteps.value = "평균 0걸음"
@@ -89,7 +89,7 @@ final class StepViewModel {
                 guard let self else { return }
                 guard let error else {
                     guard let value else { return }
-                    outputTotalSteps.value = "평균 \(Int(value))걸음"
+                    outputTotalSteps.value = "평균 \(Int(value).numberToDecimal())걸음"
                     return
                 }
                 outputTotalSteps.value = "평균 0걸음"

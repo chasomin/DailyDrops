@@ -112,21 +112,21 @@ final class StepViewController: BaseViewController {
         viewModel.outputTodaySteps.bind { [weak self] value in
             guard let self else { return }
             DispatchQueue.main.async {
-                self.todayChartView.setDataCount(value, range: UInt32(10000))
+                self.todayChartView.chartView.setDataCount(value, range: UInt32(10000))
             }
         }
         
         viewModel.outputWeekSteps.bind { [weak self] value in
             guard let self else { return }
             DispatchQueue.main.async {
-                self.weekChartView.setDataCount(value, range: UInt32(10000))
+                self.weekChartView.chartView.setDataCount(value, range: UInt32(10000))
             }
         }
 
         viewModel.outputMonthSteps.bind { [weak self] value in
             guard let self else { return }
             DispatchQueue.main.async {
-                self.monthChartView.setDataCount(value, range: UInt32(10000))
+                self.monthChartView.chartView.setDataCount(value, range: UInt32(10000))
             }
         }
         
