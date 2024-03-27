@@ -69,11 +69,10 @@ final class SettingNotificationViewModel {
             outputFailSave.value = "이미 등록된 약이에요"
             return
         }
-        var time: [Date] = []
-        Set(value.times.map{$0.dateFilterTime()}).forEach { date in
-            time.append(value.times[...outputSegmentTapped.value].first { date == $0.dateFilterTime() } ?? Date())
-        }
-        repository.createItem(MySupplement(id: value.id, regDate: Date(), name: value.name, days: value.days.sorted(), times: time.sorted()).toDTO(), completion: nil)
+        var time: [Date] = value.times[...outputSegmentTapped.value].map { $0 }.sorted()
+        let timeStr = Set(time.map { $0.dateFilterTime() })
+        let resultTime = timeStr.map{ $0.formatDate() }
+        repository.createItem(MySupplement(id: value.id, regDate: Date(), name: value.name, days: value.days.sorted(), times: resultTime.sorted()).toDTO(), completion: nil)
         outputSaveButtonTapped.value = ()
         setNotification(value)
     }
