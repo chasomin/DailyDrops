@@ -30,7 +30,7 @@ enum Constants {
             case .SearchSupplement:
                 return "영양제 검색"
             case .Step(let goal):
-                return "목표!\n\(goal)걸음 걷기"
+                return "목표!\n\(goal.numberToDecimal())걸음 걷기"
             }
         }
     }

@@ -107,10 +107,10 @@ final  class CalendarViewModel {
             guard let error else {
                 guard let value else { return }
                 if goal == 0 {
-                    outputSteps.value = "\(Int(value)) 걸음"
+                    outputSteps.value = "\(Int(value).numberToDecimal()) 걸음"
                     outputStepsProgress.value = 1
                 } else {
-                    outputSteps.value = "\(Int(value)) 걸음"
+                    outputSteps.value = "\(Int(value).numberToDecimal()) 걸음"
                     outputStepsProgress.value = Float(value/goal)
                 }
                 outputReload.value += 1
