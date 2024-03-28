@@ -10,4 +10,5 @@ import Foundation
 struct SupplementName: Identifiable, Hashable {
     let id: UUID = UUID()
     let name: String
+    let supplementID: UUID
 }
