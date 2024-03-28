@@ -13,12 +13,14 @@ final class RealmSupplementLog: Object {
     @Persisted var regDate: Date
     @Persisted var supplementName: String
     @Persisted var supplementTime: String   // 영양제 하나가 하루에 3번까지 알림 가능해서 영양제 이름+시간으로 특정 영양제 섭취 유무 확인 가능
+    @Persisted var supplementFK: UUID
 
-    convenience init(supplementName: String, supplementTime: String) {
+    convenience init(supplementName: String, supplementTime: String, supplementFK: UUID) {
         self.init()
         self.regDate = Date()
         self.supplementName = supplementName
         self.supplementTime = supplementTime
+        self.supplementFK = supplementFK
     }
 }
 
