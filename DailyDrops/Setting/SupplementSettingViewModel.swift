@@ -45,7 +45,7 @@ final class SupplementSettingViewModel {
                     let request = requests.filter{ $0.identifier == id }
                     
                     request.forEach {
-                        var timeComponent = $0.content.title.components(separatedBy: "] ")
+                        let timeComponent = $0.content.title.components(separatedBy: "] ")
                         let timeStr = (timeComponent.first ?? "") + "]"
                         
                         let supplements = timeComponent[1]

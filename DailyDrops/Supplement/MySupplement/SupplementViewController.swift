@@ -101,7 +101,7 @@ final class SupplementViewController: BaseViewController {
 extension SupplementViewController {
     @objc func checkButtonTapped(_ sender: CheckButton) {
         guard let section = dataSource.snapshot().sectionIdentifier(containingItem: sender.item) else { return }
-        viewModel.inputCheckButtonTapped.value = (section: section, supplement: sender.item.name)
+        viewModel.inputCheckButtonTapped.value = (section: section, supplement: sender.item)
     }
 }
 

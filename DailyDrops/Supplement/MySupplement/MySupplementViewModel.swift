@@ -12,7 +12,7 @@ final class MySupplementViewModel {
     
     let inputViewDidLoad: Observable<Void?> = Observable(nil)
     let inputViewWillAppear: Observable<Date?> = Observable(nil)
-    let inputCheckButtonTapped: Observable<(section: String, supplement: String)?> = Observable(nil)
+    let inputCheckButtonTapped: Observable<(section: String, supplement: SupplementName)?> = Observable(nil)
     
     let outputSetNavigation: Observable<Void?> = Observable(nil)
     let outputSection: Observable<[String]> = Observable([])
@@ -46,11 +46,11 @@ final class MySupplementViewModel {
         }
         inputCheckButtonTapped.bind { [weak self] value in
             guard let self, let value else { return }
-            if repository.readSupplementLog().filter({ $0.supplementName == value.supplement && $0.supplementTime == value.section && $0.regDate.dateFormat() == Date().dateFormat() }).isEmpty {
-                repository.createItem(RealmSupplementLog(supplementName: value.supplement, supplementTime: value.section), completion: nil)
+            if repository.readSupplementLog().filter({ $0.supplementFK == value.supplement.supplementID && $0.supplementTime == value.section && $0.regDate.dateFormat() == Date().dateFormat() }).isEmpty {
+                repository.createItem(RealmSupplementLog(supplementName: value.supplement.name, supplementTime: value.section, supplementFK: value.supplement.supplementID), completion: nil)
                 outputCheckButtonTapped.value = ()
             } else {
-                repository.deleteSupplementLog(date: Date().dateFormat(), name: value.supplement, time: value.section)
+                repository.deleteSupplementLog(date: Date().dateFormat(), fk: value.supplement.supplementID, time: value.section)
                 outputCheckButtonTapped.value = ()
             }
         }
@@ -58,7 +58,7 @@ final class MySupplementViewModel {
     
     private func setTodaySupplementForTime() {
         outputSection.value.forEach {
-            outputSupplementData.value?.updateValue(repository.readSupplementForTime($0, date: inputViewWillAppear.value ?? Date()).map{ SupplementName(name:$0.name) }, forKey: $0)
+            outputSupplementData.value?.updateValue(repository.readSupplementForTime($0, date: inputViewWillAppear.value ?? Date()).map{ SupplementName(name:$0.name, supplementID: $0.id) }, forKey: $0)
         }
     }
 }

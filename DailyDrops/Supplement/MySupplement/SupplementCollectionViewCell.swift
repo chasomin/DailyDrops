@@ -10,7 +10,7 @@ import SnapKit
 
 final class SupplementCollectionViewCell: BaseCollectionViewCell {
     let nameLabel = UILabel()
-    let checkButton = CheckButton(item: SupplementName(name: ""), frame: .zero)
+    let checkButton = CheckButton(item: SupplementName(name: "", supplementID: UUID()), frame: .zero)
     
     override func configureHierarchy() {
         contentView.addSubview(nameLabel)

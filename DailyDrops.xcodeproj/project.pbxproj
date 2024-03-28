@@ -16,6 +16,9 @@
 		790578E12BAEF4DF00EAD2D1 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790578E02BAEF4DF00EAD2D1 /* EmptyView.swift */; };
 		790578E32BAF29B300EAD2D1 /* PermissionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790578E22BAF29B300EAD2D1 /* PermissionViewModel.swift */; };
 		790578E52BAF2D5800EAD2D1 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790578E42BAF2D5800EAD2D1 /* NotificationManager.swift */; };
+		790579502BB44BFE00EAD2D1 /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7905794F2BB44BFE00EAD2D1 /* Int+Extension.swift */; };
+		790579522BB44E4400EAD2D1 /* StepChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790579512BB44E4400EAD2D1 /* StepChartView.swift */; };
+		790579542BB4783000EAD2D1 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790579532BB4783000EAD2D1 /* String+Extension.swift */; };
 		790E8FB92B99838C004DC160 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790E8FB82B99838C004DC160 /* AppDelegate.swift */; };
 		790E8FBB2B99838C004DC160 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790E8FBA2B99838C004DC160 /* SceneDelegate.swift */; };
 		790E8FC22B99838E004DC160 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 790E8FC12B99838E004DC160 /* Assets.xcassets */; };
@@ -109,6 +112,9 @@
 		790578E02BAEF4DF00EAD2D1 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		790578E22BAF29B300EAD2D1 /* PermissionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionViewModel.swift; sourceTree = "<group>"; };
 		790578E42BAF2D5800EAD2D1 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		7905794F2BB44BFE00EAD2D1 /* Int+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
+		790579512BB44E4400EAD2D1 /* StepChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepChartView.swift; sourceTree = "<group>"; };
+		790579532BB4783000EAD2D1 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		790E8FB52B99838C004DC160 /* DailyDrops.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyDrops.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		790E8FB82B99838C004DC160 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		790E8FBA2B99838C004DC160 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -287,6 +293,7 @@
 				79BF779E2BA7180600C145E2 /* WeekStepView.swift */,
 				79BF77A02BA7182C00C145E2 /* MonthStepView.swift */,
 				79BF77982BA7158200C145E2 /* StepViewModel.swift */,
+				790579512BB44E4400EAD2D1 /* StepChartView.swift */,
 			);
 			path = Step;
 			sourceTree = "<group>";
@@ -312,6 +319,8 @@
 				79E9BB5B2BA074C5003CAF0B /* UIButton+Extension.swift */,
 				79BF77872BA2D2ED00C145E2 /* Toast+Extension.swift */,
 				790578D62BAD627800EAD2D1 /* CAEmitterCell+Extension.swift */,
+				7905794F2BB44BFE00EAD2D1 /* Int+Extension.swift */,
+				790579532BB4783000EAD2D1 /* String+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -715,11 +724,14 @@
 				79E9BB6A2BA1971B003CAF0B /* SupplementCollectionViewCell.swift in Sources */,
 				79E9BB682BA17BB3003CAF0B /* RealmSupplementLog.swift in Sources */,
 				79BF77AA2BA8551100C145E2 /* SupplementLogCollectionViewCell.swift in Sources */,
+				790579522BB44E4400EAD2D1 /* StepChartView.swift in Sources */,
 				798BFFCD2BAC44A200F34FD9 /* SupplementSettingViewModel.swift in Sources */,
 				790578E32BAF29B300EAD2D1 /* PermissionViewModel.swift in Sources */,
 				79BF77A42BA842C200C145E2 /* CalendarViewController.swift in Sources */,
 				79E9BB332B9E12C6003CAF0B /* CapsulePointBarButton.swift in Sources */,
 				79A172402B9CBE2F003AB10F /* SearchTableViewCell.swift in Sources */,
+				790579502BB44BFE00EAD2D1 /* Int+Extension.swift in Sources */,
+				790579542BB4783000EAD2D1 /* String+Extension.swift in Sources */,
 				79BF778A2BA2E38700C145E2 /* MySupplementViewModel.swift in Sources */,
 				795B217A2B99D05C00DA7D7F /* APIKey.swift in Sources */,
 				795B21692B99B19300DA7D7F /* UIFont+Extension.swift in Sources */,

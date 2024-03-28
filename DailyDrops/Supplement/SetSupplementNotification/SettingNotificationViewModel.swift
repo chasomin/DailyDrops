@@ -72,7 +72,7 @@ final class SettingNotificationViewModel {
         var time: [Date] = value.times[...outputSegmentTapped.value].map { $0 }.sorted()
         let timeStr = Set(time.map { $0.dateFilterTime() })
         let resultTime = timeStr.map{ $0.formatDate() }
-        repository.createItem(MySupplement(id: value.id, regDate: Date(), name: value.name, days: value.days.sorted(), times: resultTime.sorted()).toDTO(), completion: nil)
+        repository.createItem(MySupplement(id: value.id, regDate: Date(), name: value.name, days: value.days.sorted(), times: resultTime.sorted(), deleteDate: nil).toDTO(), completion: nil)
         outputSaveButtonTapped.value = ()
         setNotification(value)
     }

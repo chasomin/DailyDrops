@@ -246,7 +246,7 @@ extension SettingNotificationViewController {
         guard let name = nameTextField.text else { return }
         let days: [Int] = viewModel.outputWeekButtonTapped.value
         let times: [Date] = [firstDatepicker.date, secondDatePicker.date, thirdDatePicker.date]
-        viewModel.inputSaveButtonTapped.value = MySupplement(id: UUID(), regDate: Date(), name: name, days: days, times: times)
+        viewModel.inputSaveButtonTapped.value = MySupplement(id: UUID(), regDate: Date(), name: name, days: days, times: times, deleteDate: nil)
     }
     
     @objc func tapGestureTapped() {
