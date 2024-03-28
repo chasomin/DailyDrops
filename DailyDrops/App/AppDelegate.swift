@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import Toast
+import RealmSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -46,6 +47,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             repository.createItem(RealmGoal(waterCup: 10, steps: 10000), completion: nil)
             UserDefaults.standard.set(true, forKey: "isFirstLaunch")
         }
+        
+        // MARK: Migration
+        let configuration = Realm.Configuration(schemaVersion: 1) { migration, oldSchemaVersion in
+            // version 0
+            // version 1: RealmSupplementLog에 supplementFK: UUID 컬럼 추가, RealmSupplement에 deleteDate: Date? 컬럼 추가
+            if oldSchemaVersion < 1 {
+                // 단순한 테이블 컬럼이 추가되는 경우에는 별도 코드 작성 안 해도 된다.
+                print("Schema version: 0 -> 1")
+            }
+        }
+        Realm.Configuration.defaultConfiguration = configuration
+
         
         return true
     }
