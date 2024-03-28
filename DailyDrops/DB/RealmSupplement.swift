@@ -14,6 +14,7 @@ final class RealmSupplement: Object {
     @Persisted var name: String
     @Persisted var days: List<Int>
     @Persisted var times: List<Date>
+    @Persisted var deleteDate: Date?
 
     convenience init(name: String, days: List<Int>, times: List<Date>) {
         self.init()
@@ -22,9 +23,10 @@ final class RealmSupplement: Object {
         self.name = name
         self.days = days
         self.times = times
+        self.deleteDate = nil
     }
     
     func toEntity() -> MySupplement {
-        return MySupplement(id: id, regDate: regDate, name: name, days: days.map{$0}, times: times.map{$0})
+        return MySupplement(id: id, regDate: regDate, name: name, days: days.map{$0}, times: times.map{$0}, deleteDate: deleteDate)
     }
 }
