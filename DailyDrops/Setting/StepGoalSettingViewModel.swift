@@ -15,7 +15,7 @@ final class StepGoalSettingViewModel {
     let inputTextFieldValueChanged: Observable<String?> = Observable(nil)
 
     let outputGoal: Observable<Int?> = Observable(nil)
-    let outputInvaild: Observable<String?> = Observable(nil)
+    let outputInvalid: Observable<String?> = Observable(nil)
 
     init() { transform() }
     
@@ -34,12 +34,12 @@ final class StepGoalSettingViewModel {
             guard let self, let text = value else { return }
             guard let step = Int(text) else {
                 if !text.isEmpty {
-                    outputInvaild.value = "숫자만 입력해주세요"
+                    outputInvalid.value = "숫자만 입력해주세요"
                 }
                 return
             }
             if step > 20000 {
-                outputInvaild.value  = "최대 20,000 걸음까지 설정 가능해요"
+                outputInvalid.value  = "최대 20,000 걸음까지 설정 가능해요"
             } else {
                 
             }

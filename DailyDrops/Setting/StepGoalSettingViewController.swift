@@ -31,7 +31,7 @@ final class StepGoalSettingViewController: BaseViewController {
             goalTextField.text = "\(value)"
         }
         
-        viewModel.outputInvaild.bind { [weak self] value in
+        viewModel.outputInvalid.bind { [weak self] value in
             guard let self, let value else { return }
             goalTextField.deleteBackward()
             showToast(value, position: .top)
