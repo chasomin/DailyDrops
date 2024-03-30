@@ -60,13 +60,8 @@ final class SettingNotificationViewModel {
     }
     
     func checkSaveData(_ value: MySupplement) {
-        let realmSupplement: [MySupplement] = repository.readSupplement()
         guard !value.name.isEmpty && !value.days.isEmpty else {
             outputFailSave.value = "모든 항목을 입력해주세요!"
-            return
-        }
-        if realmSupplement.map({ $0.name }).contains(value.name) {
-            outputFailSave.value = "이미 등록된 약이에요"
             return
         }
         var time: [Date] = value.times[...outputSegmentTapped.value].map { $0 }.sorted()
