@@ -22,7 +22,7 @@ final class SupplementSettingViewModel {
     private func transform() {
         inputSupplementViewDidLoad.bind { [weak self] value in
             guard let self, let value else { return }
-            outputSupplement.value = repository.readSupplement()
+            outputSupplement.value = repository.readSupplement().filter { $0.deleteDate == nil }
         }
         
         inputSupplementDeleteAction.bind { [weak self] value in
