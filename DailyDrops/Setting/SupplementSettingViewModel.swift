@@ -28,7 +28,7 @@ final class SupplementSettingViewModel {
         inputSupplementDeleteAction.bind { [weak self] value in
             guard let self, let value else { return }
             repository.deleteSupplement(id: value.id) {
-                self.outputSupplement.value = self.repository.readSupplement()
+                self.outputSupplement.value = self.repository.readSupplement().filter { $0.deleteDate == nil }
             }
             removeLocalNotification(deleteItem: value)
         }
