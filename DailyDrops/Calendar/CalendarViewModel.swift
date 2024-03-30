@@ -82,7 +82,7 @@ final  class CalendarViewModel {
     private func getLeftSupplementCount(date: Date) {
         let supplementTimes = repository.readSupplementByDate(date: date).map{$0.times.count}
         let goal = supplementTimes.reduce(0, +)
-        let intake = repository.readSupplementLog().filter{$0.regDate.dateFormat() == date.dateFormat()}.count
+        let intake = repository.readSupplementLogForDate(date: date).count
         
         switch goal {
         case 0:

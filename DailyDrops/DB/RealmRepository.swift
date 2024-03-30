@@ -67,28 +67,16 @@ final class RealmRepository<T: Object> {
     func readSupplementByDate(date: Date) -> [MySupplement] {
         let supplements = realm.objects(RealmSupplement.self)
         let filterContainToday = supplements.where{$0.days.contains(date.dateFilterDay())}
-        return filterContainToday.map{ $0.toEntity() }.filter{ $0.regDate.dateWithMidnight() <= date }
+        return filterContainToday.map{ $0.toEntity() }.filter{ $0.regDate.dateWithMidnight() <= date && $0.deleteDate?.dateWithMidnight() ?? Date() > date }
     }
     
     /// 해당 시간 대에 복용할 약 배열을 리턴하는 메서드
     func readSupplementForTime(_ time: String, date: Date) -> [MySupplement] {
 //        let today = Date()
-        let supplements = realm.objects(RealmSupplement.self)
-        let filterContainToday = supplements.where{$0.days.contains(date.dateFilterDay())}.map{ $0.toEntity() }
-        return filterContainToday.filter{ $0.times.map{ $0.dateFilterTime() }.contains(time) }
-    }
-
-    /// 오늘 복용할 약의 시간대를 리턴하는 메서드
-    func readTodaySupplementTime() -> [String] {
-        let todaySupplement = readSupplementByDate(date: Date())
-        
-        var times: [String] = []
-        todaySupplement.forEach {
-            $0.times.forEach {
-                times.append($0.dateFilterTime())
-            }
-        }
-        return Set(times).sorted()
+//        let supplements = realm.objects(RealmSupplement.self)
+//        let filterContainToday = supplements.where{$0.days.contains(date.dateFilterDay())}.map{ $0.toEntity() }
+        return readSupplementByDate(date: date).filter { $0.times.map { $0.dateFilterTime() }.contains(time) }
+//        return filterContainToday.filter{ $0.times.map{ $0.dateFilterTime() }.contains(time) }
     }
     
     /// 특정 날짜에 복용할 약의 시간대를 리턴하는 메서드
@@ -102,6 +90,14 @@ final class RealmRepository<T: Object> {
             }
         }
         return Set(times).sorted()
+    }
+    
+    func readSupplementLogForDate(date: Date) -> [RealmSupplementLog] {
+        let SupplementID = readSupplementByDate(date: date).map { $0.id }
+        let result: [RealmSupplementLog] = readSupplementLog().filter { log in
+            log.regDate.dateFormat() == date.dateFormat() && SupplementID.contains(log.supplementFK)
+        }
+        return result
     }
 
         
