@@ -59,6 +59,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         Realm.Configuration.defaultConfiguration = configuration
 
+        // MARK: 기존 삭제된 영양제 로그 삭제, 로그 FK로 해당 영양제 ID 지정
+        let repository = RealmRepository()
+        repository.updateInvalidLog()
         
         return true
     }
