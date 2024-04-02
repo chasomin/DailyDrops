@@ -16,8 +16,9 @@
 
 iOS 15
 
-<br>
-### 스크린샷
+
+### **스크린샷**
+
 <img src="https://github.com/chasomin/DailyDrops/assets/114223423/23bb47e7-d5bb-4e7c-a389-7dc30fedfeb9"  width=124, height=268>
 <img src="https://github.com/chasomin/DailyDrops/assets/114223423/d6efedc7-872a-44e7-a14b-b4c52c037fe8"  width=124, height=268>
 <img src="https://github.com/chasomin/DailyDrops/assets/114223423/0effbaa1-2870-4bfe-908b-db039be7ca72"  width=124, height=268>
