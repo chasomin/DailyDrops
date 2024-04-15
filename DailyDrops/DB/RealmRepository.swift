@@ -162,7 +162,6 @@ final class RealmRepository<T: Object> {
                 }
             }
         }
-        
     }
 }
 /// 동일 이름 약 등록 못하게 하는 경우

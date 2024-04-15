@@ -90,14 +90,12 @@ final class SettingNotificationViewModel {
                 
                 let id = day.description+time.dateFilterTime()
                 center.getPendingNotificationRequests { requests in
-                    print(requests.count)
                     if requests.isEmpty {
                         content.title = "[\(time.dateFilterTime())] \(name)"
                     } else {
-                        let request = requests.filter{ $0.identifier == id }
+                        let request = requests.filter { $0.identifier == id }
                         if request.isEmpty {
                             content.title = "[\(time.dateFilterTime())] \(name)"
-
                         } else {
                             request.forEach { content.title = "\($0.content.title), \(name)" }
                         }
