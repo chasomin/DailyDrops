@@ -35,7 +35,6 @@ final class StepChartView: BarChartView {
             set1 = BarChartDataSet(entries: yVals)
             set1.colors = [.systemTeal]
             set1.drawValuesEnabled = false
-            set1.highlightColor = .pointColor
             
             let data = BarChartData(dataSet: set1)
             data.barWidth = 0.9
