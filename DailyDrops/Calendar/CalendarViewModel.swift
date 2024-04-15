@@ -93,7 +93,8 @@ final  class CalendarViewModel {
                 outputLeftSupplementCount.value = "\(Int((Float(intake)/Float(goal))*100))% 완료!"
                 outputSupplementProgress.value = Float(intake)/Float(goal)
             } else {
-                outputLeftSupplementCount.value = "\(goal - intake)개 남았어요!"
+                let resultText = (goal - intake) == 0 ? "모두 복용했어요!" : "\(goal - intake)개 남았어요!"
+                outputLeftSupplementCount.value = resultText
                 outputSupplementProgress.value = Float(intake)/Float(goal)
             }
         }
