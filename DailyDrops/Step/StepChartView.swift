@@ -20,7 +20,7 @@ final class StepChartView: BarChartView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setDataCount(_ value: [Double], range: UInt32) {
+    func setDataCount(_ value: [Double]) {
         let yVals = (0..<value.count).map { (i) -> BarChartDataEntry in
             return BarChartDataEntry(x: Double(i), y: Double(value[i]))
         }
@@ -47,6 +47,11 @@ final class StepChartView: BarChartView {
             self.rightAxis.axisMinimum = 0
             self.scaleYEnabled = false
             self.scaleXEnabled = false
+            self.xAxis.drawLabelsEnabled = false
+            self.xAxis.drawGridLinesEnabled = false
+            self.xAxis.drawAxisLineEnabled = false
+            self.rightAxis.drawAxisLineEnabled = false
+            self.rightAxis.gridLineDashLengths = [2,2]
             
             let marker = ChartMarker(frame: CGRect(x: 0, y: 0, width: 50, height: 24))
             self.marker = marker

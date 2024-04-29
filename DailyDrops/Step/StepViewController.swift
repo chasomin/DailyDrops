@@ -71,7 +71,6 @@ final class StepViewController: BaseViewController {
     override func configureView() {
         titleLabel.font = .largeBoldTitle
         titleLabel.numberOfLines = 2
-//        stepLabel.text = "총 10000걸음"
         stepLabel.font = .boldTitle
         dateSegment.selectedSegmentTintColor = .pointColor
         dateSegment.insertSegment(withTitle: "1일", at: 0, animated: true)
@@ -112,21 +111,21 @@ final class StepViewController: BaseViewController {
         viewModel.outputTodaySteps.bind { [weak self] value in
             guard let self else { return }
             DispatchQueue.main.async {
-                self.todayChartView.chartView.setDataCount(value, range: UInt32(10000))
+                self.todayChartView.chartView.setDataCount(value)
             }
         }
         
         viewModel.outputWeekSteps.bind { [weak self] value in
             guard let self else { return }
             DispatchQueue.main.async {
-                self.weekChartView.chartView.setDataCount(value, range: UInt32(10000))
+                self.weekChartView.chartView.setDataCount(value)
             }
         }
 
         viewModel.outputMonthSteps.bind { [weak self] value in
             guard let self else { return }
             DispatchQueue.main.async {
-                self.monthChartView.chartView.setDataCount(value, range: UInt32(10000))
+                self.monthChartView.chartView.setDataCount(value)
             }
         }
         
