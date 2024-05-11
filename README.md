@@ -2,19 +2,19 @@
 
 # DailyDrops - 하루 건강 관리
 
-물 마시기, 걸음 수, 영양제 목표를 설정하고 지켜나갈 수 있도록 관리해주는 앱입니다.
+물 마시기, 걸음 수, 영양제 목표를 설정하고 지켜나갈 수 있도록 관리해주는 앱
 
 ### **iOS 1인 개발**
 
 ### **기간**
 
-24.3.7 ~ 24.3.24 (2주)
+24.03.07 ~ 24.03.24 (2주)
 
 업데이트 진행 중
 
 ### **최소버전**
 
-iOS 15
+iOS 15.0
 
 
 ### **스크린샷**
@@ -37,58 +37,59 @@ iOS 15
 
 ## 기능 소개
 
-- 캘린더 기능
-    - 매일매일 기록되는 나의 습관들을 모아볼 수 있습니다.
-- 알림 기능
-    - 영양제를 등록하면 해당 시간에 복용 알림을 받아볼 수 있습니다.
-- 검색 기능
-    - 내 영양제를 검색하면 알맞은 섭취량과 횟수를 안내합니다. 이 안내에 따라 영양제 복용 알림을 설정할 수 있습니다.
-- 차트 기능
-    - 1일 시간별 걸음 수 차트와 1주, 1개월 하루 걸음 수 차트를 제공하여 시각적으로 나의 걸음 수를 파악할 수 있습니다.
-- 애니메이션
-    - 마신 물 양에 따라 화면에 물결 애니메이션을 표시하고, 목표에 달성하면 축하 애니메이션이 화면에 나타납니다.
+- 캘린더 날짜별 목표 달성 기록 조회
+- 영양제 등록 시 해당 시간에 알림 전달
+- 영양제 검색을 통해 복용법 추천
+- 차트를 통해 기간 별 걸음 수 조회
+- 마신 물 양을 애니메이션 화면으로 제공
 
 ## **기술**
 
-UIKit / MVVM / Decodable / Compositional Layout / DiffableDataSource / Singleton / Repository / CodeBaseUI / Local Notification
+`UIKit` `MVVM` `CocoaPods` `Singleton` `Repository` `Alamofire` `Decodable` `Realm` 
 
-HealthKit / Alamofire / Realm / Firebase - Crashlytics, Analytics / SnapKit / FSCalendar / Toast / DGCharts
+`CodeBaseUI` `SnapKit` `CompositionalLayout` `DiffableDataSource` `Kingfisher` `Toast`
+
+`LocalNotification` `HealthKit` `FSCalendar` `DGCharts` `Firebase - Crashlytics, Analytics`
 
 ## **기술 설명**
 
-**Realm List**를 사용하여 1대다 관계(to many relationship)를 구현했습니다.
+**Realm List**를 사용하여 1대다 관계(to many relationship)를 구현
 
-**Realm Filter**를 사용하여 해당 날짜에 복용해야 하는 영양제 결과 도출했습니다.
+ **Realm Repository** 추상화 적용으로 객체 간 결합도 감소
 
-**Realm Repository**를 사용하여 CRUD를 구현했습니다.
+ **Compositional Layout**을 통해 Section 별 다양한 Cell을 구성
 
-**Compositional Layout**을 통해 Section 별 다양한 Cell을 구성하였고, 영양제 복용 시간 별로 Section을 나눠서 구현했습니다.
+ **DiffableDataSource**를 사용하여 snapshot을 관리하고 이를 통해 효율적인 뷰 구성
 
-Network와 HealthKit, Notification 권한 조회 등 Manager 클래스에 **Singleton 패턴**을 사용하여 불필요한 코드를 줄이고 메모리 낭비를 방지했습니다.
+ **BaseView**를 통해 일관된 ViewController 구조 형성
 
-**BaseView**를 통해 코드 반복을 개선했습니다.
+ **MVVM Custom Observable**을 구현하여 비즈니스 로직 분리
 
-**CustomView**를 통해 재사용성을 높였습니다.
+ **Firebase Crashlytics, Analytics**를 통해 사용자 이탈지점과 충돌 데이터를 수집하여 앱의 안정성 향상
 
-**MVVM CustomObservable**을 구현하여 ViewController의 역할을 최소화했습니다.
+ **Final** 키워드와 **접근제어자**를 사용하여 컴파일 최적화 달성하기 위해 노력
 
-**Local Notification**에 여러 영양제를 설정하더라도 복용 시간이 같다면 동일한 Identifier를 사용하도록 설정하여 Identifier 갯수를 최소화 했습니다.
+ **weak self** 키워드를 사용하여 메모리 누수 방지
 
-**Firebase Crashlytics, Analytics**를 사용하여 사용자 이탈지점과 충돌 데이터를 수집하여 앱의 안정성을 높였습니다.
+ DGCharts 라이브러리 class를 상속받아 Custom Chart Mark를 구현하여 사용자 친화적인 UI 구성
 
-**Final** 키워드와 **접근제어자**를 사용하여 컴파일 최적화 달성하려고 노력했습니다.
+ **DTO**를 통해 네트워크 모델과 도메인 모델 분리
+
+ protocol 생성 시 **AnyObject** 채택을 통해 해당 protocol을 채택할 수 있는 객체의 타입을 제한하여 메모리 누수 방지
+
+ enum **NameSpace**를 통해 literal 값을 캡슐화하여 유지보수에 용이한 코드 구현
 
 ## 트러블슈팅
 
 **1️⃣ Local Notification Identifier**
 
-영양제 알림 설정을 할 때 notification Identifier 를 모두 같게 처리하면 여러 시간대에 영양제 알림이 울려도 계속 덮어씌워지는 아쉬움이 있었고,
-영양제마다 다 다른 Identifier 를 쓰자니 한 영양제를 일주일 내내, 하루에 3번씩 먹는다면 64개 제한에 금방 걸린다는 문제가 있었습니다.
+identifier를 모두 동일하게 처리할 겨우의 문제점: 같은 시간 영양제 모두 한꺼번에 처리, 이전 알림 안 읽어도 덮어씌우기
 
-영양제 복용 특성 상 여러 종류를 복용 하더라도 보통 같은 시간대에 함께 복용하기 때문에 ✅ Identifier를 요일+시간 으로 저장하여 다른 종류의 영양제더라도 복용 시간만 같으면 하나의 알림으로 처리했습니다.
+identifier를 영양제마다 전부 부여할 경우의 문제점: 64개 제한
 
-또한, Notification Title에 복용하는 영양제들의 이름을 알려주고 싶어서 영양제를 추가할 때 Notification을 조회하여 같은 Identifier를 가진 알림이 있다면 해당 content.title에 영양제 이름을 덧붙여서 다시 저장하도록 구현했습니다.
-~~이렇게 하더라도 아직 64개를 초과할 가능성이 있기 때문에 앞으로 개선을 계속 할 예정…~~
+
+✅ Identifier를 요일+시간 으로 저장하여 다른 종류의 영양제더라도 복용 시간만 같으면 하나의 알림으로 처리하고 그 시간대에 복용하는 영양제를 Notification Title에 표시
+
 
 ```swift
 let id = day.description+time.dateFilterTime()
@@ -103,15 +104,19 @@ if request.isEmpty {
 }
 ```
 
+<br>
+<br>
+<br>
+
+
 **2️⃣ Relam 데이터를 삭제하더라도 과거 기록에서는 남아있어야 하는 문제**
 
-영양제 전체 목록 테이블과, 복용 여부 테이블이 나뉘어져 있는데
-사용자가 영양제를 삭제하면 복용 여부 테이블에는 남아있는데 영양제 실체는 사라져서 ‘-1개 남았어요’ 이런 식으로 나타는 오류가 있었습니다.
-그렇다고 영양제 복용 여부에서도 삭제해버리면 과거에 먹었던 것도 기록이 사라지는 문제가 있었습니다.
+사용자가 현재 영양제를 삭제할 경우, 과거에 먹었던 기록에도 영향을 미쳐서 수치가 변화함
 
-✅ 영양제목록 테이블에 기본값이 nil인 deleteDate컬럼을 추가해서 사용자가 삭제하면 현재 Date 값을 update 해주었습니다.
+✅ 영양제목록 테이블에 기본값이 nil인 deleteDate컬럼을 추가해서 사용자가 삭제하면 현재 Date 값을 update 
 
-사용자가 캘린더 날짜를 클릭해서 그 날 먹어야했던 영양제를 조회할 때 영양제의 `deleteDate <= 선택한 날` 이면 삭제했다고 처리하고, `deleteData > 선택한 날 > regDate` 이면 영양제가 있다고 처리했습니다.
+사용자가 캘린더 날짜를 클릭해서 그 날 먹어야했던 영양제를 조회할 때 영양제의 `deleteDate <= 선택한 날` 이면 삭제했다고 처리,
+`deleteData > 선택한 날 > regDate` 이면 영양제가 있다고 처리
 
 ```swift
 final class RealmSupplement: Object {
@@ -135,13 +140,16 @@ final class RealmSupplement: Object {
 
 **3️⃣ Realm Schema 수정 및 Migration**
 
-영양제를 기존에 있는 영양제와 중복되는 이름으로 저장 시, 영양제 복용 여부 테이블에서 데이터 분별력이 떨어지는 이슈가 있었습니다.
-→ 해결1. 같은 이름의 영양제는 추가 되는 것을 막기, 해결2. 영양제 PK를 영양제 복용 여부 테이블에 FK로 저장하기 중에
+영양제를 기존에 있는 영양제와 중복되는 이름으로 저장 시, 영양제 복용 여부 테이블에서 데이터 분별력이 떨어지는 이슈
 
-2번 방법을 선택하여 FK 컬럼을 추가했습니다.
+→ 방법1. 같은 이름의 영양제는 추가 되는 것을 막기
+
+→ 방법2. 영양제 PK를 영양제 복용 여부 테이블에 FK로 저장하기 
+
+중에 2번 방법을 선택하여 FK 컬럼을 추가.
 
 새로운 컬럼을 추가하면서 기존에 들어있던 데이터에도 적절한 FK를 추가해주기위해
-FK가 기본값이라면 '해당 이름이 영양제목록 테이블에 존재하면서 && 해당 supplementTime을 가지고 있는 영양제가 있다면' 그것에 해당하는 영양제의 PK를 넣어줬습니다.
+FK가 기본값이라면 '해당 이름이 영양제목록 테이블에 존재하면서 && 해당 supplementTime을 가지고 있는 영양제가 있다면' 그것에 해당하는 영양제의 PK를 대입
 
 ```swift
 final class RealmSupplementLog: Object {
