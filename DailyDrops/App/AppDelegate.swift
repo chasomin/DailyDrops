@@ -22,7 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setGlobalToastStyle()
         setGlobalFont()
 
-        // TODO: 권한 요청 앱 진입 시 물어볼지, 걸음수 탭에 들어가면 물어볼지 정하기
         HealthManager.shared.requestAuthoriaztion()
         
         UNUserNotificationCenter.current().delegate = self

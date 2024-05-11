@@ -21,6 +21,7 @@ final class SearchViewModel {
     let outputWeekButtonTapped:  Observable<[Int]?> = Observable(nil)
     let outputEmpty: Observable<Bool?> = Observable(nil)
     let outputLoading: Observable<Bool?> = Observable(nil)
+    let outputError: Observable<Void?> = Observable(nil)
     
     init () { transform() }
     
@@ -66,7 +67,7 @@ final class SearchViewModel {
                 outputLoading.value = false
                 return
             }
-            print(error)//TODO: Error
+            self?.outputError.value = ()
         }
     }
     
@@ -84,7 +85,7 @@ final class SearchViewModel {
                 outputLoading.value = false
                 return
             }
-            print(error)//TODO: Error
+            self?.outputError.value = ()
         }
     }
     

@@ -31,28 +31,7 @@ class HealthManager {
             }
         }
     }
-    
-//    Read만 확인할 수 있는 방법은 없는듯,,,
-//    func checkStepCountAuthorization() -> Bool {
-//        guard let stepCountType = HKObjectType.quantityType(forIdentifier: .stepCount) else {
-//            print("걸음 데이터 유형을 가져올 수 없습니다.")
-//            return false
-//        }
-//        
-//        let status = healthStore.authorizationStatus(for: stepCountType)
-//        
-//        switch status {
-//        case .sharingDenied:
-//            print("걸음 데이터에 대한 HealthKit 권한이 거부되었습니다.")
-//            return false
-//        case .sharingAuthorized:
-//            print("걸음 데이터에 대한 HealthKit 권한이 허용되었습니다.")
-//            return true
-//        default:
-//            return false
-//        }
-//    }
-    
+        
     // MARK: 한 달
     func getMonthStepCount(date: Date, completion: @escaping ([Double]?, Error?) -> Void) {
         guard let stepQuantityType = HKQuantityType.quantityType(forIdentifier: .stepCount) else {

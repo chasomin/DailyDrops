@@ -93,6 +93,11 @@ extension SearchViewController {
                 view.hideToastActivity()
             }
         }
+        viewModel.outputError.bind { [weak self] value in
+            guard let self, let value else { return }
+            showToast("잠시 후에 다시 시도해주세요", position: .top)
+            view.hideToastActivity()
+        }
     }
 }
 

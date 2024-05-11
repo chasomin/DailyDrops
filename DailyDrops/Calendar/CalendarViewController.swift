@@ -171,7 +171,6 @@ extension CalendarViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
 
-    //FIXME: --- 로고 누르면 오늘날짜로 가는게 말이 됨?., 근데 leftbarbutton 클릭 반짝이는거 못없애,.,,
     @objc func logoButtonTapped() {
         calendar.select(Date())
         viewModel.inputSelectDate.value = Date()
