@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         // MARK: Migration
-        let configuration = Realm.Configuration(schemaVersion: 1) { migration, oldSchemaVersion in
+        var configuration = Realm.Configuration(schemaVersion: 1) { migration, oldSchemaVersion in
             // version 0
             // version 1: RealmSupplementLog에 supplementFK: UUID 컬럼 추가, RealmSupplement에 deleteDate: Date? 컬럼 추가
             if oldSchemaVersion < 1 {
@@ -56,6 +56,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("Schema version: 0 -> 1")
             }
         }
+        
+        let defaultRealm = Realm.Configuration.defaultConfiguration.fileURL!
+        let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: Constants.AppGroupID)
+        let realmURL = container?.appendingPathComponent("default.realm")
+
+        if FileManager.default.fileExists(atPath: defaultRealm.path) {
+            do {
+                _ = try FileManager.default.replaceItemAt(realmURL!, withItemAt: defaultRealm)
+                configuration = Realm.Configuration(fileURL: realmURL, schemaVersion: 2)
+            } catch {
+               print("Error info: \(error)")
+            }
+        } else {
+            configuration = Realm.Configuration(fileURL: realmURL, schemaVersion: 2)
+        }
+
         Realm.Configuration.defaultConfiguration = configuration
 
         // MARK: 기존 삭제된 영양제 로그 삭제, 로그 FK로 해당 영양제 ID 지정

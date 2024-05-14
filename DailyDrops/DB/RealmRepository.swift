@@ -9,7 +9,14 @@ import Foundation
 import RealmSwift
 
 final class RealmRepository<T: Object> {
-    private let realm = try! Realm()
+    
+    private var realm: Realm {
+        let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: Constants.AppGroupID)
+        let realmURL = container?.appendingPathComponent("default.realm")
+        let config = Realm.Configuration(fileURL: realmURL, schemaVersion: 2)
+        return try! Realm(configuration: config)
+    }
+
     
     // MARK: - Create
     func createItem(_ item: T, completion: (() -> Void)?) {
