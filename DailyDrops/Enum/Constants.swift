@@ -103,4 +103,6 @@ enum Constants {
         case search = "검색 결과가 없어요\n키워드로 검색하면 더 정확한 결과가 나와요"
         case todaySupplement = "오늘 복용할 영양제가 없어요"
     }
+    
+    static let AppGroupID = "group.com.dailydrops"
 }
