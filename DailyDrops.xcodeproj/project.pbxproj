@@ -61,6 +61,19 @@
 		798A40382BF249B800F6A197 /* WaterWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798A40372BF249B800F6A197 /* WaterWidget.swift */; };
 		798A403A2BF249B900F6A197 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 798A40392BF249B900F6A197 /* Assets.xcassets */; };
 		798A403E2BF249B900F6A197 /* WaterWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 798A402F2BF249B800F6A197 /* WaterWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		798A40442BF2523E00F6A197 /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E9BB3D2B9ED126003CAF0B /* RealmRepository.swift */; };
+		798A40452BF2524300F6A197 /* RealmWater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E9BB392B9ECE0F003CAF0B /* RealmWater.swift */; };
+		798A40472BF253D600F6A197 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 798A40462BF253D600F6A197 /* Realm */; };
+		798A40492BF253D600F6A197 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 798A40482BF253D600F6A197 /* RealmSwift */; };
+		798A404A2BF2540200F6A197 /* Water.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF77902BA4B26B00C145E2 /* Water.swift */; };
+		798A404B2BF2540700F6A197 /* RealmSupplementLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E9BB672BA17BB3003CAF0B /* RealmSupplementLog.swift */; };
+		798A404C2BF2540D00F6A197 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF778E2BA4B25800C145E2 /* Goal.swift */; };
+		798A404D2BF2541400F6A197 /* RealmSupplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E9BB652BA17BA3003CAF0B /* RealmSupplement.swift */; };
+		798A404E2BF2541800F6A197 /* MySupplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF77922BA4B27B00C145E2 /* MySupplement.swift */; };
+		798A404F2BF2544900F6A197 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E9BB412B9F100C003CAF0B /* Date+Extension.swift */; };
+		798A40502BF2545700F6A197 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E9BB612BA07562003CAF0B /* Constants.swift */; };
+		798A40512BF2546700F6A197 /* RealmGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E9BB3B2B9ECE95003CAF0B /* RealmGoal.swift */; };
+		798A40522BF2547300F6A197 /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7905794F2BB44BFE00EAD2D1 /* Int+Extension.swift */; };
 		798BFFBD2BAAAC0B00F34FD9 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798BFFBC2BAAAC0B00F34FD9 /* SettingViewController.swift */; };
 		798BFFBF2BAAB24700F34FD9 /* WaterGoalSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798BFFBE2BAAB24700F34FD9 /* WaterGoalSettingViewController.swift */; };
 		798BFFC12BAABB1300F34FD9 /* StepGoalSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798BFFC02BAABB1300F34FD9 /* StepGoalSettingViewController.swift */; };
@@ -254,6 +267,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				798A40492BF253D600F6A197 /* RealmSwift in Frameworks */,
+				798A40472BF253D600F6A197 /* Realm in Frameworks */,
 				798A40332BF249B800F6A197 /* SwiftUI.framework in Frameworks */,
 				798A40312BF249B800F6A197 /* WidgetKit.framework in Frameworks */,
 			);
@@ -584,8 +599,8 @@
 				790E8FB22B99838C004DC160 /* Frameworks */,
 				790E8FB32B99838C004DC160 /* Resources */,
 				50C3DFB4ECB2EDD8277A2665 /* [CP] Embed Pods Frameworks */,
-				790E900F2B99A6A3004DC160 /* ShellScript */,
 				798A403F2BF249B900F6A197 /* Embed Foundation Extensions */,
+				790E900F2B99A6A3004DC160 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -623,6 +638,10 @@
 			dependencies = (
 			);
 			name = WaterWidgetExtension;
+			packageProductDependencies = (
+				798A40462BF253D600F6A197 /* Realm */,
+				798A40482BF253D600F6A197 /* RealmSwift */,
+			);
 			productName = WaterWidgetExtension;
 			productReference = 798A402F2BF249B800F6A197 /* WaterWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -850,7 +869,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				798A40362BF249B800F6A197 /* WaterWidgetBundle.swift in Sources */,
+				798A40502BF2545700F6A197 /* Constants.swift in Sources */,
+				798A40512BF2546700F6A197 /* RealmGoal.swift in Sources */,
 				798A40382BF249B800F6A197 /* WaterWidget.swift in Sources */,
+				798A40442BF2523E00F6A197 /* RealmRepository.swift in Sources */,
+				798A404A2BF2540200F6A197 /* Water.swift in Sources */,
+				798A40452BF2524300F6A197 /* RealmWater.swift in Sources */,
+				798A404F2BF2544900F6A197 /* Date+Extension.swift in Sources */,
+				798A40522BF2547300F6A197 /* Int+Extension.swift in Sources */,
+				798A404B2BF2540700F6A197 /* RealmSupplementLog.swift in Sources */,
+				798A404D2BF2541400F6A197 /* RealmSupplement.swift in Sources */,
+				798A404E2BF2541800F6A197 /* MySupplement.swift in Sources */,
+				798A404C2BF2540D00F6A197 /* Goal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1281,6 +1311,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 790E90082B99A62A004DC160 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseMessaging;
+		};
+		798A40462BF253D600F6A197 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 790E8FEF2B99A55F004DC160 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		798A40482BF253D600F6A197 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 790E8FEF2B99A55F004DC160 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
