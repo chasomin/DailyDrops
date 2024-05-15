@@ -105,4 +105,5 @@ enum Constants {
     }
     
     static let AppGroupID = "group.com.dailydrops"
+    static let widgetID = "WaterWidget"
 }
