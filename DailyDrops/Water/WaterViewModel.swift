@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class WaterViewModel {
+final class WaterViewModel: WidgetUpdate {
     let repository = RealmRepository()
     let inputViewDidLoad: Observable<Date?> = Observable(nil)
     let inputPlusButtonTapped: Observable<Void?> = Observable(nil)
@@ -50,6 +50,7 @@ final class WaterViewModel {
         
         inputPlusButtonTapped.bind { [weak self] value in
             guard let self, let value else { return }
+            widgetUpdate()
             if checkCompletion() {
                 outputLabelHidden.value = true
             } else {
@@ -72,6 +73,7 @@ final class WaterViewModel {
         
         inputMinusButtonTapped.bind { [weak self] value in
             guard let self, let value else { return }
+            widgetUpdate()
             outputLabelHidden.value = false
             if repository.readWaterByDate(date: Date()) > 0 {
                 repository.createItem(RealmWater(drinkWater: -1.0), completion: nil)
