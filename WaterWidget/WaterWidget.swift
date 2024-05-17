@@ -53,7 +53,7 @@ struct WaterWidgetEntryView : View {
                     Spacer()
                         .frame(height: geometry.size.height - waterHeight)
                     Rectangle()
-                        .fill(.teal)
+                        .fill(Color(uiColor: .pointColor))
                         .frame(height: waterHeight)
                 }
             }
@@ -67,6 +67,8 @@ struct WaterWidgetEntryView : View {
                 .padding(.vertical, 15)
         }
         .frame(maxWidth: .infinity)
+        .background(.white)
+
     }
 }
 
@@ -84,8 +86,8 @@ struct WaterWidget: Widget {
                     .background()
             }
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("수분 섭취")
+        .description("하루 수분 섭취량을 위젯으로 관리할 수 있어요 :)")
         .supportedFamilies([.systemSmall])
         .contentMarginsDisabled()
     }
