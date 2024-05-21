@@ -19,7 +19,7 @@ iOS 15.0
 
 ### **스크린샷**
 
-<img src="https://github.com/chasomin/DailyDrops/assets/114223423/23bb47e7-d5bb-4e7c-a389-7dc30fedfeb9" width=124, height=268>
+<img src="https://github.com/chasomin/DailyDrops/assets/114223423/0426d158-bd43-4e8a-acc5-b089addabe58" width=124, height=268>
 <img src="https://github.com/chasomin/DailyDrops/assets/114223423/46a92034-5891-495d-8ede-d47e4f5750b3" width="124" height="268">
 <img src="https://github.com/chasomin/DailyDrops/assets/114223423/0effbaa1-2870-4bfe-908b-db039be7ca72" width=124, height=268>
 <img src="https://github.com/chasomin/DailyDrops/assets/114223423/15c43d4e-2c0e-4e33-96e7-af0bb314b779" width=124, height=268>
@@ -34,6 +34,10 @@ iOS 15.0
 <img src="https://github.com/chasomin/DailyDrops/assets/114223423/c2d7bb5e-4dab-4f14-9c53-aae95ea24da9" width=124, height=268>
 <img src="https://github.com/chasomin/DailyDrops/assets/114223423/b29aba48-8d86-45fb-89a2-a4e69c3ea340" width=124, height=268>
 <br>
+
+### Widget
+<img src="https://github.com/chasomin/DailyDrops/assets/114223423/1efefa56-23ba-4dee-bab5-02583e5e37c4" width="124" height="268">
+
 
 ## 기능 소개
 
