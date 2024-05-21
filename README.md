@@ -46,6 +46,7 @@ iOS 15.0
 - 영양제 검색을 통해 복용법 추천
 - 차트를 통해 기간 별 걸음 수 조회
 - 마신 물 양을 애니메이션 화면으로 제공
+- Widget으로 하루 물 섭취량 관리
 
 ## **기술**
 
@@ -53,7 +54,13 @@ iOS 15.0
 
 `CodeBaseUI` `SnapKit` `CompositionalLayout` `DiffableDataSource` `Kingfisher` `Toast`
 
-`LocalNotification` `HealthKit` `FSCalendar` `DGCharts` `Firebase - Crashlytics, Analytics`
+`LocalNotification` `HealthKit` `WidgetKit` `FSCalendar` `DGCharts` `Firebase - Crashlytics, Analytics`
+
+
+## **기술 고려 사항**
+
+
+
 
 ## **기술 설명**
 
