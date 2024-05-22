@@ -50,21 +50,19 @@ iOS 15.0
 
 ## **기술**
 
-`UIKit` `MVVM` `CocoaPods` `Singleton` `Repository` `Alamofire` `Decodable` `Realm` 
-
-`CodeBaseUI` `SnapKit` `CompositionalLayout` `DiffableDataSource` `Kingfisher` `Toast`
-
-`LocalNotification` `HealthKit` `WidgetKit` `FSCalendar` `DGCharts` `Firebase - Crashlytics, Analytics`
-
+`UIKit` `MVVM` `CocoaPods` `Singleton` `Repository` `Alamofire` `Decodable` `Realm` `CodeBaseUI` `SnapKit` `CompositionalLayout` `DiffableDataSource` `Kingfisher` `Toast` `LocalNotification` `HealthKit` `WidgetKit` `FSCalendar` `DGCharts` `Firebase - Crashlytics, Analytics`
 
 ## **기술 고려 사항**
-
-
-
+ ViewController의 복잡성을 줄이기 위해 MVVM 패턴을 채택
+ 
+ 복잡한 연산이 없는 상황이라 단순 입출력 속도가 가장 빠른 Realm을 DB로 사용
+ 
+ 보일러플레이트 코드를 줄여 네트워크 코드를 간결하게 작성하기 위해 Alamofier 사용
+ 
 
 ## **기술 설명**
 
-**Realm List**를 사용하여 1대다 관계(to many relationship)를 구현
+ **Realm List**를 사용하여 1대다 관계(to many relationship)를 구현
 
  **Realm Repository** 추상화 적용으로 객체 간 결합도 감소
 
@@ -116,8 +114,6 @@ if request.isEmpty {
 ```
 
 <br>
-<br>
-<br>
 
 
 **2️⃣ Relam 데이터를 삭제하더라도 과거 기록에서는 남아있어야 하는 문제**
@@ -148,6 +144,8 @@ final class RealmSupplement: Object {
     }
 }
 ```
+
+<br>
 
 **3️⃣ Realm Schema 수정 및 Migration**
 
