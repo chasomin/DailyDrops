@@ -86,6 +86,7 @@
 		79A172402B9CBE2F003AB10F /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A1723F2B9CBE2F003AB10F /* SearchTableViewCell.swift */; };
 		79A172422B9CBE53003AB10F /* Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A172412B9CBE53003AB10F /* Identifier.swift */; };
 		79AD25372BF4F5F400EFF0EC /* WidgetUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AD25362BF4F5F400EFF0EC /* WidgetUpdate.swift */; };
+		79AD25642BF7842000EFF0EC /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795B21612B99AB7700DA7D7F /* UIColor+Extension.swift */; };
 		79BF77842BA1AD5C00C145E2 /* HeaderSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF77832BA1AD5C00C145E2 /* HeaderSupplementaryView.swift */; };
 		79BF77882BA2D2ED00C145E2 /* Toast+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF77872BA2D2ED00C145E2 /* Toast+Extension.swift */; };
 		79BF778A2BA2E38700C145E2 /* MySupplementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BF77892BA2E38700C145E2 /* MySupplementViewModel.swift */; };
@@ -879,6 +880,7 @@
 				798A40442BF2523E00F6A197 /* RealmRepository.swift in Sources */,
 				798A404A2BF2540200F6A197 /* Water.swift in Sources */,
 				798A40452BF2524300F6A197 /* RealmWater.swift in Sources */,
+				79AD25642BF7842000EFF0EC /* UIColor+Extension.swift in Sources */,
 				798A404F2BF2544900F6A197 /* Date+Extension.swift in Sources */,
 				798A40522BF2547300F6A197 /* Int+Extension.swift in Sources */,
 				798A404B2BF2540700F6A197 /* RealmSupplementLog.swift in Sources */,
@@ -1051,7 +1053,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.3;
+				MARKETING_VERSION = 1.2.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chasomin.DailyDrops;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1086,7 +1088,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.3;
+				MARKETING_VERSION = 1.2.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chasomin.DailyDrops;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1125,9 +1127,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.chasomin.DailyDrops.WaterWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1139,6 +1145,7 @@
 				CODE_SIGN_ENTITLEMENTS = WaterWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 696W38VQ47;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1155,9 +1162,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.chasomin.DailyDrops.WaterWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
