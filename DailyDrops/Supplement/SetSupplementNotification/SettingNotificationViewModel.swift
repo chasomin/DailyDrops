@@ -82,6 +82,7 @@ final class SettingNotificationViewModel {
         let center = UNUserNotificationCenter.current()
         content.body = "오늘도 건강한 하루 보내세요 :)"
         content.badge = 1
+        content.sound = UNNotificationSound.defaultCritical
 
         // FIXME: 반복문+반복문+조건문+반복문 이게 최선인가........ 그리고 id 64개 넘으면 어떡하징
         

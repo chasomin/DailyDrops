@@ -69,6 +69,7 @@ final class SupplementSettingViewModel {
                             content.title = "\(timeStr) \(supplementList.joined(separator: ", "))"
                             content.body = "오늘도 건강한 하루 보내세요 :)"
                             content.badge = 1
+                            content.sound = UNNotificationSound.defaultCritical
                             
                             for day in days {
                                 dateComponent.weekday = Int(day)
