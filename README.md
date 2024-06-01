@@ -16,10 +16,15 @@
 
 iOS 15.0
 
+### 앱스토어 링크
+[DailyDrops 앱스토어](https://apps.apple.com/kr/app/dailydrops-하루-건강-관리/id6479728669)
+
+<br>
+
 
 ### **스크린샷**
 
-<img src="https://github.com/chasomin/DailyDrops/assets/114223423/23bb47e7-d5bb-4e7c-a389-7dc30fedfeb9" width=124, height=268>
+<img src="https://github.com/chasomin/DailyDrops/assets/114223423/0426d158-bd43-4e8a-acc5-b089addabe58" width=124, height=268>
 <img src="https://github.com/chasomin/DailyDrops/assets/114223423/46a92034-5891-495d-8ede-d47e4f5750b3" width="124" height="268">
 <img src="https://github.com/chasomin/DailyDrops/assets/114223423/0effbaa1-2870-4bfe-908b-db039be7ca72" width=124, height=268>
 <img src="https://github.com/chasomin/DailyDrops/assets/114223423/15c43d4e-2c0e-4e33-96e7-af0bb314b779" width=124, height=268>
@@ -35,6 +40,10 @@ iOS 15.0
 <img src="https://github.com/chasomin/DailyDrops/assets/114223423/b29aba48-8d86-45fb-89a2-a4e69c3ea340" width=124, height=268>
 <br>
 
+### Widget
+<img src="https://github.com/chasomin/DailyDrops/assets/114223423/1efefa56-23ba-4dee-bab5-02583e5e37c4" width="124" height="268">
+
+
 ## 기능 소개
 
 - 캘린더 날짜별 목표 달성 기록 조회
@@ -42,18 +51,23 @@ iOS 15.0
 - 영양제 검색을 통해 복용법 추천
 - 차트를 통해 기간 별 걸음 수 조회
 - 마신 물 양을 애니메이션 화면으로 제공
+- Widget으로 하루 물 섭취량 관리
 
 ## **기술**
 
-`UIKit` `MVVM` `CocoaPods` `Singleton` `Repository` `Alamofire` `Decodable` `Realm` 
+`UIKit` `MVVM` `CocoaPods` `Singleton` `Repository` `Alamofire` `Decodable` `Realm` `CodeBaseUI` `SnapKit` `CompositionalLayout` `DiffableDataSource` `Kingfisher` `Toast` `LocalNotification` `HealthKit` `WidgetKit` `FSCalendar` `DGCharts` `Firebase - Crashlytics, Analytics`
 
-`CodeBaseUI` `SnapKit` `CompositionalLayout` `DiffableDataSource` `Kingfisher` `Toast`
-
-`LocalNotification` `HealthKit` `FSCalendar` `DGCharts` `Firebase - Crashlytics, Analytics`
+## **기술 고려 사항**
+ ViewController의 복잡성을 줄이기 위해 MVVM 패턴을 채택
+ 
+ 복잡한 연산이 없는 상황이라 단순 입출력 속도가 가장 빠른 Realm을 DB로 사용
+ 
+ 보일러플레이트 코드를 줄여 네트워크 코드를 간결하게 작성하기 위해 Alamofier 사용
+ 
 
 ## **기술 설명**
 
-**Realm List**를 사용하여 1대다 관계(to many relationship)를 구현
+ **Realm List**를 사용하여 1대다 관계(to many relationship)를 구현
 
  **Realm Repository** 추상화 적용으로 객체 간 결합도 감소
 
@@ -105,8 +119,6 @@ if request.isEmpty {
 ```
 
 <br>
-<br>
-<br>
 
 
 **2️⃣ Relam 데이터를 삭제하더라도 과거 기록에서는 남아있어야 하는 문제**
@@ -137,6 +149,8 @@ final class RealmSupplement: Object {
     }
 }
 ```
+
+<br>
 
 **3️⃣ Realm Schema 수정 및 Migration**
 
