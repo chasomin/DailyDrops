@@ -55,7 +55,8 @@ iOS 15.0
 
 ## **기술**
 
-`UIKit` `MVVM` `CocoaPods` `Singleton` `Repository` `Alamofire` `Decodable` `Realm` `CodeBaseUI` `SnapKit` `CompositionalLayout` `DiffableDataSource` `Kingfisher` `Toast` `LocalNotification` `HealthKit` `WidgetKit` `FSCalendar` `DGCharts` `Firebase - Crashlytics, Analytics`
+`UIKit` `MVVM` `Singleton` `Repository` `UserNotifications` `Decodable` `CodeBaseUI` `CompositionalLayout` `DiffableDataSource` `CocoaPods` `SPM` `Realm` `Alamofire` `SnapKit` `Kingfisher` `Toast` `FSCalendar` `DGCharts` `Firebase - Crashlytics, Analytics`
+
 
 ## **기술 고려 사항**
  ViewController의 복잡성을 줄이기 위해 MVVM 패턴을 채택
@@ -67,32 +68,27 @@ iOS 15.0
 
 ## **기술 설명**
 
- **Realm List**를 사용하여 1대다 관계(to many relationship)를 구현
-
- **Realm Repository** 추상화 적용으로 객체 간 결합도 감소
-
- **Compositional Layout**을 통해 Section 별 다양한 Cell을 구성
-
- **DiffableDataSource**를 사용하여 snapshot을 관리하고 이를 통해 효율적인 뷰 구성
-
- **BaseView**를 통해 일관된 ViewController 구조 형성
-
  **MVVM Custom Observable**을 구현하여 비즈니스 로직 분리
 
- **Firebase Crashlytics, Analytics**를 통해 사용자 이탈지점과 충돌 데이터를 수집하여 앱의 안정성 향상
+ **DTO**를 통해 네트워크 모델과 도메인 모델을 분리하여 유지보수 용이한 코드 구현
 
- **Final** 키워드와 **접근제어자**를 사용하여 컴파일 최적화 달성하기 위해 노력
+ **final** 키워드와 **접근제어자**를 사용하여 컴파일 최적화
 
  **weak self** 키워드를 사용하여 메모리 누수 방지
 
- DGCharts 라이브러리 class를 상속받아 Custom Chart Mark를 구현하여 사용자 친화적인 UI 구성
-
- **DTO**를 통해 네트워크 모델과 도메인 모델 분리
-
  protocol 생성 시 **AnyObject** 채택을 통해 해당 protocol을 채택할 수 있는 객체의 타입을 제한하여 메모리 누수 방지
 
- enum **NameSpace**를 통해 literal 값을 캡슐화하여 유지보수에 용이한 코드 구현
+ **AppGroup**을 사용하여 Target 간 Realm 데이터 공유
 
+ **Realm List**를 사용하여 1대다 관계(to many relationship)를 구현
+
+ **Realm Repository**를 통해 유지보수성과 확장성 향상
+
+ DGCharts 라이브러리 class를 상속받아 Custom Chart Mark를 구현하여 사용자 친화적인 UI 구성
+
+ **Firebase Crashlytics, Analytics**를 통해 사용자 이탈지점과 충돌 데이터를 수집하여 앱의 안정성 향상
+
+ 
 ## 트러블슈팅
 
 **1️⃣ Local Notification Identifier**
