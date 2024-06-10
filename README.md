@@ -55,7 +55,7 @@ iOS 15.0
 
 ## **기술**
 
-`UIKit` `MVVM` `Singleton` `Repository` `UserNotifications` `Decodable` `CodeBaseUI` `CompositionalLayout` `DiffableDataSource` `CocoaPods` `SPM` `Realm` `Alamofire` `SnapKit` `Kingfisher` `Toast` `FSCalendar` `DGCharts` `Firebase - Crashlytics, Analytics`
+`UIKit` `MVVM` `Singleton` `Repository` `UserNotifications` `HealthKit` `WidgetKit` `Decodable` `CodeBaseUI` `CompositionalLayout` `DiffableDataSource` `CocoaPods` `SPM` `Realm` `Alamofire` `SnapKit` `Kingfisher` `Toast` `FSCalendar` `DGCharts` `Firebase - Crashlytics, Analytics`
 
 
 ## **기술 고려 사항**
